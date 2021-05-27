@@ -1,0 +1,538 @@
+%Modo presentación
+\documentclass[14pt]{beamer}
+
+%Modo handout
+%\documentclass[handout,compress]{beamer}
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[border shrink=1mm]
+
+\usepackage{graphicx,pstricks}
+\usepackage{beamerthemeCambridgeUS}
+\usepackage{subfig}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\graphicspath{{G:/My Drive/FIGURAS/}}
+\setbeamercovered{transparent}
+
+\title[Introducción a la fotografía aérea]{SENSORES REMOTOS}
+\author[Edier Aristizábal]{Edier V. Aristizábal G.}
+\institute{\emph{evaristizabalg@unal.edu.co}}
+\date{\tiny{(Versión:\today)}}
+\usepackage{textpos}
+
+\addtobeamertemplate{headline}{}{%
+	\begin{textblock*}{2mm}(.9\textwidth,0cm)
+	\hfill\includegraphics[height=1cm]{un}
+	\end{textblock*}
+			}
+%############################INICIO#############################################
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Espectro fotográfico}
+\centering
+\includegraphics[scale=0.5]{espectro_fotografico}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Fotografía en Blanco y Negro}
+\framesubtitle{Cadiz (1956)  - Vuelo Americano}
+\begin{center}
+\includegraphics[scale=0.45]{foto_BN}
+\end{center}
+\tiny{Fuente: IDE-A. Infraestructuras de Datos espaciales de Andalucía.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Fotografía a color}
+\framesubtitle{Cadiz (1956)  - Vuelo Americano}
+\begin{center}
+\includegraphics[scale=0.45]{foto_color}
+\end{center}
+\tiny{Fuente: IDE-A. Infraestructuras de Datos espaciales de Andalucía.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Fotografía Infrarojo}
+\framesubtitle{Cadiz (1956)  - Vuelo Americano}
+\begin{center}
+\includegraphics[scale=0.45]{foto_infra}
+\end{center}
+\tiny{Fuente: IDE-A. Infraestructuras de Datos espaciales de Andalucía.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Ventajas de la fotointerpretación}
+\small{
+\begin{itemize}
+\item Las fotografía aéreas dan una mirada general y amplia de la superficie que se observa.
+\item La fotografía da una mirada en un determinado momento de una condición dinámica.\\
+\item Es una mirada permanente de una condición especifica que permite el análisis en oficina o por diferente usuarios o diferentes momentos.\\
+\item Amplia sensibilidad espectral que permite observar fenómenos que a simple vista no es posible.\\
+\item Incrementa la resolución espacial y  precisión en medidas.
+\end{itemize}
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Fotogeología}
+\scriptsize{
+Rama de los sensores remotos encargada de estudiar los sucesos geológicos a través de las fotografías aéreas.\\ 
+El objeto de la fotogeología es el estudio de la superficie terrestre, de los diversos materiales que la integran y de las huellas dejadas sobre ellos por la serie de procesos a los que han estado sometidos a lo largo de los tiempos geológicos. \\
+El estudio de la fotogeología abarca la estratigrafía, litología, geología estructural, geomorfología, tectónica, hidrogeología, y, en resumen, todas las ramas de la geología que admitan para su estudio una escala macroscópica
+}
+\begin{center}
+\includegraphics[scale=0.25]{fotogeologia}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Fotografía aérea}
+\begin{center}
+\includegraphics[scale=0.52]{foto_aerea}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Fotografía aérea}
+\begin{center}
+\includegraphics[scale=0.30]{aerialphoto}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Plataformas}
+\begin{columns}
+\begin{column}{0.35\linewidth}
+\begin{center}
+\includegraphics[scale=0.1]{plataforma2}
+\end{center}
+\end{column}
+\begin{column}{0.33\linewidth}
+\begin{figure}
+\includegraphics[scale=0.35]{plataforma4}
+\end{figure}
+\end{column}
+\begin{column}{0.33\linewidth}
+\begin{center}
+\includegraphics[scale=1]{plataforma3}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Camaras}
+\begin{columns}
+\begin{column}{0.66\linewidth}
+\begin{center}
+\includegraphics[scale=0.45]{camara}
+\end{center}
+\end{column}
+\begin{column}{0.33\linewidth}
+\begin{figure}
+\includegraphics[scale=0.35]{camara1}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cámaras}
+\begin{center}
+\includegraphics[scale=0.55]{camara3}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cámaras aéreas}
+\begin{center}
+\includegraphics[scale=0.48]{camaras_tipo}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Campo angular}
+\begin{center}
+\includegraphics[scale=0.48]{camara_angular}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Campo de gran formato}
+\begin{center}
+\includegraphics[scale=0.36]{camara_gran_formato}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Tipo fotografías aéreas}
+\begin{center}
+\includegraphics[scale=0.5]{foto_orientacion}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Fotos verticales}
+\begin{center}
+\includegraphics[scale=0.5]{fotos_verticales}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Fotos oblicuas - alta}
+\begin{center}
+\includegraphics[scale=0.5]{fotos_oblicuas}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Fotos oblicuas - baja}
+\begin{center}
+\includegraphics[scale=0.5]{fotos_oblicuas1}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Tipos de fotografías}
+\begin{columns}
+\begin{column}{0.5\linewidth}
+\begin{center}
+\includegraphics[scale=0.5]{foto_vertical1}
+\end{center}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}
+\includegraphics[scale=0.5]{foto_oblicua2}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El ojo humano}
+\scriptsize{
+\textbf{Bastones (rod)} $rightarrow$ brillo (intensidad). Tienen la misma sensibilidad de frecuencia (0,55 um). A baja luz vemos monocromático.
+
+\textbf{Conos} $rightarrow$ colores (frecuencia). Sensibles longitudes de onda del azul, verde y rojo, cuando lo tres tipos de conos son estimulados de forma percibimos el color blanco. El ojo humano discrimina más colores que tonos de grises.
+}
+\begin{center}
+\includegraphics[scale=0.46]{ojo}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Percepción del relieve}
+\scriptsize{Hacia dónde está abierto este libro?}
+\begin{center}
+\includegraphics[scale=0.5]{percepcion}
+\end{center}
+\tiny{Fuente: Dirik (2005)}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Percepción del relieve}
+\scriptsize{Hacia dónde está abierto este libro?}
+\begin{center}
+\includegraphics[scale=0.5]{percepcion1}
+\end{center}
+\tiny{Fuente: Dirik (2005)}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cómo se percibe la profundidad?}
+\framesubtitle{Visión monocular}
+\begin{center}
+\includegraphics[scale=0.48]{monocular}
+\end{center}
+\tiny{Fuente: Introducción a la fotogrametría de Prof. Luis Jauregui}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{\emph{The whole is other than the sum of the parts} -- \tiny{Kurt Koofka}}
+\begin{center}
+\includegraphics[scale=0.5]{gestalt}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{\emph{The whole is other than the sum of the parts} -- \tiny{Kurt Koofka}}
+\scriptsize{
+\begin{itemize}
+\item \textbf{La ley de la figura-fondo}: no podemos percibir una misma forma como figura y a la vez como fondo de esa figura. El fondo es todo lo que no se percibe como figura.\\
+\item \textbf{Ley de la continuidad}: si varios elementos parecen estar colocados formando un flujo orientado hacia alguna parte, se percibirán como un todo.\\
+\item \textbf{Ley de la proximidad}: los elementos próximos entre sí tienden a percibirse como si formaran parte de una unidad.\\
+\item \textbf{Ley de la similitud}: los elementos parecidos son percibidos como si tuvieran la misma forma.\\
+\item \textbf{La ley de cierre}: una forma se percibe mejor cuanto más cerrado está su contorno.\\
+\item \textbf{Ley de la compleción}: una forma abierta tiende a percibirse como cerrada.
+\end{itemize}
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{Percepción visual}
+\begin{center}
+\includegraphics[scale=0.27]{gestalt1}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{Percepción visual}
+\begin{center}
+\includegraphics[scale=0.4]{gestalt2}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{Percepción visual}
+\begin{center}
+\includegraphics[scale=0.4]{gestalt3}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{Percepción visual}
+\begin{center}
+\includegraphics[scale=0.4]{gestalt4}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{Percepción visual}
+\begin{center}
+\includegraphics[scale=0.4]{gestalt5}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{Percepción visual}
+\begin{center}
+\includegraphics[scale=0.4]{gestalt6}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{Percepción visual}
+\begin{center}
+\includegraphics[scale=0.5]{gestal8}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{Percepción visual}
+\begin{center}
+\includegraphics[scale=0.4]{gestalt9}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{Percepción visual}
+\begin{center}
+\includegraphics[scale=0.6]{gestalt10}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{Percepción visual}
+\begin{center}
+\includegraphics[scale=0.6]{gestalt11}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{Percepción visual}
+\begin{center}
+\includegraphics[scale=0.6]{gestalt12}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{Percepción visual}
+\begin{center}
+\includegraphics[scale=0.4]{gestal13}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{El Efecto GESTALT}
+\framesubtitle{Percepción visual}
+\begin{center}
+\includegraphics[scale=0.6]{gestalt14}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Fundamentos de la visión estereoscópica}
+\small{
+\begin{itemize}
+\item Nuestros ojos captan dos imágenes desde dos puntos de vista distintos\\
+\item Las imágenes son interpretadas como una única imagen (fusión y estereopsis)\\
+\item La sensación de profundidad es función de la separación intraocular
+
+\end{itemize}
+}
+\begin{center}
+\includegraphics[scale=0.37]{agudeza-visual}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Paralaje}
+\begin{center}
+\includegraphics[scale=0.4]{paralaje}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Visión estereoscópica artificial}
+\begin{center}
+\includegraphics[scale=0.4]{estereo1}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Visión estereoscópica artificial}
+\begin{center}
+\includegraphics[scale=0.4]{estereoscopio1}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Estereoscopio de bolsillo}
+\begin{center}
+\includegraphics[scale=0.9]{estereoscopio3}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Estereoscopio de espejos}
+\begin{center}
+\includegraphics[scale=0.5]{estereoscopio4}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Estereoscopio de espejos}
+\begin{center}
+\includegraphics[scale=1]{estereoscopio2}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Estereoscopio de espejos}
+\begin{center}
+\includegraphics[scale=1]{estereoscopio}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Recubrimiento lateral y longitudinal}
+\begin{center}
+\includegraphics[scale=0.4]{solape}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Recubrimiento lateral y longitudinal}
+\begin{center}
+\includegraphics[scale=0.4]{solape2}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Recubrimiento lateral y longitudinal}
+\begin{center}
+\includegraphics[scale=0.4]{solape1}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Puntos principales y transferidos $\rightarrow$ Línea de vuelo}
+\begin{center}
+\includegraphics[scale=0.4]{linea-vuelo}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Definiciones}
+\scriptsize{
+\begin{itemize}
+\item \textbf{Altura de vuelo}: es la altura del vuelo en el momento de la toma, referida al nivel del mar.\\
+\item \textbf{Distancia focal}: distancia que existe entre el foco del lente y el negativo de la película.\\
+\item \textbf{Nadir}: proyección vertical del centro de la cámara sobre el terreno en el momento de la exposición.\\
+\item \textbf{Punto principal}: es el punto de intersección sobre la fotografía de un eje perpendicular al plano terrestre. \\
+\item \textbf{Base instrumental}: separación entre dos puntos iguales del estereograma.\\
+\item \textbf{Base aérea}: distancia entre los puntos de toma medida en el terreno.\\
+\item \textbf{Fotobase}: es la base aérea medida a escala de la foto.\\
+\item \textbf{Estereograma}. Es un par estereoscópico, correctamente orientado y montado, cada imagen al lado de la otra, a fin de facilitar la visión estereoscópica mediante el uso del estereoscopio de espejos. Una variación del estereograma es el estereotriplete, el cual usa tres fotografías sucesivas extendiendo así el área de observación.\\
+\item \textbf{Línea de vuelo}: es la línea que marca la trayectoria del avión.
+\end{itemize}
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Marcas fiduciales}
+\begin{center}
+\includegraphics[scale=0.5]{marca-fiducial}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Marcas fiduciales}
+\begin{center}
+\includegraphics[scale=0.4]{marca-fiducial.pn}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Orientación}
+\begin{center}
+\includegraphics[scale=0.5]{sombras}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Taller 13}
+\begin{center}
+\includegraphics[scale=0.48]{taller13}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Taller 13}
+\begin{center}
+\includegraphics[scale=0.46]{mapa-lineas-vuelo}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Taller 13}
+\begin{center}
+\includegraphics[scale=0.35]{igac}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Taller 13}
+\begin{center}
+\includegraphics[scale=0.4]{igac1}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
