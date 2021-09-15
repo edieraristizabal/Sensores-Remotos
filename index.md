@@ -18,6 +18,6 @@ El Curso se compone de dos grandes bloques . El primero de ellos contiene la teo
 
 ## Talleres
 
-* [Taller 1.](/TALLERES/Talleres GIS/Taller 1_Descarga_QGIS.docx) Descarga de imágenes de satélite
+* [Taller 1](/TALLERES/Talleres GIS/Taller 1_Descarga_QGIS.docx) Descarga de imágenes de satélite
 
 
