@@ -1,0 +1,56 @@
+%#############################PREAMBLE#############################################
+\documentclass[a4paper,twoside,11pt,]{article}
+
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[skins]{tcolorbox}
+\usepackage{titlepic}
+\renewcommand{\labelenumi}{Clase \theenumi}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Sensores Remotos}
+\rhead{\thepage}
+\cfoot{Programa}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\title {CURSO SENSORES REMOTOS}
+\author{Prof.: Edier Aristizábal\\[5ex]
+\includegraphics[width=5.0cm]{G:/My Drive/figuras/un_verde.png}
+}
+\date{}
+
+%################################BODY############################################
+\begin{document}
+\maketitle
+
+\emph {versión}: \today
+
+\section* {Taller práctico}
+\subsection*{Objetivos}
+Utilizar la técnica de fotointerpretación asistida por computador con anáglifos.
+
+\section*{materiales}
+Fotografías aéreas digitales, software Stereo Photo Maker, y lentes de anaglifos Rojo/Cian.
+
+\subsection*{Actividades a realizar:}
+
+\begin{itemize}
+\item Para fotointerpretar con un par de fotografías que generan un anaglifo se requiere el uso de lentes especiales. Estos lentes se pueden adquirir:\\ 
+\url{https://articulo.mercadolibre.com.co/MCO-619427440-gafas-3d-anaglifas-lentes-3d-para-tv-video-cine-juegos-3d-_JM#reco_item_pos=1&reco_backend=machinalis-v2p&reco_backend_type=low_level&reco_client=vip-v2p&reco_id=f5e3e96e-213d-4f69-9aec-bd9d9e156b18}\\ o construir de forma sencilla:\\
+ \url{http://www.ign.es/3d-stereo/docStereo.pdf}
+\item Posteriormente se debe descargar e instalar el software StereoPhoto Maker:\\
+\url{http://stereo.jpn.org/eng/stphmkr/}\\
+Este software le permite constuir un par anaglifo a partir de dos fotografias aéreas, que luego podra fotointerpretar con los lentes en cualquier software de visulización, diseño o SIG.
+\item Vaya a File/open Left/Rigth images...y carge la imagen izquierda y derecha que va a utilizar para la construcción del anaglifo. 
+\item Cuando carga las fotografias, se activan todas las opciones de la barra de herramientas. Busque la opción denominada Easy Adjustement...y de click.
+\item Se activa un recuadro donde podra ajustar el anaglifo. Para esto se recomienda utilizar principalmente la barra horizontal y la barra vertical al lado del anaglifo construido. Moviendo dichas barras podrá superponer cada fotografía de forma correcta tal que le permita fotointerpretar. Para esto puede utilizar los lentes. Cuando finalice de click en OK.
+\item para generar el anaglifo construido anteriormente oprima F7 o en la barra superior oprima Gray Anaglyph.
+\item El anaglifo generado puede guardarlo con la función File/Save Stereo Image...
+\item Finalmente esta imagen puede importarla en cualquier programa de visualización de imagenes. Sin embargo se recomienda utilizar un programa de edición, en el cual pueda crear capas y guardar el resultado de la fotointerpetación. Estos programas pueden ser de edición de imágenes como Corel o Inkscape; o progrmas SIG como QGIS or ArcGIS.
+\end {itemize}
+
+\end{document}

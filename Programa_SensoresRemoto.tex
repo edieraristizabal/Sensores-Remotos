@@ -1,0 +1,284 @@
+%#############################PREAMBLE#############################################
+\documentclass[a4paper,twoside,11pt,]{article}
+
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[skins]{tcolorbox}
+\usepackage{titlepic}
+\renewcommand{\labelenumi}{Clase \theenumi}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Sensores Remotos}
+\rhead{\thepage}
+\cfoot{Programa}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\title {PROGRAMA  CURSO SENSORES REMOTOS}
+\author{Prof.: Edier Aristizábal\\[5ex]
+\includegraphics[width=10.0cm]{G:/My Drive/FIGURAS/unal2.png}
+}
+\date{}
+
+%################################BODY############################################
+\begin{document}
+\maketitle
+
+\emph {versión}: \today
+
+\section* {Introducción}
+El curso de \emph{Sensores Remotos} está orientado para estudiantes de ciencias de la tierra con el objeto de aprender a utilizar las herramientas de teledetección en geología y geomorfología. Inicialmente comprende la teoría general de sensores remotos y procesamiento de imágenes. Para posteriormente enfocarse en el uso de fotografías aéreas y adquirir de forma adecuada la técnica de la fotointerpretación a través del uso de fotografías aéreas.\\ 
+Este curso no corresponde a un curso a profundidad y detalle del uso de imágenes de satélite para diferentes disciplinas. De forma similar, la técnica de fotointerpretación, aunque es similar para otros temas, su aplicación en este curso se enfoca exclusivamente para la fotointerpretación geológica, es decir diferenciar unidades litológicas, al igual que fotointerpretación geomorfológica, es decir formas y procesos morfodinámicos.\\
+El procesamiento de imágenes es una herramienta ampliamente utilizada actualmente, y la fotointerpretación es una técnica que se conserva por su ayuda en diferentes campos, y que no puede suplir ningún otro sensor remoto. Adquirir estas herramientas seguramente le ampliará sus perspectivas profesionales en el campo de la geología aplicada a la ingeniería.
+
+\section{PREREQUISITOS}
+Para tomar el curso se recomienda al estudiante haber realizado su núcleo básico y los cursos SIG, Campo I, Geomorfología, Rocas Sedimentarias, Rocas Metamórficas, Rocas Ígneas, y Geología Estructural. De esta forma el estudiante podrá sacar el máximo beneficio del contenido del curso.\\
+En caso que el estudiante no haya cursado las anteriores asignaturas se recomienda que cancele el curso. Es posible que tome el curso y lo apruebe, con mucha mayor dificultad, sin embargo no podrá explotar todas las posibilidades que ofrecen los sensores remotos.
+
+\section{PROGRAMA}
+El contenido del curso comprende los siguientes temas a desarrollar:\\
+
+\subsection*{Introducción al curso}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 0 -- Test de estereoscopía
+\end{tcolorbox}
+
+\subsection {Radiación electromagnética}
+\begin{itemize}
+\item Energía electromagnética y espectro
+\item Interacciones con la atmosfera
+\item Absorción y transmisión
+\item Dispersión
+\item Interacción con la superficie
+\item Cálculo de la reflectividad
+\item Reflectancia vs. Radiancia
+\item Curvas de reflectividad
+\item Características de las imágenes
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 1 -- Descarga de imágenes
+\end{tcolorbox}
+
+\subsection {Radiación electromagnética}
+\begin{itemize}
+\item Interacción con el objeto
+\item Reflexión
+\item Emisión
+\item Dispersión
+\item Transmisión
+\item Curvas de reflectancia espectral
+\item Superficie Especular y Lambertiana
+\item Firma espectral (agua, suelo, vegetación)
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 2 -- Manejo imágenes satelitales
+\end{tcolorbox}
+
+\subsection {Sensores: plataformas y detectores}
+\begin{itemize}
+\item Plataformas aéreas y espaciales (Airborne vs spaceborne)
+\item Orbitas
+\item Tipo de sensores
+\item Sensores Pasivos
+\item Explorador de barrido
+\item Explorador de empuje
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 3 -- Indices espectrales
+\end{tcolorbox}
+
+\subsection {Sensores: resolución}
+\begin{itemize}
+\item Las resoluciones
+\item IFOV
+\item Resolución radiométrica
+\item Resolución espectral
+\item Resolución geométrica
+\item Resolución temporal
+\item Resolución vs Escala
+\item Sensores Activos
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 4 -- Presentación programas espaciales
+\end{tcolorbox}
+
+\subsection {Tratamiento de imágenes}
+\begin{itemize}
+\item Numero digital
+\item Tamaño de la imagen
+\item Formato de grabación
+\item Error y calibración radiométrico
+\item Error y calibración geométrica
+\item Procesamiento de imágenes
+\item Transformación de imágenes
+\item Clasificación de imágenes
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 5 -- Clasificación de imágenes
+\end{tcolorbox}
+
+\subsection {Evaluación}
+\begin{itemize}
+\item Matriz de confusión
+\item Precisión
+\item Precisión del usuario
+\item Precisión del productor
+\item Coeficiente de Kappa Cohen
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 6 --Evaluación de la clasificación de imágenes satelitales
+\end{tcolorbox}
+
+\subsection {Introducción a la fotografía aérea}
+\begin{itemize}
+\item Historia
+\item Tipos de fotointerpretación
+\item Estereoscopio
+\item Visión estereoscópica
+\item El efecto GESTAL y la percepción
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 7 -- Base instrumental
+\end{tcolorbox}
+
+\subsection {Fotogrametría}
+\begin{itemize}
+\item Definiciones
+\item Espectro fotográfico
+\item Cámara fotográfica
+\item Estereoscopio
+\item Punto principal y marcas
+\item Líneas de vuelo
+\item Escala
+\item Orientación
+\item Clasificación de fotografías aéreas
+\item Paralaje
+\item Mosaicos
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 8 -- Fotogrametría
+\end{tcolorbox}
+
+\subsection {Criterios de fotointerpretación}
+\begin{itemize}
+\item Técnicas y métodos de fotointerpretación 
+\item Principios básicos: tamaño, forma, tono o color, textura, patrón, sombra y asociación
+\item Elementos básicos (laderas), compuestos (drenaje, fallas y lineamientos), e inferidos (erosión, roca parental)
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 9 -- Criterios de fotointerpretación
+\end{tcolorbox}
+
+\subsection {Análisis de relieve}
+\begin{itemize}
+\item Elementos humanos 
+\item Elementos naturales
+\item Topografía
+\item Drenajes
+\item Control estructural
+\item Control climático
+\item Textura drenaje
+\item Redes drenaje
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 10 -- Fotointerpretación del relieve
+\end{tcolorbox}
+
+\subsection {Análisis geológico}
+\begin{itemize}
+\item Estratos inclinados
+\item Estratos horizontales
+\item Regla de la V
+\item Pliegues
+\item Fallas 
+\item Rocas sedimentarias
+\item Rocas metamórficas
+\item Rocas igneas
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 11 -- Fotointerpretación geológica
+\end{tcolorbox}
+
+\subsection {Cartografía geológica}
+\begin{itemize}
+\item Rocas metamórficas
+\item Rocas igneas
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 12 -- Cartografía
+\end{tcolorbox}
+
+\section{TALLERES}
+La descripción de cada uno de los talleres se encuentra en el Moodle. Las fechas de entrega y porcentaje se presentan a continuación. La hora de entrega de todos los talleres es hasta las 8:00 a.m.:\\
+\begin{table}[!hbt]
+\label{tab-marks}
+\begin{tabular}{|l|c|c|c|}
+\hline {\bf Talleres} & {\bf Fecha entrega} & {\bf Evaluación (\%)} & {\bf Tipo} \\
+\hline Taller 1 Descarga de imágenes & 02/10/2019 &  5 & Individual\\
+\hline Taller 2 Imágenes en ArcGIS &  02/10/2019& 5 & Individual\\
+\hline Taller 3 NVDI & 02/10/2019  & 5 & Individual\\
+\hline Taller 4 Programas espaciales  & 02/10/2019 &  5 & Individual\\
+\hline Taller 5 Clasificacións &  02/10/2019& 5 & Grupo\\
+\hline Taller 6 Evaluación & 02/10/2019  & 5 & Individual\\
+\hline Taller 7. Base instrumental & 02/10/2019 &  5 & Individual\\
+\hline Taller 8. Fotogrametría &  02/10/2019& 5 & Individual\\
+\hline Taller 9. Criterios  & 02/10/2019  & 5 & Individual\\
+\hline Taller 10. Análisis del relieve  & 02/10/2019 &  5 & Individual\\
+\hline Taller 11. Análisis de estructuras y roca &  02/10/2019& 5 & Individual\\
+\hline Taller 12. Cartografia geologica & 02/10/2019  & 5 & Individual\\
+\hline Taller 12. Cartografia geologica & 02/10/2019  & 5 & Individual\\
+\hline Taller 13. Trabajo pre--campo y campo & 02/10/2019  & 40 & Grupo\\
+\hline
+\end{tabular}
+\end{table}
+
+Los talleres deberán remitirse al correo evaristizabalg@unal.edu.co en formato PDF. El nombre del archivo deberá tener el número del taller y el nombre y apellido del estudiante (Ej. Taller 1\_EdierAristizabal). En caso de no entregarse de esta forma tendrá un descuento del 0,5 de la nota obtenida.
+El Taller 1 comprende la descarga de una imagen de satélite Landsat-8 tomada durante el semestre actual. Con dicha imagen se deberá continuar realizando los talleres con imágenes de satélite siguientes. El uso de una imagen diferente para los siguientes talleres implica que sean evaluados sobre una nota máxima de 3.0.
+La presentación de los talleres tiene un formato libre, el cual exige un trabajo de creatividad, orden y claridad del estudiante, de tal forma que trasmita la información de forma correcta y adecuada al evaluador. Los criterios utilizados para la evaluación y asignación de nota a los talleres son:
+\begin{itemize}
+\item Ejecución: que el taller se presente completo y desarrolle todas las actividades solicitadas.
+\item Claridad y orden: que se desarrolle de forma secuencial y clara en términos de la estructura, redacción y figuras o tablas de apoyo.
+\item Conciso: que pueda transmitir la información suficiente de forma corta y directa.
+\item Desarrollo adecuado: que el procedimiento, análisis y observaciones realizadas sean correctas de acuerdo al contenido y estado del arte del curso.
+\end{itemize}
+
+\section{TALLER 13 -Trabajo pre--campo y  campo}
+Durante el curso se desarrollará un trabajo de fotointerpretación y verificación de campo que incluye todas las fases y actividades que se dictarán en clase. El cual se refiere a la adquisición de información, levantamiento de línea base, fotointerpretación, elaboración de mapas fotogeológicos y verificación en campo de una región especifica.
+Aunque parte de este taller se realiza previo a la salida de campo, su evaluación del 40\% se realiza en campo. Por lo tanto el estudiante que no asista a la salida de campo tiene en la totalidad del Taller 13, es decir el 40\%, una nota de cero (0), así el estudiante haya participado del trabajo previo a la salida de campo.
+
+\section{MONITORIAS}
+Las monitorias del componente de fotointerpretación son en el salón de foto (M1, 304) por el estudiante Cesar Trillos en el siguiente horario:
+\begin{itemize}
+\item Lunes de 12 a 2 pm.
+\item Martes de 2 a 6 pm
+\item Jueves de 12 a 1 p.m.
+\end{itemize}
+
+También está disponible el laboratorio de Ambiental (M1-sotano) los viernes de 8 a 10, donde existen dos estereoscopios de espejos. Adicionalmente, en el campus de Agronomía, bloque 14 piso 2, se encuentra el laboratorio de Geomática donde tienen estereoscopios de espejos
+
+\section{REFERENCIAS}
+El curso utilizará material de diferentes fuentes bibliográficas, entre las cuales se destacan las siguientes, por lo cual se recomienda su consulta:
+\begin{itemize}
+\item Aerial photographs in geologic interpretation and mapping. US Geological Survey professional paper 373. Richard Ray (Eds). 1960.
+\item Fundamentals of remote sensing. A Canada centre for remote sensing tutorial. Natural Resources Canada. 
+\item Principles of remote sensing, an introductory textbook. The International Institute for Geo-Information Science and Earth Observation (ITC). 2009.
+\item Guía Teórica de Fotogeología. Gutierrez A. Julian. Universidad de Los Andes, Merida, Venezuela
+\item Manual de ejercicios de laboratorio fotogrametría y fotointerpretación. Carlos Pacheco \& Ennio Pozzobon. Universidad de Los Andes. 2006.
+\end{itemize}
+
+\end{document}

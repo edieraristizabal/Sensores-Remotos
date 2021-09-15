@@ -1,0 +1,419 @@
+%Modo presentación
+\documentclass[14pt]{beamer}
+
+%Modo handout
+%\documentclass[handout,compress]{beamer}
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[border shrink=1mm]
+
+\usepackage{graphicx}
+\usepackage{beamerthemeCambridgeUS}
+\usepackage{subfig}
+\usepackage{tikz}
+\usepackage{amsmath}
+\setbeamercovered{transparent}
+\usepackage{xcolor}
+\usepackage{textpos} 
+
+\graphicspath{{G:/My Drive/FIGURAS/}}
+
+\title[Fotogeología]{SENSORES REMOTOS}
+\author[Edier Aristizábal]{Edier V. Aristizábal G.}
+\institute{\emph{evaristizabalg@unal.edu.co}}
+\date{(Versión:\today)}
+
+
+\addtobeamertemplate{headline}{}{%
+	\begin{textblock*}{2mm}(.9\textwidth,0cm)
+	\hfill\includegraphics[height=1cm]{un}  
+	\end{textblock*}
+			}
+%############################INICIO#############################################
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\titlepage
+\centering
+	\includegraphics[width=5cm]{unal}\hspace*{4.75cm}~%
+   	\includegraphics[width=2cm]{logo3} 
+\end{frame}
+ %#############################SLIDE%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Geoformas}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.85\textheight]{geoformas}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Geoformas buzantes}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.45\textheight]{geoformas-buzantes}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Estratos horizontales - poco buzantes}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.85\textheight]{estratos-horizontales}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Estratos horizontales - poco buzantes}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.85\textheight]{estratos-horizontales1}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Estratos horizontales - poco buzantes}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.85\textheight]{estratos-horizontales2}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Plateaux}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.85\textheight]{plateaux4}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Mesa}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.85\textheight]{plateaux5}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Butte}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.85\textheight]{plateaux6}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Butte}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.85\textheight]{hogbacks1}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Estratos buzantes}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.45\textheight]{hogbacks2}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Estratos buzantes}
+\scriptsize{
+\begin{itemize}
+\item Morfología del terreno formando cuestas (pendientes estructurales) 
+\item Capas con buzamientos entre 5 y 35º
+\item Cuando capa intersecta valle fluvial forma V (indica dirección de buzamiento)
+\item Buzamiento suave – V grande
+\item Buzamiento fuerte – V pequeña
+\end{itemize}
+}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.3\textheight]{direccion-buzamiento}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Regla de la V}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.85\textheight]{regla-v}
+  \end{figure}
+  \tiny{Fuente: Kadir Dirik, 2006}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Influencia de las estructuras en los drenajes}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{estructuras-drenajes}
+  \end{figure}
+  \tiny{Fuente: Dirik (2005)}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Estratos verticales}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{estratos-verticales}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Estratos verticales}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{estratos-verticales1}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Buzamiento vs Altura}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.6\textheight]{buzamiento-altura}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Relación ladera vs estructuras}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.65\textheight]{cataclinal}
+  \end{figure}
+  \tiny{Fuente: Meentemeyer \& Moody (2000) }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Relación ladera vs estructuras}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.65\textheight]{cataclinal1}
+  \end{figure}
+  \tiny{Fuente: Grelle et al (2011)}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Pliegues}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.65\textheight]{pliegues}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Pliegues}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.65\textheight]{pliegues1}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Pliegues y drenajes}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.65\textheight]{pliegues-drenajes}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Pliegues y valles}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.75\textheight]{pliegues-valles}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Fracturas y drenajes}
+\begin{columns}
+\begin{column}{0.5\linewidth}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.4\textheight]{fracturas-drenajes}
+  \end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.4\textheight]{fracturas-drenajes1}
+  \end{figure}
+\end{column}
+\end{columns}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Fallas}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.75\textheight]{relieve-fallas}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Componente vertical}
+\framesubtitle{Facetas}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{facetas}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Fallas de rumbo}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{desplazamiento-horizontal}
+  \end{figure}
+  \tiny{Fuente: Kadir Dirik, 2006}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Fallas de rumbo}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{desplazamiento-horizontal1}
+  \end{figure}
+  \tiny{Fuente: Kadir Dirik, 2006}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Fallas de rumbo}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{desplazamiento-horizontal2}
+  \end{figure}
+  \tiny{\url{http://marlimillerphoto.com/SrF.html}}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Inconformidad}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{inconformidad}
+  \end{figure}
+  \tiny{Fuente: Kadir Dirik, 2006}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Inconformidad}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{inconformidad1}
+  \end{figure}
+  \tiny{Fuente: Kadir Dirik, 2006}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Rocas sedimentarias con estratos delgados}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{sedimentarias}
+  \end{figure}
+  \tiny{Fuente: Way, 1973}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Rocas sedimentarias con estratos espesos}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{sedimentarias1}
+  \end{figure}
+  \tiny{Fuente: Way, 1973}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Rocas sedimentarias con estratos buzantes}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{sedimentarias2}
+  \end{figure}
+  \tiny{Fuente: Way, 1973}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Rocas sedimentarias con grano fino}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{sedimentarias3}
+  \end{figure}
+  \tiny{Fuente: Way, 1973}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Rocas sedimentarias con grano fino}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{sedimentarias4}
+  \end{figure}
+  \tiny{Fuente: Way, 1973}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Rocas sedimentarias con grano medio}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{sedimentarias5}
+  \end{figure}
+  \tiny{Fuente: Way, 1973}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Rocas sedimentarias con grano medio}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{sedimentarias6}
+  \end{figure}
+  \tiny{Fuente: Way, 1973}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Calizas}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{calizas}
+  \end{figure}
+  \tiny{Fuente: Way, 1973}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Rocas graníticas}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{graniticas}
+  \end{figure}
+  \tiny{Fuente: Way, 1973}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Esquistos}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{esquistos}
+  \end{figure}
+  \tiny{Fuente: Way, 1973}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Gneiss}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{gneiss}
+  \end{figure}
+  \tiny{Fuente: Way, 1973}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+\frametitle{Gneiss vs Graníticos}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{gneiss-graniticos}
+  \end{figure}
+  \tiny{Fuente: López (1978)}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

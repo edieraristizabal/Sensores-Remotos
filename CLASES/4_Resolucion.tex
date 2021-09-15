@@ -1,0 +1,350 @@
+%###########################PRESENTACION##########################################
+%Modo presentación
+\documentclass[14pt]{beamer}
+
+%Modo handout
+%\documentclass[handout,compress]{beamer}
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[border shrink=1mm]
+
+\usepackage{graphicx}
+\usepackage{beamerthemeCambridgeUS}
+\usepackage{subfig}
+\usepackage{tikz}
+\usepackage{amsmath}
+\setbeamercovered{transparent}
+\usepackage{xcolor}
+\usepackage{textpos} 
+
+\graphicspath{{G:/My Drive/FIGURAS/}}
+
+\title[Resolución]{SENSORES REMOTOS}
+\author[Edier Aristizábal]{Edier V. Aristizábal G.}
+\institute{\emph{evaristizabalg@unal.edu.co}}
+\date{(Versión:\today)}
+
+
+\addtobeamertemplate{headline}{}{%
+	\begin{textblock*}{2mm}(.9\textwidth,0cm)
+	\hfill\includegraphics[height=1cm]{un}  
+	\end{textblock*}
+			}
+%############################INICIO#############################################
+\begin{document}
+\begin{frame}
+\titlepage
+\centering
+	\includegraphics[width=5cm]{unal}\hspace*{4.75cm}~%
+   	\includegraphics[width=2cm]{logo3} 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Las Resoluciones}
+ \begin{itemize}
+\item Resolución Espacial (detalle en el terreno)
+\item Resolución Espectral (número de bandas)
+\item Resolución Temporal (frecuencia de revisita) 
+\item Resolución Radiométrica (niveles de gris)
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Relución espacial}
+\framesubtitle{Para films (análogas)$\rightarrow$ resolving power of the film}
+\begin{center}
+125 pares de lp/mm a un contraste de 1000:1
+\end{center}
+\scriptsize{
+La resolución es función de la distribución del tamaño de los granos de silver halide en la emulsión. Los films con granos gruesos tienen una resolución menor sin embargo son mas sensibles o rápidos a la luz, por el contrario con granos mas finos tienen mas resolución, pero son menos sensible o lentos a la luz.
+}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.45\textheight]{resolving_power}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Escala}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.55\textheight]{escala}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Variación de la Escala}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{escala3}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.5\textheight]{escala2}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Instantaneous Field of View (IFOV)}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{ifov}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Resolución Espacial}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{resolucion}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Instantaneous Field of View (IFOV)}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.6\textheight]{ifov1}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Instantaneous Field of View (IFOV)}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.5\textheight]{ifov2}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Instantaneous Field of View (IFOV)}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.5\textheight]{ifov3}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Ground Sample Distance (GSD)}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{pixel2}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{pixel3}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{exampleblock}{Rs vs. Px vs. GSD}
+\small{La Rs es diferente al Px y al GSD. Sólo son iguales cuando se encuentra a resolución completa.}
+\end{exampleblock}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{hd}
+  \end{figure}
+\tiny{https://crisp.nus.edu.sg/~research/tutorial/rsmain.htm}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Resolución espacial vs. Escala}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.4\textheight]{escalavsres}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cuántos pixeles?}
+\small{El procesamiento de imágenes está interesado no solamente en la \textbf{Detección}: \emph{discernir discretamente los objetos}, sino también en \textbf{Reconocer}: \emph{determinar que tipo de objeto es}, y en la \textbf{Identificación}: \emph{identificar el objeto específicamente.}}
+ \begin{figure}
+    \centering
+\    \includegraphics[height=.4\textheight]{pixel4}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Área Mínima Cartografiable (AMC)}
+\scriptsize{Pero el nivel de detalle no está limitado sólo por la escala, o la resolución espacial o el número de pixeles, Tambien por el Área Mínima Cartografiable.}\vfill
+\small{\textbf{AMC}: Mínima área de un elemento que debe ser representado en un mapa}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.5\textheight]{amc}
+  \end{figure}
+\tiny{http://www.gisandbeers.com/area-minima-cartografiable-mapa/}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Área Mínima Cartografiable}
+\framesubtitle{Criterio Salitchev (1979) 4mm x 4mm}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{salitechv}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Tamaño del pixel adecuado}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{UMC}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Tamaño del pixel adecuado}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{umc2}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Tamaño del pixel adecuado}
+\begin{exampleblock}{Regla de Waldo Tobler (1967) }
+\small{\emph{"The rule is: divide the denominator of the map scale by 1,000 to get the detectable size in meters. The resolution is one half of this amount."\\
+Map Scale = Raster resolution (in meters) * 2 * 1000}}
+\end{exampleblock}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.4\textheight]{detectablesize}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Tamaño del pixel adecuado}
+\framesubtitle{Número de pixeles: 16}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.5\textheight]{tablareso}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Ejemplo}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.6\textheight]{ejemplo}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{figure}
+    \centering
+    \includegraphics[height=.9\textheight]{ejemplo2}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Resolución Espectral}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{espectral}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Resolución Espectral}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{espectral1}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Resolución Espectral}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{espectral2}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{\emph{Sharpening}}
+  \begin{columns}
+		\begin{column}{.7\linewidth}
+		 \includegraphics[width=9cm]{sharpen1}
+		\end{column}
+		\begin{column}{.3\linewidth}
+\includegraphics[width=4cm]{sharpen2}
+		\end{column}
+	\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{multiespectral}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{multiespectral2}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{multiespectral3}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Resolución Radiométrica}
+  \begin{columns}
+		\begin{column}{.7\linewidth}
+		 \includegraphics[width=8cm]{radiometrica1}
+		\end{column}
+		\begin{column}{.3\linewidth}
+\includegraphics[width=4cm]{radiometrica2}
+		\end{column}
+	\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{radiometrica3}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{radiometrica4}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.7\textheight]{resolucion4}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{resolucion5}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+ \begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{resolucion6}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

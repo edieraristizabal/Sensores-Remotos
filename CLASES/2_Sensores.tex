@@ -1,0 +1,233 @@
+%###########################PRESENTACION##########################################
+%Modo presentación
+\documentclass[]{beamer}
+
+%Modo handout
+%\documentclass[handout,compress]{beamer}
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[border shrink=1mm]
+
+\usepackage{graphicx}
+\usepackage{beamerthemeCambridgeUS}
+\usepackage{subfig}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\setbeamercovered{transparent}
+
+\graphicspath{{G:/My Drive/FIGURAS/}}
+
+\title[Sensores]{SENSORES REMOTOS}
+\author[Edier Aristizábal]{Edier V. Aristizábal G.}
+\institute{\emph{evaristizabalg@unal.edu.co}}
+\date{(Versión:\today)}
+\usepackage{textpos} 
+
+\addtobeamertemplate{headline}{}{%
+	\begin{textblock*}{2mm}(.9\textwidth,0cm)
+	\hfill\includegraphics[height=1cm]{un}  
+	\end{textblock*}
+			}
+%############################INICIO#############################################
+\begin{document}
+%###########################SLIDE
+\begin{frame}
+\titlepage
+\centering
+	\includegraphics[width=5cm]{unal}\hspace*{4.75cm}~%
+   	\includegraphics[width=2cm]{logo3} 
+\end{frame}
+%#############################SLIDE
+\begin{frame}
+\begin{center}
+\includegraphics[scale=0.40]{programasespaciales}
+\end{center}
+\end{frame}
+%#############################SLIDE
+\begin{frame}
+\frametitle{Orbitas polares}
+\begin{center}
+\includegraphics[scale=0.7]{orbitaspolares}
+\end{center}
+\end{frame}
+%#############################SLIDE
+\begin{frame}
+\frametitle{Orbitas polares}
+\begin{center}
+\includegraphics[scale=0.55]{orbitaspolares1}
+\end{center}
+\end{frame}
+%#############################SLIDE
+\begin{frame}
+\frametitle{Orbitas Geoestacionario}
+\begin{center}
+\includegraphics[scale=0.55]{orbitaspolares1}
+\end{center}
+\end{frame}
+%#############################SLIDE
+\begin{frame}
+\frametitle{Orbitas Geoestacionarias vs. Heliosincrónicas}
+\begin{center}
+\includegraphics[scale=0.5]{orbitas}
+\end{center}
+\end{frame}
+%#############################SLIDE
+\begin{frame}
+\frametitle{Plataformas}
+\begin{center}
+\includegraphics[scale=0.42]{plataformas}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Swath \& Path}
+\begin{columns}
+\begin{column}{0.5\linewidth}
+\begin{center}
+\includegraphics[scale=0.4]{swaths1}
+\end{center}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{center}
+\includegraphics[scale=0.65]{swaths}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Landsat 8: Swath \& Path}
+\begin{center}
+\includegraphics[scale=0.42]{swaths8}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Satélite Bus: Landsat 8}
+\begin{center}
+\includegraphics[scale=0.40]{landsat8_bus}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Detectores Análogos vs Digitales}
+\begin{center}
+\includegraphics[scale=0.6]{analoga_digital1}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Detectores Análogos vs Digitales}
+\begin{center}
+\includegraphics[scale=0.40]{analoga_digital}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Detectores}
+\small{Los detectores son definidos como instrumentos que reciben un flujo de energía y proporcionan una señal. Existen dos tipos fundamentales de detectores de luz que operan con mecanismos de transducción diferentes.
+\begin{itemize}
+\item Cuánticos (Photon) (CCD – CMOS) 
+\item Térmicos 
+\end{itemize}
+}
+\begin{center}
+\includegraphics[scale=0.38]{detectores}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Detectores}
+\framesubtitle{CCD (Charge-Coupled Device) - CMOS (Complementary Metal-Oxide Semicoductor)}
+\begin{center}
+\includegraphics[scale=0.6]{detectores1}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Detectores termales}
+\begin{center}
+\includegraphics[scale=0.32]{thermal}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Teoría del color}
+\framesubtitle{Teoria aditiva (RGB) \& Teoría sustractiva (CMYK)}
+\begin{center}
+\includegraphics[scale=0.6]{teoriacolor}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Tipo de sensores}
+\begin{center}
+\includegraphics[scale=0.45]{sensores}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Espectrómetros}
+\begin{center}
+\includegraphics[scale=0.5]{espectrometros}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Elementos para dispersión}
+\begin{center}
+\includegraphics[scale=0.45]{elementos_dispersion}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Sensores Activos \& Pasivos}
+\begin{center}
+\includegraphics[scale=0.45]{sensores_activos_pasivos}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Sensores Activos \& Pasivos}
+\begin{center}
+\includegraphics[scale=0.45]{sensores_activos_pasivos1}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Tipo cámaras}
+\begin{center}
+\includegraphics[scale=0.45]{tipo_camaras}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Tipo Frame}
+\begin{center}
+\includegraphics[scale=0.45]{frame1}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Escaner}
+\framesubtitle{Barrido vs Empuje}
+\begin{center}
+\includegraphics[scale=0.45]{escaner}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Empuje}
+\begin{center}
+\includegraphics[scale=0.42]{empuje}
+\end{center}
+\end{frame}
+%################################SLIDE
+\begin{frame}
+\frametitle{Combinación}
+\begin{center}
+\includegraphics[scale=0.42]{tipo_camaras1}
+\end{center}
+\end{frame}
+%################################SLIDE
+\end{document}

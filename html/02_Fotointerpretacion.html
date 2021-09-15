@@ -1,0 +1,805 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Fotointerpretación</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/Serif.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<link rel="stylesheet" href="dist/style.css">
+
+	</head>
+	<body>
+
+		<script>
+			setInterval(showTime, 1000);
+			function showTime() {
+				let time = new Date();
+				let hour = time.getHours();
+				let min = time.getMinutes();
+				let sec = time.getSeconds();
+				am_pm = "am";
+	
+				if (hour > 12) {
+					hour -= 12;
+					am_pm = "pm";
+				}
+				if (hour == 0) {
+					hr = 12;
+					am_pm = "am";
+				}
+	
+				hour = hour < 10 ? "0" + hour : hour;
+				min = min < 10 ? "0" + min : min;
+				sec = sec < 10 ? "0" + sec : sec;
+	
+				let currentTime = hour + ":"
+					+ min + ":" + sec + am_pm;
+	
+				document.getElementById("clock")
+					.innerHTML = currentTime;
+			}
+	
+			showTime();
+		</script>
+
+		<div class="reveal">
+			<div class="slides">
+			
+				<div id="marca-agua"><img style="border:none;box-shadow:none;width:60px;position:absolute;top:0%;right:0%;"src="images/un.png"/><p id="date"></p></div>
+				<!--<div id="lecture" style="font-size:20px;position:absolute;top:100%;right:32%;">Machine Learning (Introducción)</div>-->
+				<div id="clock" style="font-size:20px;position:absolute;top:98%;right:0%;">0:00:00</div>
+				<section data-background-color= "#ffffff"; data-state="primera">
+				  <h1 style="font-size: 60px; color: black;">Fotointerpretación</h1>
+				  <p><h4><a href="https://edieraristizabal.github.io/">Prof. Edier Aristizábal</a></h4></p>
+					<img src="images/unal2.png" alt="unal.jpg" width="700"/>
+					<p id="demo" style="position:absolute;top:100%;right:40%;color: gray; font-size: 24px;"></p>
+					<script>
+					var d = new Date();
+					var months = ["Jan.","Feb.","Mar.","Apr.","May.","Jun.","Jul.","Aug.","Sept.","Oct.","Nov.","Dec."];
+					document.getElementById("demo").innerHTML = months[d.getMonth()] + " " +d.getDate()+" / "+d.getFullYear();
+					</script>
+				</section>
+
+				<section>
+					<img src="http://petapixel.com/assets/uploads/2020/11/wwiiaerialcamera.jpg" width="500">
+				</section>
+
+				<section>
+					<section><h1>Intro a fotointerpretación</h1></section>
+
+					<section>
+						<img src="https://image.slidesharecdn.com/fotoareayfotointerpretacin-130603074152-phpapp02/95/fotografa-area-y-fotointerpretacin-12-638.jpg?cb=1395392946" width="800">
+					</section>
+
+					<section>
+						<h3>Ventajas de la fotografía aérea</h3>
+						<ul>
+							<li>Las fotografía aéreas dan una mirada general y amplia de la
+								superficie que se observa</li>
+							<li>La fotografía da una mirada en un determinado momento de
+								una condición dinómica.</li>
+							<li>Es una mirada permanente de una condición específica que
+								permite el análisis en oficina o por diferente usuarios o
+								diferentes momentos</li>
+							<li>Amplia sensibilidad espectral que permite observar fenómenos
+								que a simple vista no es posible.</li>
+							<li>Incrementa la resolución espacial y precisión en medidas.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Fotogeología</h3>
+						<p>Rama de los sensores remotos encargada de estudiar los sucesos geológicos a través de las
+							fotografías aéreas.</p>
+						<p>El objeto de la fotogeología es el estudio de la superficie terrestre, de los diversos materiales
+							que la integran y de las huellas dejadas sobre ellos por la serie de procesos a los que han
+							estado sometidos a lo largo de los tiempos geológicos.	</p>
+						<p>El estudio de la fotogeología abarca la estratigrafía, litología, geología estructural,
+							geomorfología, tectónica, hidrogeología, y, en resumen, todas las ramas de la geología que
+							admitan para su estudio una escala macroscópica.</p>
+					</section>
+
+					<section>
+						<h3>Cámaras aéreas</h3>
+						<img src="https://www.researchgate.net/profile/Dieter-Fritsch/publication/250518862/figure/fig2/AS:667688523276290@1536200757376/Development-history-of-aerial-cameras-from-a-handheld-camera-to-complex-system.jpg" width="800">
+					</section>
+
+					<section>
+						<h3>Cámaras aéreas</h3>
+						<img src="https://media.springernature.com/lw785/springer-static/image/chp%3A10.1007%2F978-3-642-34085-7_11/MediaObjects/300621_1_En_11_Fig5_HTML.gif" width="800">
+					</section>
+
+					<section>
+						<h3>Cámaras aéreas</h3>
+						<img src="http://2.bp.blogspot.com/-JrhLvnVa0BM/TYMMQGfo63I/AAAAAAAABGc/TyEPoHKlRRk/s1600/camera.JPG" width="700">
+					</section>
+
+					<section>
+						<h3>Tipos de fotografías aéreas</h3>
+						<img src="https://www.e-education.psu.edu/geog260/sites/www.e-education.psu.edu.geog260/files/image/remotesensing/figure2_05.jpg" width="790">
+					</section>
+
+					<section>
+						<h3>Vertical aerial</h3>
+						<img src="https://arquitectura.medellin.unal.edu.co/escuelas/habitat/galeria/albums/userpics/10007/normal_FA0053.jpg" width="570">
+					</section>
+
+					<section>
+						<h3>Low oblique aerial</h3>
+						<img src="https://www.researchgate.net/profile/Vincent-Neall/publication/241721888/figure/fig2/AS:669626258161668@1536662749141/Figl-Oblique-aerial-photograph-to-west-showing-the-Wellington-Fault-trace-and-Manawatu.ppm" width="790">
+					</section>
+
+					<section>
+						<h3>High oblique aerial</h3>
+						<img src="https://www.researchgate.net/profile/Garry-Clarke/publication/237232181/figure/fig5/AS:667686845546498@1536200357532/High-angle-oblique-aerial-photograph-of-Lowell-Glacier-showing-complex-structure-in-the_Q320.jpg" width="600">
+					</section>
+
+					<section>
+						<h3>Tipos de fotografías aéreas</h3>
+						<img src="https://1.bp.blogspot.com/-2WZkLjfs1LE/XslDMmyL0wI/AAAAAAAAB-M/xxlHqxjMiLwR96C5jEP5IAjrbuzAqtXnQCLcBGAsYHQ/s1600/k.jpg" width="900">
+					</section>
+
+				</section>
+				
+				<section>
+					<section><h1>Percepción del relieve</h1></section>
+
+					<section>
+						<p>Hacia dónde está abierto este libro?</p>
+						<img src="https://i.pinimg.com/170x/85/d8/f9/85d8f9675caab4ac9dd039bb621fb168.jpg" width="500">
+					</section>
+
+					<section>
+						<img src="https://www.researchgate.net/profile/Sergio-Petroni-2/publication/264394147/figure/fig7/AS:202837083594801@1425371537529/Description-of-the-normal-binocular-visual-field-and-monocular-visual-field-of-the-right.png" width="800">
+					</section>
+
+				</section>				
+
+				<section>
+					<section><h1>Visión monocular</h1></section>
+
+					<section>
+						<h3>Percepción del relieve</h3>
+						<img src="https://www.researchgate.net/profile/Bin-Zheng/publication/299401615/figure/fig4/AS:668312254025739@1536349466737/Illustration-of-the-basic-monocular-depth-cues.png" width="600">
+					</section>
+
+					<section>
+						<h3>Superposición</h3>
+						<img src="https://www.researchgate.net/profile/John-Mcintire/publication/224122032/figure/fig2/AS:596880207659008@1519318739838/Example-of-a-Depth-Perception-CAPTCHA-utilizing-occlusion-depth-cues-Correct.png" width="600">
+					</section>
+
+					<section>
+						<h3>Sombras</h3>
+						<img src="https://i.pinimg.com/originals/81/eb/4a/81eb4a6f201ec5ca30a7f86f845f4b0e.jpg" width="600">
+					</section>
+
+					<section>
+						<h3>Tamaño</h3>
+						<img src="https://www.researchgate.net/profile/Jing-Li-94/publication/282193361/figure/fig2/AS:614032356700168@1523408130616/An-example-of-relative-size.png" width="600">
+					</section>
+
+					<section>
+						<h3>Altura</h3>
+						<img src="https://i.pinimg.com/originals/1b/fc/ca/1bfccaccd787e07b225fa16ba38b8294.gif" width="600">
+					</section>
+
+					<section>
+						<h3>Pespectiva</h3>
+						<img src="https://i.pinimg.com/originals/49/b9/f3/49b9f338c2ed1a378a6f46b137823001.jpg" width="600">
+					</section>
+
+					<section>
+						<h3>Gradiente en la textura</h3>
+						<img src="https://c2.staticflickr.com/4/3163/2297308960_f935e675d6_b.jpg" width="800">
+					</section>
+
+					<section>
+						<img src="https://www.cns.nyu.edu/~david/courses/perception/lecturenotes/depth/depth-slides/Slide28.jpg" width="880">
+					</section>
+
+					<section>
+						<img src="https://lh3.googleusercontent.com/proxy/dWNsMiIMs7R84Ahgx-_e-h4Xm2zKSYu8zsU4yljK4o3ofiB6RYwDAjwIBJ6EQ215jconJyOPZwepz5FqS5dlJHoTBnInWLd8cHBT73sM759_lx4" width="1000">
+					</section>
+
+					<section>
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Gustave_Caillebotte_-_Paris_Street%2C_Rainy_Day_-_1964.336_-_Art_Institute_of_Chicago.jpg/1200px-Gustave_Caillebotte_-_Paris_Street%2C_Rainy_Day_-_1964.336_-_Art_Institute_of_Chicago.jpg" width="800">
+					</section>
+
+					<section>
+						<h3>El Efecto GESTALT</h3>
+						<p>The whole is other than the sum of the parts – Kurt Koofka</p>
+						<img src="https://i.pinimg.com/564x/fd/7e/6b/fd7e6b6bce7b2de6d4f7151978a063e9.jpg" width="1000">
+					</section>
+
+					<section>
+						<img src="https://www.stampaprint.net/es/blog/wp-content/uploads/2016/05/teoria-de-la-gestalt.png" width="600">
+					</section>
+
+					<section>
+						<img src="https://lh3.googleusercontent.com/proxy/mamUYxnVBSx7_PXDuJP_pRo1q1qikpOdIBeCR1bgR49jrwR1lJl0s8r4YI05iYtAKgcpLpet-er6X3S0ltzBHGC580VIzzxts25ZGzs1WcdDGAvkCTUgAEZ78K_yTuNwSMGdGVXiih0nLP3Lpf2uZDimYSpMS9Dm4QPEvBbxryoe05xVfcJDTtKFUnXRbEG6xzPP3sS4JQIu5ofGLNs-x3rPSFuJ4vCh6DViGYu5bBs418WuK0HWJYVEaya7QY2k6KlNxMUn7ZO1Aq7CyUUm3-pYwUF0PFaWR8yy533yaRCRVzCdrK6KNPvXo-45vVD_T-6QZJd3TOjTkTz3Naeyfy8Vca_-UZY1" width="450">
+					</section>
+
+					<section>
+						<img src="https://www.researchgate.net/profile/Michael-Rudd-5/publication/49719546/figure/fig21/AS:305983030087693@1449963447424/The-checker-shadow-illusion-Regions-A-and-B-have-the-same-luminance-but-they-appear.png" width="750">
+					</section>
+
+					<section>
+						<img src="https://petapixel.com/assets/uploads/2019/07/opticalillustion.jpg" width="900">
+					</section>
+
+					<section>
+						<img src="https://i.insider.com/55673600eab8eac65f0b488b?width=600&format=jpeg&auto=webp" width="750">
+					</section>
+
+					<section>
+						<img src="https://www.amnh.org/var/ezflow_site/storage/images/media/amnh/images/explore/ology-images/brain/optical-illusions/op-illusions-listing-hero/3877180-1-eng-US/op-illusions-listing-hero_facebookshare_1200.jpg" width="900">
+					</section>
+
+					<section>
+						<img src="https://media.wired.com/photos/595475915578bd7594c46152/master/pass/Cofeehouse-%C2%AEThomas_Hunt.jpg" width="700">
+					</section>
+
+					<section>
+						<img src="http://brainden.com/images/sander-illusion.jpg" width="700">
+					</section>
+
+					<section>
+						<img src="https://www.imta.ch/wp-content/uploads/2018/04/Muller-Lyer-circle-heads.gif" width="700">
+					</section>
+
+					<section>
+						<img src="https://lh3.googleusercontent.com/proxy/h25b3UXKOLTzLv952ujkkBFpicBy_94R6HyOqmh5PSSc05WPL7mGcBgl92LhYx6pw-mnCB-MCUg8kcsoLkAIDeHUVO61hFwBxmW-UN0XZyjIg6fcMYOand2XdQ3D=s0-d" width="700">
+					</section>
+
+					<section>
+						<img src="https://hips.hearstapps.com/ghk.h-cdn.co/assets/16/29/1468855284-optical-illusion.jpg" width="900">
+					</section>
+
+					<section>
+						<img src="https://i.pinimg.com/originals/ee/66/b5/ee66b543fd77124b9bb035a3a229eb22.gif" width="600">
+					</section>
+
+					<section>
+						<img src="https://www.aboutbritain.com/images/attraction/big/camera-obscura-size-illusion.jpg" width="800">
+					</section>
+
+					<section>
+						<img src="https://i.pinimg.com/736x/4c/ee/6a/4cee6a19683d85c0fdd48ee55b008728.jpg" width="650">
+					</section>
+
+					<section>
+						<img src="https://i.pinimg.com/originals/f6/e7/fa/f6e7fa0329f1ac168d527280e57c3f5a.jpg" width="700">
+					</section>
+
+					<section>
+						<img src="https://courses.vrtl.academy/wp-content/uploads/2018/12/Anaglyph-polarized_02.png" width="1000">
+					</section>
+
+				</section>
+
+				<section>
+					<section><h1>Visión binocular</h1></section>
+
+			
+					<section>
+						<h3>El ojo humano</h3>
+						<p><b>Bastones (rod): </b>brillo (intensidad). Tienen la misma sensibilidad de frecuencia
+							(0,55 um). A baja luz vemos monocromático</p>
+						<p><b>Conos: </b>colores (frecuencia). Sensibles longitudes de onda del azul, verde y rojo,
+							cuando lo tres tipos de conos son estimulados de forma percibimos el color blanco. El ojo
+							humano discrimina m´as colores que tonos de grises</p>
+						<img src="https://i.pinimg.com/originals/5f/36/8b/5f368b34f98cead163242f0bd047d65f.jpg" width="600">
+					</section>
+
+					<section>
+						<h3>Fundamentos de la visión estereoscópica</h3>
+						<ul>
+							<li>Nuestros ojos captan dos imágenes desde dos puntos de vista
+								distintos</li>
+							<li>Las imágenes son interpretadas como una única imagen
+								(fusión y estereopsis)</li>
+							<li>La sensación de profundidad es función de la separación
+								intraocular</li>
+						</ul>
+						<img src="http://3.bp.blogspot.com/-RKsyaeaO5QQ/TfSqDJM1hyI/AAAAAAAAAHY/COHs50lFnww/s1600/AV+estereo.jpg" width="700">
+					</section>
+
+					<section>
+						<img src="https://slideplayer.com.br/slide/13871439/85/images/5/M%C3%A9todo+da+paralaxe+Fonte%3A.jpg" width="800">
+					</section>
+
+					<section>
+						<img src="https://www.researchgate.net/profile/Elia-Quiros-Rosado/publication/324824346/figure/fig36/AS:631574013943936@1527590387991/Stereoscopic-principle-of-photogrammetry.png" width="900">
+					</section>
+
+					<section>
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Pocket_stereoscope.jpg/1200px-Pocket_stereoscope.jpg" width="900">
+					</section>
+
+					<section>
+						<img src="https://i.pinimg.com/564x/93/e3/be/93e3bedf033adaef33401ce0f83af6ac.jpg" width="800">
+					</section>
+
+					<section>
+						<img src="https://courses.vrtl.academy/wp-content/uploads/2018/12/Anaglyph-polarized_02.png" width="1000">
+					</section>
+
+					<section>
+						<a href=http://www.ign.es/3d-stereo/>Modelo 3d Anaglifo España</a>
+					</section>
+
+					<section>
+						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGXxT51ZKruFL6YFZgHCXgjRXivi-yVSg6VPAy0vZDw8wGzK-3DLD5-rl9rWfmfFhTHoI&usqp=CAU" width="350">
+					</section>
+
+					<section>
+						<img src="https://image.slidesharecdn.com/fotogrametra-maestraengeomtica-usach-130510174818-phpapp01/95/fotogrametra-maestra-en-geomtica-usach-24-638.jpg?cb=1368208282" width="850">
+					</section>
+
+					<section>
+						<img src="https://image.slidesharecdn.com/fotogrametra-maestraengeomtica-usach-130510174818-phpapp01/95/fotogrametra-maestra-en-geomtica-usach-25-638.jpg?cb=1368208282" width="800">
+					</section>
+
+					<section>
+						<img src="https://image.slidesharecdn.com/fotoareayfotointerpretacin-130603074152-phpapp02/95/fotografa-area-y-fotointerpretacin-24-638.jpg?cb=1395392946" width="800">
+					</section>
+
+					<section>
+						<img src="https://image.slidesharecdn.com/fotoareayfotointerpretacin-130603074152-phpapp02/95/fotografa-area-y-fotointerpretacin-42-638.jpg?cb=1395392946" width="800">
+					</section>
+
+					<section>
+						<h3>Definiciones</h3>
+						<ul>
+							<li>Altura de vuelo: es la altura del vuelo en el momento de la toma, referida al nivel del
+								mar.</li>
+							<li>Distancia focal: distancia que existe entre el foco del lente y el negativo de la película</li>
+							<li>Nadir: proyección vertical del centro de la cámara sobre el terreno en el momento de
+								la exposición</li>
+							<li>Punto principal: es el punto de intersección sobre la fotografía de un eje perpendicular
+								al plano terrestre</li>
+							<li>Base instrumental: separación entre dos puntos iguales del estereograma</li>
+							<li>Base aérea: distancia entre los puntos de toma medida en el terreno</li>
+							<li>Fotobase: es la base aérea medida a escala de la foto</li>
+							<li>Estereograma. Es un par estereoscópico, correctamente orientado y montado, cada
+								imagen al lado de la otra, a fin de facilitar la visión estereoscópica mediante el uso del
+								estereoscopio de espejos. Una variación del estereograma es el estereotriplete, el cual
+								usa tres fotografías sucesivas extendiendo así el área de observación.</li>
+							<li>Línea de vuelo: es la línea que marca la trayectoria del avión</li>
+						</ul>
+					</section>
+
+					<section>
+						<img src="https://image.slidesharecdn.com/fotoareayfotointerpretacin-130603074152-phpapp02/95/fotografa-area-y-fotointerpretacin-26-638.jpg?cb=1395392946" width="800">
+					</section>
+
+					<section>
+						<h3>Mapa líneas de vuelo</h3>
+						<img src="https://i.pinimg.com/564x/4e/b1/35/4eb135660e79cf84044befbd2ec363e3.jpg" width="550">
+					</section>		
+					
+					<section>
+						<a href="https://www.colombiaenmapas.gov.co/#">Colombia en mapas</a></br>
+						<img src="https://www.colombiaenmapas.gov.co/images/iconos/Logo.png">
+					</section>
+
+				</section>
+
+				<section>
+					<section><h1>Fotogrametría</h1></section>
+
+					<section>
+						<h3>Escala</h3>
+						<img src="https://www.e-education.psu.edu/geog892/sites/www.e-education.psu.edu.geog892/files/images/lesson06/geometryofverticle.png" width="600">
+					</section>
+					
+					<section>
+						<h3>Escala</h3>
+						<img src="http://gsp.humboldt.edu/OLM_2017/courses/GSP_216_Online/images/focal-diagram.jpg" width="1000">
+					</section>
+			
+					<section>
+						<h3>Variación de la escala</h3>
+						<img src="https://i.pinimg.com/564x/1a/a5/89/1aa58990002270e8820d0574a1256f20.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Exageración de la escala</h3>
+						<img src="https://i.pinimg.com/564x/08/1d/57/081d572707c72a5aa4f1a5000595744a.jpg" width="700">
+					</section>
+					
+					<section>
+						<h3>Escala espacial</h3>
+						<p>The extent of it at which a phenomenon or process occurs</p>
+						<img src="https://images.slideplayer.com/32/9992251/slides/slide_22.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Desplazamiento del relieve</h3>
+						<img src="http://gsp.humboldt.edu/OLM/Courses/GSP_216_Online/images/displacement2.png" width="650">
+					</section>
+
+					<section>
+						<h3>Desplazamiento del relieve</h3>
+						<img src="http://gsp.humboldt.edu/OLM/Courses/GSP_216_Online/images/relief-diagram.png" width="700">
+					</section>
+
+					<section>
+						<h3>Desplazamiento del relieve</h3>
+						<img src="https://i.pinimg.com/564x/5c/8e/b4/5c8eb48d15ec43af86cc8c64e1d64485.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Desplazamiento del relieve</h3>
+						<img src="http://hosting.soonet.ca/eliris/remotesensing/LectureImages/SimpleHeight.gif" width="650">
+					</section>
+
+
+					<section>
+						<h3>Desplazamiento del relieve</h3>
+						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGG-_HTeSS7JU1McEum3QHO9RmmnozaBu-fdb02zJ9OFryhqxo8gFOV0tNYnb8qa-GTu4&usqp=CAU" width="700">
+					</section>
+
+					<section>
+						<h3>Paralaje</h3>
+						<p>Cambio en la posición de los objetos estacionarios debido al cambio en la posicion del observador. Los desplazamientos del paralaje ocurren solamente paralelos a la línea de vuelo,
+							y es directamente porporcional a la altura de los objetos
+						</p>
+						<img src="https://media.springernature.com/original/springer-static/image/chp%3A10.1007%2F978-1-4020-9014-1_3/MediaObjects/978-1-4020-9014-1_3_Fig8_HTML.gif" width="700">
+					</section>
+
+					<section>
+						<h3>Paralaje absoluto</h3>
+						<p>Es la diferencia de las distancias entre los puntos principales y las imágenes homologas, medidas paralelas a la línea de vuelo.</p>
+						<img src="https://www.researchgate.net/profile/Elia-Quiros-Rosado/publication/324824346/figure/fig41/AS:631574018142242@1527590388323/Relation-between-parallax-and-height-Figure-58-Relation-between-parallax-and-height.png" width="800">
+					</section>
+
+					<section>
+						<h3>Paralaje absoluto</h3>
+						<p>Es directamente porporcional a la altura de los objetos.</p>
+						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPtZ3ZslNEzwlILFJHTVUl9SmTz0ZwcwH8QLA0_MpOaHq_caVQX2jaiOILK0yCJxl6tUI&usqp=CAU" width="500">
+					</section>
+
+					<section>
+						<h3>Paralaje relativo</h3>
+						<img src="https://i.pinimg.com/564x/19/3d/21/193d21ccc7c26490960d5fc871cddeb3.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Paralaje relativo</h3>
+						<img src="https://i.pinimg.com/564x/86/66/53/866653f186bb81eba96440656864dc02.jpg" width="900">
+					</section>
+
+					<section>
+						<h3>Medición del relieve</h3>
+						<img src="http://hosting.soonet.ca/eliris/remotesensing/LectureImages/parallaxcalc.gif" width="700">
+					</section>
+
+					<section>
+						<h3>Medición del relieve</h3>
+						<img src="https://i.pinimg.com/564x/ab/d6/27/abd627a039b64e0cd39e5c8e40a48d00.jpg" width="900">
+					</section>
+
+					<section>
+						<h3>Medición del relieve</h3>
+						<img src="https://i.pinimg.com/564x/15/ef/d4/15efd4d925e96a78ccdee45400226460.jpg" width="900">
+					</section>
+
+					<section>
+						<h3>Medición del relieve</h3>
+						<img src="https://i.pinimg.com/564x/db/d3/e7/dbd3e735e0df91a9908c9724a666e1fd.jpg" width="900">
+					</section>
+
+				</section>
+
+				<section>
+					<section><h1>Fotointerpretación</h1></section>
+
+					<section>
+						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRYFFZs7J64VuHLuMrAFxMJPp31xJURZgXuw&usqp=CAU" width="600">
+					</section>
+
+					<section>
+						<h3>Metodología</h3>
+						<img src="https://i.pinimg.com/564x/71/51/6e/71516eaaed34ed8ed7aa36188a8cd9bf.jpg" width="1000">
+					</section>
+
+					<section>
+						<h3>Procedimiento</h3>
+						<img src="https://i.pinimg.com/564x/61/8d/51/618d513fb9e1637e02ef40a55f34dcfe.jpg" width="600">
+					</section>
+
+					<section>
+						<h3>Criterios</h3>
+						<img src="https://slideplayer.com/slide/12179174/71/images/6/Tone%2FColor+Shape+Texture+Size+Association+Location+Pattern+Shadow+Height.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Criterios</h3>
+						<img src="https://images.slideplayer.com/16/5014372/slides/slide_49.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Color</h3>
+						<img src="https://wistaediting.com/wp-content/uploads/2020/08/6s5q86ystgp8mfo92vh2j0mskxy0m930z46otm82.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Tono</h3>
+						<img src="https://media.cheggcdn.com/media/913/913e5449-78db-4516-87e8-507d8e6bbb63/php9f4Zv9.png" width="500">
+					</section>
+
+					<section>
+						<h3>Textura</h3>
+						<img src="http://www.physicalgeography.net/fundamentals/images/orchard_forest.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Formas</h3>
+						<img src="https://images.fineartamerica.com/images-medium-large/shiveluch-volcano-satellite-image-nasa.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Formas</h3>
+						<img src="https://images.westend61.de/0001378023pw/aerial-view-of-a-winding-river-carrying-sediments-from-the-glacier-preda-rossa-valley-val-masino-italy-AAEF08347.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Sombras</h3>
+						<img src="https://live.staticflickr.com/8455/8055670105_2f9fa92d1b_b.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Sombras</h3>
+						<p>Inversión del relieve</p>
+						<img src="https://i.pinimg.com/564x/f3/95/a2/f395a2e9511fcfb592924becd436f11d.jpg" width="750">
+					</section>
+
+					<section>
+						<h3>Tamaño</h3>
+						<img src="https://miro.medium.com/max/1024/0*BdPmexGiSUFAVc2A.jpg" width="900">
+					</section>
+
+					<section>
+						<h3>Asociación</h3>
+						<img src="http://paesaggididecrescita.files.wordpress.com/2012/08/imagi_alex_maclean-12.jpg?w=652" width="800">
+					</section>
+
+					<section>
+						<h3>Asociación</h3>
+						<img src="https://archinect.imgix.net/uploads/cv/cv3s0ttm5z76en0i.jpg?auto=compress%2Cformat" width="900">
+					</section>
+
+					<section>
+						<h3>Temporalidad</h3>
+						<img src="https://www.scirp.org/html/3-2630060/74e3ed16-e45b-4a7e-b66d-45973d2d77d0.jpg" width="900">
+					</section>
+				</section>
+
+				<section>
+					<section><h1>Fotointerpretación geológica</h1></section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<img src="https://cdn.shopify.com/s/files/1/0384/0233/files/3_9565e481-103f-4b7d-9633-aa656d965443_1024x1024.png?v=1509964566" width="900">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<img src="https://cdn.shopify.com/s/files/1/0384/0233/files/1_d1d254ce-944a-46b9-a03e-ce24e20ef30d_1024x1024.png?v=1509960016" width="900">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<img src="https://pbs.twimg.com/media/DjmwVHZW4AEv63g.jpg" width="500">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<img src="https://www.rei.com/dam/side_view_v3.jpg" width="900">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<img src="https://o.quizlet.com/r30GFhUSuASTgn5Dg15mCA_b.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<img src="https://o.quizlet.com/V0GFH0vO0haq4v66p.AS8A.png" width="500">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<p>Gentle: Contour lines showing a uniform, gentle slope will be evenly spaced and wide apart. Easy walking</p>
+						<img src="https://www.bushwalking101.org/wp-content/uploads/2016/09/gentle-%E2%80%93-full.png" width="500">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<p>Steep: Contour lines showing a uniform, steep slope on a map will be evenly spaced, but close together. Very challenging, or impossible walking (i.e. contour lines may be so close that they create an impassable cliff line).</p>
+						<img src="https://www.bushwalking101.org/wp-content/uploads/2016/09/steep-%E2%80%93-full.png" width="500">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<p>Concave: Contour lines showing a concave slope on a map will be closely spaced at the top of the terrain feature and widely spaced at the bottom. Bushwalkers going up the slope will find the terrain increasingly steep and challenging.</p>
+						<img src="https://www.bushwalking101.org/wp-content/uploads/2016/09/concave-%E2%80%93-full-1.pngg" width="500">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<p>Convex: Contour lines showing a convex slope on a map will be widely spaced at the top and closely spaced at the bottom. Bushwalkers going down the slope cannot observe most of the slope or the terrain at the bottom, so extra care must be taken when route finding.</p>
+						<img src="https://www.bushwalking101.org/wp-content/uploads/2016/09/convex-%E2%80%93-full.png" width="500">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<p>Peak = a mountain with a pointed top.</p>
+						<img src="https://www.bushwalking101.org/wp-content/uploads/2016/09/hill-full.png" width="500">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<p>Saddle: A saddle is a dip or low point between two areas of higher ground. A saddle is not necessarily the lower ground between two hilltops; it may be simply a dip or break along a level ridge crest. When standing in a saddle, there is high ground in two opposite directions and lower ground in the other two directions. A saddle typically looks like an hourglass.</p>
+						<img src="https://www.bushwalking101.org/wp-content/uploads/2016/09/saddle-full.png" width="500">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<p>Gully: a gully is a stretched-out groove in the land, usually formed by a watercourse, and has high ground on three sides. Depending on its size and location water sometimes flows through it, from high to low. Contour lines forming a gully are either U-shaped or V-shaped. To determine the direction water is flowing, look at the contour lines. The closed end of the contour line (U or V) always points upstream or toward high ground. A valley is a large gully, often very flat, wide and open with a large watercourse running through it.</p>
+						<img src="https://www.bushwalking101.org/wp-content/uploads/2016/09/gully-%E2%80%93-full.png" width="500">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<p>Ridge: a ridge is a sloping line of high ground. When standing on the centerline of a ridge, there is usually low ground in three directions and high ground in one direction with varying degrees of slope. When crossing a ridge at right angles, there is a steep climb to the crest and then a steep descent to the base. When moving along the path of the ridge, depending on the geographic location, there may be either an almost unnoticeable slope or a very visible incline. Contour lines forming a ridge tend to be U-shaped or V-shaped. The closed end of the contour line points away from high ground.</p>
+						<img src="https://www.bushwalking101.org/wp-content/uploads/2016/09/ridge-%E2%80%93-full.png" width="500">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<p>Spur: A spur is a short, continuous sloping line of higher ground, normally jutting out from the side of a ridge. A spur is often formed by two roughly parallel streams cutting draws down the side of a ridge. The ground will slope down in three directions and up in one. Contour lines on a map depict a spur with the U or V pointing away from high ground.</p>
+						<img src="https://www.bushwalking101.org/wp-content/uploads/2016/09/spur-%E2%80%93-full.png" width="500">
+					</section>
+
+					<section>
+						<h3>Leer mapas topográficos</h3>
+						<p>Cliff: A cliff is a vertical or near vertical feature; it is an abrupt change of the land. When a slope is so steep that the contour lines converge into one “carrying” contour of contours, this last contour line sometimes has tick marks pointing toward low ground (image below). Cliffs are also shown by contour lines very close together and, in some instances, touching each other.</p>
+						<img src="https://www.bushwalking101.org/wp-content/uploads/2016/09/cliff-full-1.png" width="500">
+					</section>
+
+					<section>
+						<h3>Leer DEM</h3>
+						<img src="https://thor-f5.er.usgs.gov/ngtoc/metadata/waf/collections/browse/dem_1m_col_thumbnail.jpg" width="800">
+					</section>
+
+					<section>
+						<h3>Leer DEM</h3>
+						<img src="https://historybytez.files.wordpress.com/2015/09/mesa_rock_lidar.jpg?w=965" width="700">
+					</section>
+
+					<section>
+						<h3>Leer DEM</h3>
+						<img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Dem.jpg" width="800">
+					</section>
+					
+					<section>
+						<h3>Drainage pattern & morphology</h3>
+						<img src="http://w3.salemstate.edu/~lhanson/gls210/Image_streams/streamorder.gif" width="900">
+					</section>
+				
+					<section>
+						<h3>Drainage pattern & morphology</h3>
+						<img src="http://w3.salemstate.edu/~lhanson/gls210/Image_streams/DrainagePatterns.png" width="900">
+					</section>
+
+					<section>
+						<h3>Drainage pattern & morphology</h3>
+						<img src="https://2.bp.blogspot.com/-DI7XdKA99j0/Wq6rTNqElsI/AAAAAAAAPRE/u7d1Uy27ky8r6zM3sNMQOmP-zgoZ1BTcQCLcBGAs/s640/Types%2Bof%2BDrainage%2BPatterns%2B2C__1521396534_46.35.74.194.jpg" width="800">
+					</section>
+
+					<section>
+						<p><b>Dendritic patterns</b>, which are by far the most common, develop in areas where the rock (or unconsolidated material) beneath the stream has no 
+							particular fabric or structure and can be eroded equally easily in all directions. Examples would be granite, gneiss, volcanic rock, 
+							and sedimentary rock that has not been folded.</p>
+						<p><b>Trellis drainage patterns</b> typically develop where sedimentary rocks have been folded or tilted and then eroded to varying degrees depending 
+							on their strength.</p>
+						<p><b>Rectangular patterns</b> develop in areas that have very little topography and a system of bedding planes, fractures, or faults that form 
+							a rectangular network. </p>
+						<p><b>Parallel drainage system</b> is a pattern of rivers caused by steep slopes with some relief. Because of the steep slopes, the streams are 
+							swift and straight, with very few tributaries, and all flow in the same direction. A parallel pattern also develops in regions of parallel, elongate landforms like outcropping resistant 
+							rock bands. </p>
+					</section>
+
+					<section>
+						<h3>Dendrítico</h3>
+						<img src="https://cdn.britannica.com/56/7756-050-66E689B8/drainage-pattern-limestone-Yemen.jpg" width="430">
+					</section>
+
+					<section>
+						<h3>Trellis</h3>
+						<img src="https://i.pinimg.com/originals/a6/8d/bb/a68dbbe88a4fd1291ed548e4e921d297.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Rentangular</h3>
+						<img src="http://www.pmfias.com/wp-content/uploads/2015/12/Rectangular-drainage.jpg" width="700">
+					</section>
+
+					<section>
+						<h3>Estratos horizontales</h3>
+						<img src="https://image.slidesharecdn.com/geologicmaps-141012161350-conversion-gate01/95/geologic-maps-4-638.jpg?cb=1413130482" width="700">
+					</section>
+
+					<section>
+						<h3>Estratos buzantes</h3>
+						<img src="https://image.slidesharecdn.com/geologicmaps-141012161350-conversion-gate01/95/geologic-maps-6-638.jpg?cb=1413130482" width="700">
+					</section>
+
+					<section>
+						<h3>Estratos plegados</h3>
+						<img src="https://image.slidesharecdn.com/geologicmaps-141012161350-conversion-gate01/95/geologic-maps-14-638.jpg?cb=1413130482" width="700">
+					</section>
+
+
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/menu/menu.js"></script>
+
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				slideNumber: 'c/t',
+				hash: true,
+				menu: {
+					side: 'left', // 'left' or 'right'.
+					width: 'normal', // 'normal', 'wide', 'third', 'half', 'full', or
+					numbers: false,
+					titleSelector: 'h1, h2, h3',
+					useTextContentForMissingTitles: false,
+					hideMissingTitles: false,
+					markers: true,
+					custom: false,
+					themes: true,
+					themesPath: 'dist/theme/',			
+					transitions: false,  // ['None', 'Fade', 'Slide']
+					openButton: true,
+					openSlideNumber: true,
+					keyboard: true,
+					sticky: false,
+					autoOpen: true,
+					delayInit: false,
+					openOnInit: false,
+					loadIcons: true
+						},
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu ],
+				dependencies: [
+				
+								]
+			});
+		</script>
+	</body>
+</html>
