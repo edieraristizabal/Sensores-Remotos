@@ -18,13 +18,13 @@ El Curso se compone de dos grandes bloques . El primero de ellos contiene la teo
 
 ## Talleres
 
-* [Taller 1](/TALLERES/TalleresGIS/Taller1_Descarga_QGIS.docx) Descarga de imágenes de satélite
+* [Taller 1](/TALLERES/TalleresQGIS/Taller1_Descarga_QGIS.docx) Descarga de imágenes de satélite
 
-* [Taller 2](/TALLERES/TalleresGIS/Taller2_QGIS.docx) Manejo de imágenes de satélite con QGIS
+* [Taller 2](/TALLERES/TalleresQGIS/Taller2_QGIS.docx) Manejo de imágenes de satélite con QGIS
 
-* [Taller 3](/TALLERES/TalleresGIS/Taller3_NDVI_QGIS.docx) Cálculo de índices
+* [Taller 3](/TALLERES/TalleresQGIS/Taller3_NDVI_QGIS.docx) Cálculo de índices
 
-* [Taller 5](/TALLERES/TalleresGIS/Taller5_Clasificacion_QGIS.docx) Clasificación de imágenes de satélite
+* [Taller 5](/TALLERES/TalleresQGIS/Taller5_Clasificacion_QGIS.docx) Clasificación de imágenes de satélite
 
 * [Taller 6](/TALLERES/TalleresGIS/Taller1_Precision_QGIS.docx) Evaluación de la clasificación
 
