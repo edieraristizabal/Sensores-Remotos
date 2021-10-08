@@ -50,3 +50,8 @@
 .reveal h3 {
     text-align: left;
       }
+
+.reveal figcaption {
+    font-size: 15px;
+    color: gray;
+    }

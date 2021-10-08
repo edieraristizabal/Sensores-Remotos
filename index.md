@@ -11,6 +11,12 @@ El Curso se compone de dos grandes bloques . El primero de ellos contiene la teo
 ## Programa del curso
 [Ir al programa...](/Programa_SensoresRemoto.pdf)
 
+## Horario del curso
+Miercoles & Viernes 8:00 - 10:00 a.m.
+
+## Link para clases virtuales
+https://edieraristizabal.github.io/Sensores-Remotos/
+
 ## Sensores remotos & tratamiento de imágenes de satélite
 [Ir a presentación...](/html/01_SensoresRemoto.html)
 
