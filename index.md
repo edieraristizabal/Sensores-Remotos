@@ -15,7 +15,7 @@ El Curso se compone de dos grandes bloques . El primero de ellos contiene la teo
 Miercoles & Viernes 8:00 - 10:00 a.m.
 
 ## Link para clases virtuales
-https://edieraristizabal.github.io/Sensores-Remotos/
+[https://meet.google.com/lookup/dcygeku4lw](https://meet.google.com/lookup/dcygeku4lw)
 
 ## Sensores remotos & tratamiento de imágenes de satélite
 [Ir a presentación...](/html/01_SensoresRemoto.html)
