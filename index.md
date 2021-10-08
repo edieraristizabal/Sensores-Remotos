@@ -12,7 +12,7 @@ El Curso se compone de dos grandes bloques . El primero de ellos contiene la teo
 [Ir al programa...](/Programa_SensoresRemoto.pdf)
 
 ## Horario del curso
-Miercoles & Viernes 8:00 - 10:00 a.m.
+Martes & Jueves 8:00 - 10:00 a.m.
 
 ## Link para clases virtuales
 [https://meet.google.com/lookup/dcygeku4lw](https://meet.google.com/lookup/dcygeku4lw)
