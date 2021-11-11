@@ -31,6 +31,8 @@ Martes & Jueves 8:00 - 10:00 a.m.
 
 * [Taller 3](/TALLERES/TalleresQGIS/Taller3_NDVI_QGIS.docx) Cálculo de índices
 
+* [Taller 4](/TALLERES/TalleresArcGis/Taller4_ProgramasEspaciales.doc) Programas Espaciales
+
 * [Taller 5](/TALLERES/TalleresQGIS/Taller5_Clasificacion_QGIS.docx) Clasificación de imágenes de satélite
 
 * [Taller 6](/TALLERES/TalleresGIS/Taller1_Precision_QGIS.docx) Evaluación de la clasificación
