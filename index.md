@@ -33,9 +33,9 @@ Martes & Jueves 8:00 - 10:00 a.m.
 
 * [Taller 4](/TALLERES/TalleresArcGis/Taller4_ProgramasEspaciales.doc) Programas Espaciales
 
-* [Taller 5](/TALLERES/TalleresQGIS/Taller5_Clasificacion_QGIS.docx) Clasificación de imágenes de satélite
+* [Taller 5](/TALLERES/TalleresQGIS/Taller5_Clasificacion_QGIS.doc) Clasificación de imágenes de satélite
 
-* [Taller 6](/TALLERES/TalleresGIS/Taller1_Precision_QGIS.docx) Evaluación de la clasificación
+* [Taller 6](/TALLERES/TalleresGIS/Taller6_Precision_QGIS.docx) Evaluación de la clasificación
 
 * [Taller 7](/TALLERES/TalleresFotointerpretacion/Taller7_Anaglifos.pdf) Anaglifos
 
