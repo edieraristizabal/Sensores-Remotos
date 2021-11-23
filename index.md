@@ -37,6 +37,17 @@ Martes & Jueves 8:00 - 10:00 a.m.
 
 * [Taller 6](/TALLERES/TalleresGIS/Taller1_Precision_QGIS.docx) Evaluación de la clasificación
 
+* [Taller 7](/TALLERES/TalleresFotointerpretacion/Taller7_Anaglifos.pdf) Anaglifos
+
+* [Taller 8](/TALLERES/TalleresFotointerpretacion/Taller8_Fotogrametria.docx) Fotogrametría
+
+* [Taller 9](/TALLERES/TalleresFotointerpretacion/Taller9_Criterios.docx) Criterios
+
+
+
+
+
+
 
 
 
