@@ -43,6 +43,8 @@ Martes & Jueves 8:00 - 10:00 a.m.
 
 * [Taller 9](/TALLERES/TalleresFotointerpretacion/Taller9_Criterios.docx) Criterios
 
+* [Taller Trabajo Final](/TALLERES/TalleresFotointerpretacion/Taller_TrabajoFinal.docx) Preparación y guía de campo
+
 
 
 
