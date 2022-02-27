@@ -16,19 +16,20 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
-\graphicspath{{G:/My Drive/FIGURAS/}}
+\graphicspath{{G:/My Drive/figuras/}}
 
-\title {PROGRAMA  DEL CURSO SENSORES REMOTOS}
+\title {SENSORES REMOTOS}
 \author{Prof.: Edier Aristizábal\\[5ex]
-\includegraphics[width=5.0cm]{un_verde}
-}
+\includegraphics[width=5.0cm]{un_verde}}
 \date{}
 
 %################################BODY############################################
 \begin{document}
 \maketitle
 
-\emph {versión}: \today
+\begin{center}
+\emph {versión del programa}: \today
+\end{center}
 
 \section* {Introducción}
 El curso de \emph{Sensores Remotos} está orientado para estudiantes de geociencias con el objeto de aprender a utilizar las herramientas de teledetección en geología y geomorfología. Inicialmente comprende la teoría general de sensores remotos y procesamiento de imágenes. Para posteriormente enfocarse en el uso de fotografías aéreas y dominar de forma adecuada la técnica de la fotointerpretación a través del uso de fotografías aéreas.\\ 
@@ -60,7 +61,7 @@ https://edieraristizabal.github.io/Sensores-Remotos/
 \end{itemize}
 
 \begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
-Taller 1 -- Descarga de imágenes
+Taller 1 -- Descarga y manejo de imágenes
 \end{tcolorbox}
 
 \subsection {Radiación electromagnética}
@@ -76,7 +77,7 @@ Taller 1 -- Descarga de imágenes
 \end{itemize}
 
 \begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
-Taller 2 -- Manejo imágenes satelitales
+Taller 2 -- Programas espaciales
 \end{tcolorbox}
 
 \subsection {Sensores: plataformas y detectores}
@@ -90,7 +91,7 @@ Taller 2 -- Manejo imágenes satelitales
 \end{itemize}
 
 \begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
-Taller 3 -- Indices espectrales
+Taller 3 -- Cálculo de indices espectrales
 \end{tcolorbox}
 
 \subsection {Sensores: resolución}
@@ -106,27 +107,16 @@ Taller 3 -- Indices espectrales
 \end{itemize}
 
 \begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
-Taller 4 -- Presentación programas espaciales
+Taller 4 -- Clasificación de imágenes satelitales
 \end{tcolorbox}
 
 \subsection {Tratamiento de imágenes}
 \begin{itemize}
-\item Numero digital
-\item Tamaño de la imagen
-\item Formato de grabación
 \item Error y calibración radiométrico
 \item Error y calibración geométrica
 \item Procesamiento de imágenes
 \item Transformación de imágenes
 \item Clasificación de imágenes
-\end{itemize}
-
-\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
-Taller 5 -- Clasificación de imágenes
-\end{tcolorbox}
-
-\subsection {Evaluación}
-\begin{itemize}
 \item Matriz de confusión
 \item Precisión
 \item Precisión del usuario
@@ -135,7 +125,20 @@ Taller 5 -- Clasificación de imágenes
 \end{itemize}
 
 \begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
-Taller 6 --Evaluación de la clasificación de imágenes satelitales
+Taller 5 -- Post-procesamiento de imágenes
+\end{tcolorbox}
+
+\subsection {Sensores de antena}
+\begin{itemize}
+\item RADAR
+\item SAR
+\item InSAR
+\item DInSAR
+\item LIDAR
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 6 -- Imágenes de radar
 \end{tcolorbox}
 
 \subsection {Introducción a la fotografía aérea}
@@ -148,10 +151,24 @@ Taller 6 --Evaluación de la clasificación de imágenes satelitales
 \end{itemize}
 
 \begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
-Taller 7 -- Fotointerpretación con anaglifos - estereoscopio de espejos
+Taller 7 -- Base instrumental
 \end{tcolorbox}
 
-\subsection {Fotogrametría y Criterios de Fotointerpretación}
+\subsection {Fotogrametría}
+\begin{itemize}
+    \item Escala 
+    \item Exageración de la escala
+    \item Desplazamiento del relieve
+    \item Paralaje absoluto
+    \item Paralaje relativo
+    \item Medición del relieve
+\end{itemize}
+
+\begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
+Taller 8 -- Fotogrametría
+\end{tcolorbox}
+
+\subsection {Criterios de Fotointerpretación}
 \begin{itemize}
 \item Técnicas y métodos de fotointerpretación 
 \item Principios básicos: tamaño, forma, tono o color, textura, patrón, sombra y asociación
@@ -159,32 +176,31 @@ Taller 7 -- Fotointerpretación con anaglifos - estereoscopio de espejos
 \end{itemize}
 
 \begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
-Taller 8 -- Criterios de fotointerpretación
+Taller 9 -- Criterios de fotointerpretación
 \end{tcolorbox}
 
-\subsection {Análisis geoespacial con Python}
+\subsection {Fotointerpretación del relieve}
 \begin{itemize}
-\item Ambiente computacional
-\item Librerias
-\item Geodataframe
-\item Análisis espacial
+    \item Lectura mapas topográficos
+    \item Drenajes
+    \item Patrón de drenajes
+    \item Paisaje estructural
+    \item Procesos morfodinámicos
 \end{itemize}
 
 \begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
-Taller 9 -- Python
+Taller 10 -- Fotointerpretación geológica
 \end{tcolorbox}
 
-\subsection {\emph{Google Earth Engine}}
+\subsection {Fotointerpretación geológica}
 \begin{itemize}
-\item Bases de datos
-\item Análisis multitemporales
-\item Descarga
-\item Cálculo de índices
-\item Clasificación de imágenes de satelite
+\item Rocas sedimentarias
+\item ROcas metamórficas
+\item Rocas ígneas
 \end{itemize}
 
 \begin{tcolorbox}[enhanced,width=5in,center upper,  fontupper=\large\bfseries,drop shadow southwest,sharp corners]
-Taller 10 -- GEE
+Taller 11 -- Fotointerpretación con anaglifos
 \end{tcolorbox}
 
 \section{TALLERES}
