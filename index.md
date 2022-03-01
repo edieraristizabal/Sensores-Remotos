@@ -154,6 +154,10 @@ El trabajo de campo comprende 5 alcances, 4 de ellso predvios a la salida de cam
 ## Evaluación del curso
 
 ### Talleres
+El curso se evaluará con talleres, todos ellos con un valor del 5% y el trabajo final de la salida de campo con un 50%.
+En total hay 11 talleres, por lo tanto para calcular el 50% de la nota de los talleres se seleccionan los 10 talleres 
+con la mejor nota.
+
 Los talleres deberán cargarse a la plataforma de Google Classroom en
 formato PDF. El nombre del archivo deberá tener el número del taller y el
 nombre y apellido del estudiante (Ej. Taller1_EdierAristizabal). En caso de
