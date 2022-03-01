@@ -1,2 +1,10 @@
+title: Curso Sensores Remotos  # your name (or website title) here
+logo: "Talleres/Imagenes/bas1.png" # your photo (or logo) here
+description: > # your text below (remove <br> elements if you don't need line breaks)
+  A home page to expand on my data science projects. All source code can be found on my GitHub profile!
+  <br><br>  
+  <a href="https://edieraristizabal.github.io/">Edier Aristizábal </a>   
+  <br><br>
+   
 theme: jekyll-theme-minimal
 classes: wide
