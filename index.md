@@ -149,7 +149,7 @@ El trabajo de campo comprende 5 alcances, 4 de ellso predvios a la salida de cam
 - Mapa fotogeológico y de estructuras
 - Salida de campo
 
-[Guía Trabajo Final](/TALLERES/TalleresFotointerpretacion/Taller_TrabajoFinal.docx) Preparación y guía de campo
+[Guía Trabajo Final](/TALLERES/Taller_TrabajoFinal.pdf) Preparación y guía de campo
 
 ## Evaluación del curso
 
