@@ -59,7 +59,7 @@ M3-232
 - Explorador de barrido
 - Explorador de empuje
 
-Recommended reading: [Sentinel-2 User Handbook](https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook.pdf/8869acdf-fd84-43ec-ae8c-3e80a436a16c?t=1438278087000), [Landsat 9 Data Users Handbook](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-2082_L9-Data-Users-Handbook_v1.pdf)
+Lectura recomendada: [Sentinel-2 User Handbook](https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook.pdf/8869acdf-fd84-43ec-ae8c-3e80a436a16c?t=1438278087000), [Landsat 9 Data Users Handbook](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-2082_L9-Data-Users-Handbook_v1.pdf)
 
 8. [Taller 3](/TALLERES/Taller_Indices.pdf) Cálculo de índices
 
@@ -87,7 +87,7 @@ Recommended reading: [Sentinel-2 User Handbook](https://sentinels.copernicus.eu/
 - Precisión del productor
 - Coeficiente de Kappa Cohen
 
-Recommended reading: [A comparison of resampling methods for remote sensing classification and accuracy assessment](https://www.sciencedirect.com/science/article/pii/S0034425718300324?casa_token=HfduZb8dUaMAAAAA:WDBJ63TyMwApJzpjINSrooqbC0IGdBktX_v0EEpWgCcLtbPGPokIU-q-E-hGZQH4jsbR6QIxRG8)
+Lectura recomendada: [A comparison of resampling methods for remote sensing classification and accuracy assessment](https://www.sciencedirect.com/science/article/pii/S0034425718300324?casa_token=HfduZb8dUaMAAAAA:WDBJ63TyMwApJzpjINSrooqbC0IGdBktX_v0EEpWgCcLtbPGPokIU-q-E-hGZQH4jsbR6QIxRG8)
 
 12. [Taller 5](/TALLERES/Taller_PostProcesamiento.pdf) Pros-procesamiento de clasificación
 
