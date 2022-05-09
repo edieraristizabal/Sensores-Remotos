@@ -100,6 +100,9 @@ Lectura recomendada: [A comparison of resampling methods for remote sensing clas
 
 14. [Taller 6](/TALLERES/Taller_Radar.pdf) Imágenes de radar
 
+Lectura recomendada: [A tutorial on Synthetic Aperture Radar](https://elib.dlr.de/82313/1/SAR-Tutorial-March-2013.pdf)
+Online training: [ARSET - Introduction to Synthetic Aperture Radar](https://appliedsciences.nasa.gov/join-mission/training/english/arset-introduction-synthetic-aperture-radar)
+
 ### Fotointerpretación
 [Ir a presentación...](/html/02_Fotointerpretacion.html)
 
