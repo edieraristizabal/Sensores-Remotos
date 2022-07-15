@@ -110,14 +110,14 @@ Online training: [ARSET - Introduction to Synthetic Aperture Radar](https://appl
 - Paisaje estructural
 - Procesos morfodinámicos
 
-22. [Taller 10](/TALLERES/Taller_FotointerpretacionGeologica.pdf) Fotointerpretación geológica
+22. [Taller 10](/TALLERES/Taller_FotointerpretacionGeomor.pdf) Fotointerpretación geomorfológica
 
 23. Fotointerpretación geológica
 - Rocas sedimentarias
 - Rocas Metamórficas
 - Rocas Igneas
 
-24. [Taller 11](/TALLERES/Taller_FotointerpretacionGeomor.pdf) Fotointerpretación geomorfológica
+24. [Taller 11](/TALLERES/Taller_FotointerpretacionGeologica.pdf) Fotointerpretación geológica
 
 ### Trabajo de campo
 Este documento corresponde a la Guía para la preparación, y ejecución a la salida de campo, por lo tanto es indispensable que cada equipo revise con detalle los objetivos y alcances planteados, los materiales necesarios, y los pasos a  desarrollar.
