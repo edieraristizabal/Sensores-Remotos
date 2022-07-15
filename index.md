@@ -12,7 +12,7 @@ El curso se compone de dos grandes bloques . El primero de ellos contiene la teo
 Martes & Jueves 8:00 - 10:00 a.m.
 
 ### Aula: 
-M3-232
+M2-211
 
 ## Programa del curso
 [Ir al programa...](/Programa_SensoresRemoto.pdf)
@@ -29,63 +29,39 @@ M3-232
 3. Radiación electromagnética
 - Energía electromagnética y espectro
 - Interacciones con la atmosfera
-- Absorción y transmisión
-- Dispersión
 - Interacción con la superficie
-- Cálculo de la reflectividad
-- Reflectancia vs. Radiancia
-- Curvas de reflectividad
 - Características de las imágenes
 
 4. [Taller 1](/TALLERES/Taller_Descarga.pdf) Descarga y manejo de imágenes de satélite
 
 5. Radiación electromagnética
 - Interacción con el objeto
-- Reflexión
-- Emisión
-- Dispersión
-- Transmisión
 - Curvas de reflectancia espectral
-- Superficie Especular y Lambertiana
 - Firma espectral (agua, suelo, vegetación)
 
 6. [Taller 2](/TALLERES/Taller_ProgramasEspaciales.pdf) Programas Espaciales
 
 7. Sensores: plataformas y detectores
-- Plataformas aéreas y espaciales (Airborne vs spaceborne)
 - Orbitas
 - Tipo de sensores
-- Sensores Pasivos
-- Explorador de barrido
-- Explorador de empuje
 
 Lectura recomendada: [Sentinel-2 User Handbook](https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook.pdf/8869acdf-fd84-43ec-ae8c-3e80a436a16c?t=1438278087000), [Landsat 9 Data Users Handbook](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-2082_L9-Data-Users-Handbook_v1.pdf)
 
 8. [Taller 3](/TALLERES/Taller_Indices.pdf) Cálculo de índices
 
 9. Sensores: resolución
-- Las resoluciones
-- IFOV
 - Resolución radiométrica
 - Resolución espectral
 - Resolución geométrica
 - Resolución temporal
-- Resolución vs Escala
-- Sensores Activos
 
 10. [Taller 4](/TALLERES/Taller_Clasificacion.pdf) Clasificación de imágenes de satélite
 
 11. Tratamiento de imágenes
-- Error y calibración radiométrico
-- Error y calibración geométrica
 - Procesamiento de imágenes
 - Transformación de imágenes
 - Clasificación de imágenes
-- Matriz de confusión
 - Precisión
-- Precisión del usuario
-- Precisión del productor
-- Coeficiente de Kappa Cohen
 
 Lectura recomendada: [A comparison of resampling methods for remote sensing classification and accuracy assessment](https://www.sciencedirect.com/science/article/pii/S0034425718300324?casa_token=HfduZb8dUaMAAAAA:WDBJ63TyMwApJzpjINSrooqbC0IGdBktX_v0EEpWgCcLtbPGPokIU-q-E-hGZQH4jsbR6QIxRG8)
 
@@ -108,19 +84,15 @@ Online training: [ARSET - Introduction to Synthetic Aperture Radar](https://appl
 
 15. Introducción a la fotografía aérea
 - Historia
-- Tipos de fotointerpretación
 - Estereoscopio
 - Visión estereoscópica
-- El efecto GESTAL y la percepción
 
 16. [Taller 7](/TALLERES/Taller_BaseInstrumental.pdf) Base Instrumental
 
 17. Fotogrametría 
 - Escala 
-- Exageración de la escala
 - Desplazamiento del relieve
-- Paralaje absoluto
-- Paralaje relativo
+- Paralaje
 - Medición del relieve
 
 18. [Taller 8](/TALLERES/Taller_Fotogrametria.pdf) Fotogrametría
@@ -128,7 +100,6 @@ Online training: [ARSET - Introduction to Synthetic Aperture Radar](https://appl
 19. Criterios de Fotointerpretación
 - Técnicas y métodos de fotointerpretación 
 - Principios básicos: tamaño, forma, tono o color, textura, patrón, sombra y asociación
-- Elementos básicos (laderas), compuestos (drenaje, fallas y lineamientos), e inferidos (erosión, roca parental)
 
 20. [Taller 9](/TALLERES/Taller_Criterios.pdf) Criterios
 
@@ -146,12 +117,12 @@ Online training: [ARSET - Introduction to Synthetic Aperture Radar](https://appl
 - Rocas Metamórficas
 - Rocas Igneas
 
-24. [Taller 11](/TALLERES/Taller_Anaglifos.pdf) Fotointerpretación con anaglifos
+24. [Taller 11](/TALLERES/Taller_FotointerpretacionGeomor.pdf) Fotointerpretación geomorfológica
 
 ### Trabajo de campo
 Este documento corresponde a la Guía para la preparación, y ejecución a la salida de campo, por lo tanto es indispensable que cada equipo revise con detalle los objetivos y alcances planteados, los materiales necesarios, y los pasos a  desarrollar.
 
-El trabajo de campo comprende 5 alcances, 4 de ellso predvios a la salida de campo. Cada uno de ellos se describen a lo largo de la guía con su porcentaje de evaluación respectiva:
+El trabajo de campo comprende 5 alcances, 4 de ellos previos a la salida de campo:
 
 - Inventario de imagenes y mapa de líneas de vuelo
 - Mapa de coberturas del suelo
@@ -166,7 +137,7 @@ El trabajo de campo comprende 5 alcances, 4 de ellso predvios a la salida de cam
 ### Talleres
 El curso se evaluará con talleres, todos ellos con un valor del 5% y el trabajo final de la salida de campo con un 50%.
 En total hay 11 talleres, por lo tanto para calcular el 50% de la nota de los talleres se seleccionan los 10 talleres 
-con la mejor nota.
+con la mejor nota. El 50% restante corresponde al Trabajo de campo durante la salida al final del curso.
 
 Los talleres deberán cargarse a la plataforma de Google Classroom en
 formato PDF. El nombre del archivo deberá tener el número del taller y el
