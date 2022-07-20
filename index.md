@@ -132,6 +132,8 @@ El trabajo de campo comprende 5 alcances, 4 de ellos previos a la salida de camp
 
 [Guía Trabajo Final](/TALLERES/Taller_TrabajoFinal.pdf) Preparación y guía de campo
 
+[Aplicativo web](https://sremotos-unal.web.app/) Aplicación web donde se debe cargar el mapa fotogeológico fotointerpretado y su posterior mapa geológico verificado en campo, al igual que las estaciones de campo.
+
 ## Evaluación del curso
 
 ### Talleres
