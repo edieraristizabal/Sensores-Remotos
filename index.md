@@ -12,7 +12,7 @@ El curso se compone de dos grandes bloques . El primero de ellos contiene la teo
 Martes & Jueves 8:00 - 10:00 a.m.
 
 ### Aula: 
-M2-211
+M2-221
 
 ## Programa del curso
 [Ir al programa...](/Programa_SensoresRemoto.pdf)
