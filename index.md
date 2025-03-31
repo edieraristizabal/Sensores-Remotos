@@ -9,10 +9,10 @@ El procesamiento de imágenes es una herramienta ampliamente utilizada actualmen
 El curso se compone de dos grandes bloques . El primero de ellos contiene la teoría de introducción a los [sensores remotos](/html/01_SensoresRemoto.html) y técnicas de tratamiento de imágenes de satelite. Y el segundo bloque corresponde específicamente al manejo de fotografias aereas y [fotointerpertacíon](/html/02_Fotointerpretacion.html).
 
 ## Horario del curso
-Martes & Jueves 8:00 - 10:00 a.m.
+Martes & Jueves 10:00 - 12:00 a.m.
 
 ### Aula: 
-M2-221
+M3-223
 
 ## Programa del curso
 [Ir al programa...](/Programa_SensoresRemoto.pdf)
