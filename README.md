@@ -4,6 +4,11 @@
 
 <p style="align:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Logotipo_de_la_Universidad_Nacional_de_Colombia.svg/1024px-Logotipo_de_la_Universidad_Nacional_de_Colombia.svg.png" width="200"/></p>
  
-El curso de Sensores Remotos está orientado para estudiantes de ciencias de la tierra con el objeto de aprender a utilizar las herramientas de teledetección en geología y geomorfología. Inicialmente comprende la teoría general de sensores remotos y procesamiento de imágenes. Para posteriormente enfocarse en el uso de fotografías aéreas y adquirir de forma adecuada la técnica de la fotointerpretación a través del uso de fotografías aéreas. 
-Este curso no corresponde a un curso a profundidad y detalle del uso de imágenes de satélite para diferentes disciplinas. De forma similar, la técnica de fotointerpretación, aunque es similar para otros temas, su aplicación en este curso se enfoca exclusivamente para la fotointerpretación geológica, es decir diferenciar unidades litológicas, al igual que fotointerpretación geomorfológica, es decir formas y procesos morfodinámicos.
-El procesamiento de imágenes es una herramienta ampliamente utilizada actualmente, y la fotointerpretación es una técnica que se conserva por su ayuda en diferentes campos, y que no puede suplir ningún otro sensor remoto. Adquirir estas herramientas seguramente le ampliará sus perspectivas profesionales en el campo de la geología aplicada a la ingeniería.
+En los últimos años, los satélites de observación de la Tierra han generado grandes cantidades de datos geoespaciales que están disponibles gratuitamente para la sociedad y los investigadores en Geociencias y otras ramas interesadas en la observación y monitoreo del planeta Tierra.  Este escenario plantea desafíos para las infraestructuras de datos espaciales a la hora de almacenar, procesar, diseminar y analizar adecuadamente estos grandes conjuntos de datos. Para satisfacer estas demandas, se han propuesto y desarrollado plataformas para la gestión y el análisis de grandes datos de observación de la Tierra.
+
+Este curso de Sensores Remotos está orientado para estudiantes de geociencias con el objeto de aprender a utilizar estas herramientas de teledetección en geología. El curso comprende la teoría general de sensores remotos y procesamiento de imágenes de satélite utilizando dos de estas plataformas: Google Earth Engine (GEE) y openEO.
+
+Las técnicas de sensores remotos enseñadas en el curso se enfocan exclusivamente para la fotointerpretación geológica, es decir diferenciar unidades litológicas, al igual que fotointerpretación geomorfológica, es decir formas y procesos morfodinámicos, y de forma somera a coberturas del suelo.
+
+El procesamiento de imágenes es una herramienta ampliamente utilizada actualmente, adquirir estas herramientas seguramente le ampliará sus perspectivas profesionales en el campo de las geociencas aplicada en ingeniería.
+
