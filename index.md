@@ -2,7 +2,7 @@
 
 En los últimos años, los satélites de observación de la Tierra han generado grandes cantidades de datos geoespaciales que están disponibles gratuitamente para la sociedad y los investigadores en Geociencias y otras ramas interesadas en la observación y monitoreo del planeta Tierra.  Este escenario plantea desafíos para las infraestructuras de datos espaciales a la hora de almacenar, procesar, diseminar y analizar adecuadamente estos grandes conjuntos de datos. Para satisfacer estas demandas, se han propuesto y desarrollado plataformas para la gestión y el análisis de grandes datos de observación de la Tierra.
 
-Este curso de \emph{Sensores Remotos} está orientado para estudiantes de geociencias con el objeto de aprender a utilizar estas herramientas de teledetección en geología. El curso comprende la teoría general de sensores remotos y procesamiento de imágenes de satélite utilizando dos de estas plataformas: Google Earth Engine (GEE) y openEO.
+Este curso de **Sensores Remotos** está orientado para estudiantes de geociencias con el objeto de aprender a utilizar estas herramientas de teledetección en geología. El curso comprende la teoría general de sensores remotos y procesamiento de imágenes de satélite utilizando dos de estas plataformas: Google Earth Engine (GEE) y openEO.
 
 Las técnicas de sensores remotos enseñadas en el curso se enfocan exclusivamente para la fotointerpretación geológica, es decir diferenciar unidades litológicas, al igual que fotointerpretación geomorfológica, es decir formas y procesos morfodinámicos, y de forma somera a coberturas del suelo.
 
@@ -13,7 +13,7 @@ El procesamiento de imágenes es una herramienta ampliamente utilizada actualmen
 Martes & Jueves 10:00 - 12:00 a.m.
 
 ### Aula: 
-M2-127
+M2-327
 
 ## Programa del curso
 [Ir al programa...](/Programa_SensoresRemoto.pdf)
@@ -23,7 +23,7 @@ M2-127
 
 ## Contenido del curso
 
-El contenido del curso comprende los siguientes temas a desarrollar:\\
+El contenido del curso comprende los siguientes temas a desarrollar:
 
 1. Sensores ópticos
 - Energía electromagnética y espectro
@@ -34,10 +34,6 @@ El contenido del curso comprende los siguientes temas a desarrollar:\\
 - Orbitas
 - Tipo de sensores
 - Resolución
-
-Lectura recomendada: [Sentinel-2 User Handbook](https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook.pdf/8869acdf-fd84-43ec-ae8c-3e80a436a16c?t=1438278087000)
-
-Lectura recomendada: [Landsat 9 Data Users Handbook](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-2082_L9-Data-Users-Handbook_v1.pdf)
 
 
 2. Introducción a la fotografía aérea
@@ -67,14 +63,24 @@ Lectura recomendada: [Landsat 9 Data Users Handbook](https://d9-wret.s3.us-west-
 [Taller 2](/TALLERES/Taller_Fotointerpretacion.pdf) Fotointerpretación
 
 4. Plataformas para la Observación de la Tierra
-- Google Earth Engine
-- OpenEO
-- Firma espectral (agua, suelo, vegetación)
-- Cálculo de índices
+- [Google Earth Engine](Guia_GEE,pdf)
+- [OpenEO](https://openeo.dataspace.copernicus.eu/)
+- [Datacubos](https://openeo.org/documentation/1.0/datacubes.html)
+- [Sentinel-2 User Handbook](https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook.pdf/8869acdf-fd84-43ec-ae8c-3e80a436a16c?t=1438278087000)
+- [Landsat 9 Data Users Handbook](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-2082_L9-Data-Users-Handbook_v1.pdf)
+
+Lectura recomendada: [Datacubes](https://www.cambridge.org/core/journals/environmental-data-science/article/earth-system-data-cubes-avenues-for-advancing-earth-system-research/C49F497A29699C7A1A6A2830755CAA6D)
+
+Lectura recomendada: [Plataformas](https://www.mdpi.com/2072-4292/12/8/1253)
+
+Lectura recomendada: [Plataformas](https://www.tandfonline.com/doi/full/10.1080/17538947.2019.1585976#abstract)
+
+Lectura recomendada: [Plataformas](https://www.mdpi.com/2072-4292/12/1/62)
+
 
 [Taller 3](/TALLERES/Taller_Calculo.pdf) Cálculo de índices
 
-5. Imágenes de satélite
+1. Imágenes de satélite
 - Procesamiento de imágenes
 - Transformación de imágenes
 - Clasificación de imágenes
@@ -101,7 +107,7 @@ Online training: [ARSET - Introduction to Synthetic Aperture Radar](https://appl
 ## Evaluación del curso
 
 ### Talleres (50%)
-El curso se evalua con 5 talleres del 10\%. Los talleres deberán cargarse a la plataforma de Google Classroom en formato PDF. El nombre del archivo deberá tener el número del taller y el nombre y apellido del estudiante (Ej. Taller 1\_EdierAristizabal). En caso de no entregarse de esta forma tendrá un descuento del 1.0 de la nota obtenida.
+El curso se evalua con 5 talleres del 10%. Los talleres deberán cargarse a la plataforma de Google Classroom en formato PDF. El nombre del archivo deberá tener el número del taller y el nombre y apellido del estudiante (Ej. Taller 1\_EdierAristizabal). En caso de no entregarse de esta forma tendrá un descuento del 1.0 de la nota obtenida.
 La presentación de los talleres tiene un **formato libre**, el cual exige un trabajo de creatividad, orden y claridad del estudiante, de tal forma que trasmita la información de forma correcta y adecuada al evaluador. Los criterios utilizados para la evaluación y asignación de nota a los talleres son:
 - **Ejecución**: que el taller se presente completo y desarrolle todas las
 actividades solicitadas.
@@ -114,19 +120,18 @@ realizadas sean correctas de acuerdo al contenido y estado del arte del
 curso.
 
 ### Parcial (25%)
-Posterior a la entrega del Taller 5 se realzará un parcial teórico individual con un porcentaje del 25\%. El parcial correspond e a 50 preguntas de selección multiple que el estudiante deberá responder en 2 horas. 
+Posterior a la entrega del Taller 5 se realizará un parcial teórico individual con un porcentaje del 25%. El parcial corresponde a 50 preguntas de selección múltiple que el estudiante deberá responder en 2 horas. 
 
 ### Trabajo de campo (25%)
-El 25\% restante de la nota del curso corresponde al trabajo de campo que se encuentra en la página web. Es importante tener en cuenta que dicho taller implica trabajo pre-campo, sin embargo la nota se realiza durante la salida de campo. Esto implica que si la persona no asiste a campo tiene una nota de 0 en el 25\% que representa este trabajo. 
+El 25% restante de la nota del curso corresponde al trabajo de campo que se encuentra en la página web. Es importante tener en cuenta que dicho taller implica trabajo pre-campo, sin embargo la nota se realiza durante la salida de campo. Esto implica que si la persona no asiste a campo tiene una nota de 0 en el 25% que representa este trabajo. 
 
 El documento que encuentra en el siguiente link corresponde a la Guía para la preparación, y ejecución a la salida de campo, por lo tanto es indispensable que cada equipo revise con detalle los objetivos y alcances planteados, los materiales necesarios, y los pasos a  desarrollar.
 
 [Guía Trabajo Final](/TALLERES/Taller_TrabajoFinal.pdf) Preparación y guía de campo
 
-El trabajo de campo comprende 5 alcances, 4 de ellos previos a la salida de campo:
+El trabajo de campo comprende diferentes alcances, la mayoría de ellos previos a la salida de campo:
 
 - Inventario de imagenes y mapa de líneas de vuelo
-- Mapa de coberturas del suelo
 - Mapa fotogeomorfológico y de procesos morfodinámicos
 - Mapa fotogeológico y de estructuras
 - Salida de campo
