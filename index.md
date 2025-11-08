@@ -65,7 +65,7 @@ El contenido del curso comprende los siguientes temas a desarrollar:
 
 4. Plataformas para la Observación de la Tierra
 - [Google Earth Engine](Guia_GEE.pdf)
-- [CDSE](https://dataspace.copernicus.eu/ecosystem/services): [tutorial Copernicus Browser](/NOTEBOOKS/TutorialBrowser.ipynb), [tutorial Request Builder](/NOTEBOOKS/TutorialBuilder.ipynb), [tutorial JupyterLab](/NOTEBOOKS/TutorialJupyter.ipynb).
+- [CDSE](https://dataspace.copernicus.eu/ecosystem/services): [tutorial Copernicus Browser](/NOTEBOOKS/TutorialBrowser.ipynb){download}, [tutorial Request Builder](/NOTEBOOKS/TutorialBuilder.ipynb){download}, [tutorial JupyterLab](/NOTEBOOKS/TutorialJupyter.ipynb){download}.
 
 Lectura recomendada: [Plataformas](https://www.mdpi.com/2072-4292/12/8/1253)
 
