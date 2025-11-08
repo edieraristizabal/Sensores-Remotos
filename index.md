@@ -51,7 +51,7 @@ El contenido del curso comprende los siguientes temas a desarrollar:
 [Guía para uso de Anaglifos](/TALLERES/Taller_Anaglifos.pdf)
 
 
-1. Criterios de Fotointerpretación
+3. Criterios de Fotointerpretación
 - Técnicas y métodos de fotointerpretación 
 - Principios básicos
 - Lectura mapas topográficos
@@ -62,14 +62,10 @@ El contenido del curso comprende los siguientes temas a desarrollar:
 
 [Taller 2](/TALLERES/Taller_Fotointerpretacion.pdf) Fotointerpretación
 
-4. Plataformas para la Observación de la Tierra
-- [Google Earth Engine](Guia_GEE,pdf)
-- [OpenEO](https://openeo.dataspace.copernicus.eu/)
-- [Datacubos](https://openeo.org/documentation/1.0/datacubes.html)
-- [Sentinel-2 User Handbook](https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook.pdf/8869acdf-fd84-43ec-ae8c-3e80a436a16c?t=1438278087000)
-- [Landsat 9 Data Users Handbook](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-2082_L9-Data-Users-Handbook_v1.pdf)
 
-Lectura recomendada: [Datacubes](https://www.cambridge.org/core/journals/environmental-data-science/article/earth-system-data-cubes-avenues-for-advancing-earth-system-research/C49F497A29699C7A1A6A2830755CAA6D)
+4. Plataformas para la Observación de la Tierra
+- [Google Earth Engine](Guia_GEE.pdf)
+- [CDSE](https://dataspace.copernicus.eu/ecosystem/services): [tutorial Copernicus Browser](/NOTEBOOKS/TutorialBrowser.ipynb), [tutorial Request Builder](/NOTEBOOKS/TutorialBuilder.ipynb), [tutorial JupyterLab](/NOTEBOOKS/TutorialJupyter.ipynb), [tutorial openEO](/NOTEBOOKS/TutorialOpenEO.ipynb)
 
 Lectura recomendada: [Plataformas](https://www.mdpi.com/2072-4292/12/8/1253)
 
@@ -77,6 +73,13 @@ Lectura recomendada: [Plataformas](https://www.tandfonline.com/doi/full/10.1080/
 
 Lectura recomendada: [Plataformas](https://www.mdpi.com/2072-4292/12/1/62)
 
+Lectura recomendada: [Datacubos](https://openeo.org/documentation/1.0/datacubes.html)
+
+Lectura recomendada: [Datacubes](https://www.cambridge.org/core/journals/environmental-data-science/article/earth-system-data-cubes-avenues-for-advancing-earth-system-research/C49F497A29699C7A1A6A2830755CAA6D)
+
+Lectura recomendada: [Sentinel-2 User Handbook](https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook.pdf/8869acdf-fd84-43ec-ae8c-3e80a436a16c?t=1438278087000)
+
+Lectura recomendada: [Landsat 9 Data Users Handbook](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-2082_L9-Data-Users-Handbook_v1.pdf)
 
 [Taller 3](/TALLERES/Taller_Calculo.pdf) Cálculo de índices
 
