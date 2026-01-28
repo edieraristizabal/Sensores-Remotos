@@ -46,7 +46,7 @@ El contenido del curso comprende los siguientes temas a desarrollar:
 - Paralaje
 - Medición del relieve
 
-[Taller 1](/TALLERES/Taller_Foto.pdf) Fotogrametría
+[Taller 1](/TALLERES/Taller_Fotogrametria.pdf) Fotogrametría
 
 [Guía para uso de Anaglifos](/TALLERES/Taller_Anaglifos.pdf)
 
