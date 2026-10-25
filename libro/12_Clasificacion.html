@@ -1,0 +1,872 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Clasificación de imágenes y evaluación de la exactitud &#8212; Sensores remotos para geociencias</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '12_Clasificacion';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://edieraristizabal.github.io/Sensores-Remotos/libro/12_Clasificacion.html" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Sensores activos: radar, InSAR y LiDAR" href="13_SensoresActivos.html" />
+    <link rel="prev" title="Realce, índices y transformaciones" href="11_Realce.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Sensores remotos para geociencias - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Sensores remotos para geociencias - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Sensores remotos para geociencias
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentos físicos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_Introduccion.html">Introducción a los sensores remotos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Radiacion.html">Radiación electromagnética</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Interaccion.html">Interacción con la atmósfera y con la superficie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Plataformas.html">Plataformas, órbitas y sensores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Resolucion.html">Resolución de los sensores</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fotografía aérea y fotointerpretación</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="06_FotografiaAerea.html">Fotografía aérea y visión estereoscópica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Fotogrametria.html">Fotogrametría: escala, desplazamiento del relieve y paralaje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Fotointerpretacion.html">Criterios de fotointerpretación y lectura del relieve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Fotogeologia.html">Fotogeomorfología y fotogeología</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Imágenes de satélite</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10_Preprocesamiento.html">Preprocesamiento: correcciones geométricas y radiométricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Realce.html">Realce, índices y transformaciones</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Clasificación de imágenes y evaluación de la exactitud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_SensoresActivos.html">Sensores activos: radar, InSAR y LiDAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Plataformas_EO.html">Plataformas de observación de la Tierra y cubos de datos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="A_Practicas.html">Prácticas y talleres del curso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliografia.html">Bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/edieraristizabal/Sensores-Remotos/blob/master/libro/12_Clasificacion.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos/edit/master/libro/12_Clasificacion.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos/issues/new?title=Issue%20on%20page%20%2F12_Clasificacion.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/12_Clasificacion.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Clasificación de imágenes y evaluación de la exactitud</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-espacio-espectral">El espacio espectral</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-no-supervisada-k-medias">Clasificación no supervisada: k-medias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-supervisada">Clasificación supervisada</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-la-exactitud">Evaluación de la exactitud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#posclasificacion">Posclasificación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-profundizar">Para profundizar</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="clasificacion-de-imagenes-y-evaluacion-de-la-exactitud">
+<h1>Clasificación de imágenes y evaluación de la exactitud<a class="headerlink" href="#clasificacion-de-imagenes-y-evaluacion-de-la-exactitud" title="Link to this heading">#</a></h1>
+<p>Clasificar una imagen es asignar cada píxel, o cada objeto, a una clase temática: agua, bosque, pasto, suelo, roca, área urbana. Es la forma de convertir los valores espectrales en un mapa. Hay dos grandes enfoques. En la clasificación no supervisada, un algoritmo agrupa los píxeles por su similitud espectral y el analista identifica después qué cobertura corresponde a cada grupo. En la supervisada, el analista define primero las clases con áreas de entrenamiento de cobertura conocida y el algoritmo aprende a reconocerlas en el resto de la imagen <span class="bibtex-citation" id="id1">[<a class="reference internal" href="bibliografia.html#id2" title="Emilio Chuvieco. Teledetección ambiental: la observación de la Tierra desde el espacio. Ariel, Barcelona, 3 edition, 2008.">Chuvieco, 2008</a>, <a class="reference internal" href="bibliografia.html#id5" title="John A. Richards. Remote Sensing Digital Image Analysis: An Introduction. Springer, Berlin, 5 edition, 2013.">Richards, 2013</a>]</span>.</p>
+<p>Este capítulo usa la misma escena sintética del capítulo anterior, cuya verdad es conocida, para comparar los métodos y para mostrar cómo se evalúa un mapa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListedColormap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">ndimage</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'figure.dpi'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">BANDAS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'azul'</span><span class="p">,</span> <span class="s1">'verde'</span><span class="p">,</span> <span class="s1">'rojo'</span><span class="p">,</span> <span class="s1">'NIR'</span><span class="p">,</span> <span class="s1">'SWIR1'</span><span class="p">,</span> <span class="s1">'SWIR2'</span><span class="p">]</span>
+<span class="n">FIRMAS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'agua'</span><span class="p">:</span>           <span class="p">[</span><span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">],</span>
+    <span class="s1">'bosque'</span><span class="p">:</span>         <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.38</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">,</span> <span class="mf">0.07</span><span class="p">],</span>
+    <span class="s1">'pasto'</span><span class="p">:</span>          <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.07</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.14</span><span class="p">],</span>
+    <span class="s1">'suelo desnudo'</span><span class="p">:</span>  <span class="p">[</span><span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.32</span><span class="p">,</span> <span class="mf">0.27</span><span class="p">],</span>
+    <span class="s1">'roca alterada'</span><span class="p">:</span>  <span class="p">[</span><span class="mf">0.17</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">,</span> <span class="mf">0.26</span><span class="p">,</span> <span class="mf">0.31</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mf">0.24</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">NOMBRES</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">FIRMAS</span><span class="p">)</span>
+<span class="n">CMAP</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="s1">'#2166ac'</span><span class="p">,</span> <span class="s1">'#1b7837'</span><span class="p">,</span> <span class="s1">'#a6d96a'</span><span class="p">,</span> <span class="s1">'#d6a35c'</span><span class="p">,</span> <span class="s1">'#bdbdbd'</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">escena</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ruido</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">semilla</span><span class="p">)</span>
+    <span class="n">campos</span> <span class="o">=</span> <span class="p">[</span><span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span> <span class="mi">12</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">FIRMAS</span><span class="p">]</span>
+    <span class="n">yy</span><span class="p">,</span> <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">campos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">xx</span> <span class="o">-</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">yy</span> <span class="o">-</span> <span class="mf">0.75</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.12</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.5</span>
+    <span class="n">campos</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">xx</span> <span class="o">-</span> <span class="mf">0.75</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">yy</span> <span class="o">-</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.15</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.0</span>
+    <span class="n">clases</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">campos</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">BANDAS</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">FIRMAS</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">clases</span> <span class="o">==</span> <span class="n">k</span>
+        <span class="n">variab</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.15</span> <span class="o">*</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span> <span class="mi">3</span><span class="p">)[</span><span class="n">m</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">BANDAS</span><span class="p">)):</span>
+            <span class="n">img</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="o">*</span> <span class="n">variab</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">))</span>                     <span class="c1"># píxeles mezclados en los bordes</span>
+    <span class="n">iluminacion</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span> <span class="mi">4</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.05</span>   <span class="c1"># efecto del relieve</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">iluminacion</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">1.45</span><span class="p">)</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ruido</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">clases</span>
+
+<span class="n">img</span><span class="p">,</span> <span class="n">verdad</span> <span class="o">=</span> <span class="n">escena</span><span class="p">()</span>
+<span class="n">nb</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">verdad</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="el-espacio-espectral">
+<h2>El espacio espectral<a class="headerlink" href="#el-espacio-espectral" title="Link to this heading">#</a></h2>
+<p>Cada píxel es un punto en un espacio de tantas dimensiones como bandas. Las coberturas forman nubes de puntos en ese espacio, y clasificar es dividirlo en regiones. La gráfica siguiente muestra la proyección en el plano rojo-infrarrojo cercano, el más usado para vegetación: el agua queda cerca del origen, la vegetación arriba a la izquierda y los suelos y las rocas a lo largo de la línea de suelos. Se ve que el pasto y el suelo desnudo se traslapan en este plano; con las bandas del infrarrojo de onda corta se separan mejor.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">muestra</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">4000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">nom</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">NOMBRES</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">muestra</span><span class="p">]</span> <span class="o">==</span> <span class="n">k</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">muestra</span><span class="p">][</span><span class="n">m</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">muestra</span><span class="p">][</span><span class="n">m</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">CMAP</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">nom</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">muestra</span><span class="p">][</span><span class="n">m</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">muestra</span><span class="p">][</span><span class="n">m</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">CMAP</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'rojo'</span><span class="p">);</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'NIR'</span><span class="p">);</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">markerscale</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'SWIR1'</span><span class="p">);</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'SWIR2'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fed83abf8158dc046bbdc03070f1abbb4d0af92ef46bc41141ecffa5ad841881.png" src="_images/fed83abf8158dc046bbdc03070f1abbb4d0af92ef46bc41141ecffa5ad841881.png" />
+</div>
+</div>
+</section>
+<section id="clasificacion-no-supervisada-k-medias">
+<h2>Clasificación no supervisada: k-medias<a class="headerlink" href="#clasificacion-no-supervisada-k-medias" title="Link to this heading">#</a></h2>
+<p>El algoritmo de k-medias agrupa los píxeles en <span class="math notranslate nohighlight">\(k\)</span> grupos: parte de <span class="math notranslate nohighlight">\(k\)</span> centros iniciales, asigna cada píxel al centro más cercano, recalcula los centros como la media de sus píxeles y repite hasta que los grupos no cambian. ISODATA es una variante que además divide los grupos muy dispersos y une los muy cercanos. El resultado son grupos espectrales, no clases temáticas: el analista debe etiquetarlos, y a menudo una cobertura se divide en varios grupos (por ejemplo, laderas iluminadas y en sombra) o varias coberturas caen en uno solo. Por eso se suele pedir más grupos que clases y luego agruparlos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[::</span><span class="mi">7</span><span class="p">])</span>
+<span class="n">grupos</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="c1"># etiquetado: cada grupo recibe la clase verdadera más frecuente (en la práctica lo hace el analista)</span>
+<span class="n">etiqueta</span> <span class="o">=</span> <span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">verdad</span><span class="p">[</span><span class="n">grupos</span> <span class="o">==</span> <span class="n">g</span><span class="p">],</span> <span class="n">minlength</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)}</span>
+<span class="n">no_sup</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">etiqueta</span><span class="o">.</span><span class="n">get</span><span class="p">)(</span><span class="n">grupos</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">verdad</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">CMAP</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'verdad'</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">grupos</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'tab10'</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'k-medias: 5 grupos espectrales'</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">no_sup</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">CMAP</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'grupos etiquetados'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/efcfc7cabada3ca65bd8b0c267a61f5d67ee94f6f6926075109b7df81bb4b514.png" src="_images/efcfc7cabada3ca65bd8b0c267a61f5d67ee94f6f6926075109b7df81bb4b514.png" />
+</div>
+</div>
+</section>
+<section id="clasificacion-supervisada">
+<h2>Clasificación supervisada<a class="headerlink" href="#clasificacion-supervisada" title="Link to this heading">#</a></h2>
+<p>En la clasificación supervisada se digitalizan áreas de entrenamiento representativas de cada clase, distribuidas por toda la imagen y con suficientes píxeles (como regla, al menos 10 a 30 veces el número de bandas por clase). Con ellas se entrena un clasificador. Los clásicos son la mínima distancia, que asigna cada píxel a la clase de media más cercana, y la máxima verosimilitud, que modela cada clase como una distribución normal multivariada con su media y su matriz de covarianza y asigna cada píxel a la clase más probable; es el clasificador estadístico estándar en teledetección. Los métodos de aprendizaje automático, como el bosque aleatorio (random forest) o las máquinas de soporte vectorial, no suponen ninguna distribución y suelen dar mejores resultados con clases complejas; las redes neuronales convolucionales, además, aprenden del contexto espacial de cada píxel.</p>
+<p>La celda siguiente simula la toma de áreas de entrenamiento como pequeños polígonos, entrena tres clasificadores (mínima distancia, máxima verosimilitud, que equivale al análisis discriminante cuadrático, y bosque aleatorio) y los aplica a toda la escena.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">NearestCentroid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.discriminant_analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuadraticDiscriminantAnalysis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">entren</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="nb">bool</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">filas</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ndimage</span><span class="o">.</span><span class="n">binary_erosion</span><span class="p">(</span><span class="n">verdad</span> <span class="o">==</span> <span class="n">k</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filas</span><span class="p">),</span> <span class="mi">6</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>                 <span class="c1"># 6 polígonos de 7x7 por clase</span>
+        <span class="n">entren</span><span class="p">[</span><span class="n">filas</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span><span class="p">:</span><span class="n">filas</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">4</span><span class="p">,</span> <span class="n">cols</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span><span class="p">:</span><span class="n">cols</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">X_tr</span><span class="p">,</span> <span class="n">y_tr</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">entren</span><span class="o">.</span><span class="n">ravel</span><span class="p">()],</span> <span class="n">y</span><span class="p">[</span><span class="n">entren</span><span class="o">.</span><span class="n">ravel</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">entren</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s1"> píxeles de entrenamiento:'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">y_tr</span><span class="p">))</span>
+
+<span class="n">clasif</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'mínima distancia'</span><span class="p">:</span> <span class="n">NearestCentroid</span><span class="p">(),</span>
+          <span class="s1">'máxima verosimilitud'</span><span class="p">:</span> <span class="n">QuadraticDiscriminantAnalysis</span><span class="p">(</span><span class="n">reg_param</span><span class="o">=</span><span class="mf">0.01</span><span class="p">),</span>
+          <span class="s1">'bosque aleatorio'</span><span class="p">:</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)}</span>
+<span class="n">mapas</span> <span class="o">=</span> <span class="p">{</span><span class="n">nom</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">nom</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">clasif</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">verdad</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">CMAP</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">entren</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'verdad y áreas de entrenamiento'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">mapas</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">CMAP</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">nom</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1470 píxeles de entrenamiento: [294 294 294 294 294]
+</pre></div>
+</div>
+<img alt="_images/ee05362db0fc657e7a3a5074f5da8123bb6f12bcd16e7caedb298ae94b121669.png" src="_images/ee05362db0fc657e7a3a5074f5da8123bb6f12bcd16e7caedb298ae94b121669.png" />
+</div>
+</div>
+</section>
+<section id="evaluacion-de-la-exactitud">
+<h2>Evaluación de la exactitud<a class="headerlink" href="#evaluacion-de-la-exactitud" title="Link to this heading">#</a></h2>
+<p>Un mapa sin evaluación de su exactitud no se debe usar. La evaluación compara la clase asignada con la verdad de terreno en una muestra de puntos de validación independientes de los de entrenamiento, elegidos con un muestreo aleatorio, estratificado por clase o sistemático <span class="bibtex-citation" id="id2">[<a class="reference internal" href="bibliografia.html#id17" title="Russell G. Congalton. A review of assessing the accuracy of classifications of remotely sensed data. Remote Sensing of Environment, 37(1):35–46, 1991.">Congalton, 1991</a>]</span>. El resultado se resume en la matriz de confusión, que cruza las clases de referencia con las clasificadas. De ella salen la exactitud global, la proporción de puntos bien clasificados; la exactitud del productor de cada clase, la proporción de puntos de referencia de esa clase que el mapa acertó (su complemento es el error de omisión); y la exactitud del usuario, la proporción de puntos clasificados en esa clase que realmente la tienen (su complemento es el error de comisión). El índice kappa de Cohen compara la exactitud observada <span class="math notranslate nohighlight">\(p_o\)</span> con la que se esperaría por azar <span class="math notranslate nohighlight">\(p_e\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\kappa = \frac{p_o - p_e}{1 - p_e}.\]</div>
+<p>La celda siguiente calcula todo esto a mano para el bosque aleatorio y compara los tres clasificadores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">matriz_confusion</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">),</span> <span class="nb">int</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">ref</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>       <span class="c1"># filas: clasificado; columnas: referencia</span>
+    <span class="k">return</span> <span class="n">M</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluar</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">po</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">/</span> <span class="n">total</span>
+    <span class="n">pe</span> <span class="o">=</span> <span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">total</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">'ignore'</span><span class="p">,</span> <span class="n">divide</span><span class="o">=</span><span class="s1">'ignore'</span><span class="p">):</span>        <span class="c1"># una clase puede no recibir ningún píxel</span>
+        <span class="k">return</span> <span class="n">po</span><span class="p">,</span> <span class="p">(</span><span class="n">po</span> <span class="o">-</span> <span class="n">pe</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">pe</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">/</span> <span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">/</span> <span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">valid</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">entren</span><span class="o">.</span><span class="n">ravel</span><span class="p">())[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1"># puntos de validación aleatorios</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">matriz_confusion</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">valid</span><span class="p">],</span> <span class="n">mapas</span><span class="p">[</span><span class="s1">'bosque aleatorio'</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="n">valid</span><span class="p">])</span>
+<span class="n">po</span><span class="p">,</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">prod</span><span class="p">,</span> <span class="n">usu</span> <span class="o">=</span> <span class="n">evaluar</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Matriz de confusión del bosque aleatorio (filas: clasificado, columnas: referencia)'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">' '</span> <span class="o">*</span> <span class="mi">15</span> <span class="o">+</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">nm</span><span class="p">[:</span><span class="mi">9</span><span class="p">]</span><span class="si">:</span><span class="s1">&gt;10s</span><span class="si">}</span><span class="s1">'</span> <span class="k">for</span> <span class="n">nm</span> <span class="ow">in</span> <span class="n">NOMBRES</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'     total'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">nm</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">NOMBRES</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">nm</span><span class="si">:</span><span class="s1">15s</span><span class="si">}</span><span class="s1">'</span> <span class="o">+</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s1">10d</span><span class="si">}</span><span class="s1">'</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">M</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">M</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s1">10d</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Exactitud global </span><span class="si">{</span><span class="n">po</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, kappa </span><span class="si">{</span><span class="n">kappa</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">nm</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">NOMBRES</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  </span><span class="si">{</span><span class="n">nm</span><span class="si">:</span><span class="s1">15s</span><span class="si">}</span><span class="s1"> productor </span><span class="si">{</span><span class="n">prod</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> (omisión </span><span class="si">{</span><span class="mi">1</span><span class="o">-</span><span class="n">prod</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)   usuario </span><span class="si">{</span><span class="n">usu</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> (comisión </span><span class="si">{</span><span class="mi">1</span><span class="o">-</span><span class="n">usu</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">nom</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">mapas</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">+</span> <span class="p">[(</span><span class="s1">'k-medias etiquetado'</span><span class="p">,</span> <span class="n">no_sup</span><span class="p">)]:</span>
+    <span class="n">po_</span><span class="p">,</span> <span class="n">k_</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">evaluar</span><span class="p">(</span><span class="n">matriz_confusion</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">valid</span><span class="p">],</span> <span class="n">m</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="n">valid</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">nom</span><span class="si">:</span><span class="s1">22s</span><span class="si">}</span><span class="s1"> exactitud global </span><span class="si">{</span><span class="n">po_</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">   kappa </span><span class="si">{</span><span class="n">k_</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz de confusión del bosque aleatorio (filas: clasificado, columnas: referencia)
+                     agua    bosque     pasto suelo des roca alte     total
+agua                   43         2         0         0         0        45
+bosque                  0       293         6         0         0       299
+pasto                   2        23       296        20         1       342
+suelo desnudo           0         0         6       231         2       239
+roca alterada           0         1         1         3        70        75
+
+Exactitud global 0.933, kappa 0.908
+  agua            productor 0.96 (omisión 0.04)   usuario 0.96 (comisión 0.04)
+  bosque          productor 0.92 (omisión 0.08)   usuario 0.98 (comisión 0.02)
+  pasto           productor 0.96 (omisión 0.04)   usuario 0.87 (comisión 0.13)
+  suelo desnudo   productor 0.91 (omisión 0.09)   usuario 0.97 (comisión 0.03)
+  roca alterada   productor 0.96 (omisión 0.04)   usuario 0.93 (comisión 0.07)
+
+mínima distancia       exactitud global 0.806   kappa 0.737
+máxima verosimilitud   exactitud global 0.897   kappa 0.858
+bosque aleatorio       exactitud global 0.933   kappa 0.908
+k-medias etiquetado    exactitud global 0.579   kappa 0.411
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="posclasificacion">
+<h2>Posclasificación<a class="headerlink" href="#posclasificacion" title="Link to this heading">#</a></h2>
+<p>Los mapas por píxel suelen tener un efecto de sal y pimienta: píxeles aislados mal clasificados dentro de áreas homogéneas. Un filtro de moda (o de mayoría), que asigna a cada píxel la clase más frecuente en su vecindad, los elimina y produce un mapa más limpio, a costa de perder rasgos muy pequeños. Otra alternativa es la clasificación orientada a objetos, que primero segmenta la imagen en regiones homogéneas y luego clasifica las regiones usando también su forma, su textura y su contexto. La celda siguiente aplica un filtro de moda al resultado de la mínima distancia.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">filtro_moda</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">tam</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">conteos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ndimage</span><span class="o">.</span><span class="n">uniform_filter</span><span class="p">((</span><span class="n">m</span> <span class="o">==</span> <span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span> <span class="n">tam</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">conteos</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">md</span> <span class="o">=</span> <span class="n">mapas</span><span class="p">[</span><span class="s1">'mínima distancia'</span><span class="p">]</span>
+<span class="n">md_f</span> <span class="o">=</span> <span class="n">filtro_moda</span><span class="p">(</span><span class="n">md</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="p">[</span><span class="n">md</span><span class="p">,</span> <span class="n">md_f</span><span class="p">],</span> <span class="p">[</span><span class="s1">'mínima distancia'</span><span class="p">,</span> <span class="s1">'con filtro de moda 5x5'</span><span class="p">]):</span>
+    <span class="n">po_</span><span class="p">,</span> <span class="n">k_</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">evaluar</span><span class="p">(</span><span class="n">matriz_confusion</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">valid</span><span class="p">],</span> <span class="n">m</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="n">valid</span><span class="p">]))</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">CMAP</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="se">\n</span><span class="s1">exactitud </span><span class="si">{</span><span class="n">po_</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, kappa </span><span class="si">{</span><span class="n">k_</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/836d3531fa7d64e32b7e5c374241728f32a0ff677fad5a87bfee00bd6426f816.png" src="_images/836d3531fa7d64e32b7e5c374241728f32a0ff677fad5a87bfee00bd6426f816.png" />
+</div>
+</div>
+</section>
+<section id="para-profundizar">
+<h2>Para profundizar<a class="headerlink" href="#para-profundizar" title="Link to this heading">#</a></h2>
+<p>Los capítulos 7 a 9 de <span class="bibtex-citation" id="id3">[<a class="reference internal" href="bibliografia.html#id5" title="John A. Richards. Remote Sensing Digital Image Analysis: An Introduction. Springer, Berlin, 5 edition, 2013.">Richards, 2013</a>]</span> cubren la clasificación supervisada y no supervisada con todo detalle, y el capítulo 7 de <span class="bibtex-citation" id="id4">[<a class="reference internal" href="bibliografia.html#id2" title="Emilio Chuvieco. Teledetección ambiental: la observación de la Tierra desde el espacio. Ariel, Barcelona, 3 edition, 2008.">Chuvieco, 2008</a>]</span> la presenta con ejemplos. Para la evaluación de la exactitud, el artículo de <span class="bibtex-citation" id="id5">Congalton [<a class="reference internal" href="bibliografia.html#id17" title="Russell G. Congalton. A review of assessing the accuracy of classifications of remotely sensed data. Remote Sensing of Environment, 37(1):35–46, 1991.">1991</a>]</span> es la referencia básica. Los notebooks del curso con redes neuronales (ANN y CNN) y con la cartografía de movimientos en masa, listados en el apéndice <a class="reference internal" href="A_Practicas.html"><span class="doc">Prácticas y talleres del curso</span></a>, aplican estos métodos a imágenes reales.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="11_Realce.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Realce, índices y transformaciones</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="13_SensoresActivos.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Sensores activos: radar, InSAR y LiDAR</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-espacio-espectral">El espacio espectral</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-no-supervisada-k-medias">Clasificación no supervisada: k-medias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-supervisada">Clasificación supervisada</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-la-exactitud">Evaluación de la exactitud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#posclasificacion">Posclasificación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-profundizar">Para profundizar</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Edier V. Aristizábal G.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>Desarrollado por <a href="https://github.com/edieraristizabal">Edier Aristizábal</a>, Facultad de Minas, Universidad Nacional de Colombia.
+<a href="https://edieraristizabal.github.io/Sensores-Remotos/">Página del curso</a> ·
+<a href="https://edieraristizabal.github.io/Sensores-Remotos/html/01_SensoresRemoto.html">Diapositivas</a></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

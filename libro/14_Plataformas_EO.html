@@ -1,0 +1,783 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Plataformas de observación de la Tierra y cubos de datos &#8212; Sensores remotos para geociencias</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '14_Plataformas_EO';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://edieraristizabal.github.io/Sensores-Remotos/libro/14_Plataformas_EO.html" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Prácticas y talleres del curso" href="A_Practicas.html" />
+    <link rel="prev" title="Sensores activos: radar, InSAR y LiDAR" href="13_SensoresActivos.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Sensores remotos para geociencias - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Sensores remotos para geociencias - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Sensores remotos para geociencias
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentos físicos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_Introduccion.html">Introducción a los sensores remotos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Radiacion.html">Radiación electromagnética</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Interaccion.html">Interacción con la atmósfera y con la superficie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Plataformas.html">Plataformas, órbitas y sensores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Resolucion.html">Resolución de los sensores</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fotografía aérea y fotointerpretación</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="06_FotografiaAerea.html">Fotografía aérea y visión estereoscópica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Fotogrametria.html">Fotogrametría: escala, desplazamiento del relieve y paralaje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Fotointerpretacion.html">Criterios de fotointerpretación y lectura del relieve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Fotogeologia.html">Fotogeomorfología y fotogeología</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Imágenes de satélite</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10_Preprocesamiento.html">Preprocesamiento: correcciones geométricas y radiométricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Realce.html">Realce, índices y transformaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_Clasificacion.html">Clasificación de imágenes y evaluación de la exactitud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_SensoresActivos.html">Sensores activos: radar, InSAR y LiDAR</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Plataformas de observación de la Tierra y cubos de datos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="A_Practicas.html">Prácticas y talleres del curso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliografia.html">Bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/edieraristizabal/Sensores-Remotos/blob/master/libro/14_Plataformas_EO.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos/edit/master/libro/14_Plataformas_EO.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos/issues/new?title=Issue%20on%20page%20%2F14_Plataformas_EO.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/14_Plataformas_EO.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Plataformas de observación de la Tierra y cubos de datos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cubos-de-datos">Cubos de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-earth-engine">Google Earth Engine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openeo-y-el-ecosistema-copernicus">openEO y el ecosistema Copernicus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-plataformas">Otras plataformas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-profundizar">Para profundizar</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="plataformas-de-observacion-de-la-tierra-y-cubos-de-datos">
+<h1>Plataformas de observación de la Tierra y cubos de datos<a class="headerlink" href="#plataformas-de-observacion-de-la-tierra-y-cubos-de-datos" title="Link to this heading">#</a></h1>
+<p>Durante décadas, trabajar con imágenes de satélite significaba buscarlas en un catálogo, descargarlas escena por escena, corregirlas y procesarlas en un computador personal. Con los archivos abiertos de Landsat (desde 2008) y de Copernicus, el volumen de datos disponible creció tanto que ese flujo de trabajo dejó de ser viable: un estudio multitemporal de una cuenca andina con Sentinel-2 puede requerir cientos de escenas y varios terabytes. La respuesta fueron las plataformas de procesamiento en la nube, que llevan el análisis a donde están los datos en lugar de llevar los datos al analista <span class="bibtex-citation" id="id1">[<a class="reference internal" href="bibliografia.html#id20" title="Noel Gorelick, Matt Hancher, Mike Dixon, Simon Ilyushchenko, David Thau, and Rebecca Moore. Google earth engine: planetary-scale geospatial analysis for everyone. Remote Sensing of Environment, 202:18–27, 2017.">Gorelick <em>et al.</em>, 2017</a>, <a class="reference internal" href="bibliografia.html#id21" title="Matthias Schramm, Edzer Pebesma, Milutin Milenković, and others. The openeo api: harmonising the use of earth observation cloud services using virtual data cube functionalities. Remote Sensing, 13(6):1125, 2021.">Schramm <em>et al.</em>, 2021</a>]</span>.</p>
+<section id="cubos-de-datos">
+<h2>Cubos de datos<a class="headerlink" href="#cubos-de-datos" title="Link to this heading">#</a></h2>
+<p>El concepto que organiza estas plataformas es el cubo de datos: un arreglo multidimensional con dimensiones espaciales (x, y), temporal (t) y espectral (bandas), en el que todas las imágenes de una colección están alineadas en una malla común. En lugar de pensar en escenas sueltas, el analista trabaja con el cubo completo y le aplica operaciones: reducirlo en el tiempo (la mediana de un año para obtener un compuesto sin nubes), reducirlo en las bandas (un índice), filtrarlo por fechas o por un área, o agregarlo sobre polígonos <span class="bibtex-citation" id="id2">[<a class="reference internal" href="bibliografia.html#id22" title="Miguel D. Mahecha, Fabian Gans, Gunnar Brandt, and others. Earth system data cubes unravel global multivariate dynamics. Earth System Dynamics, 11(1):201–234, 2020.">Mahecha <em>et al.</em>, 2020</a>]</span>. Google Earth Engine, openEO, Open Data Cube y las bibliotecas de Python <code class="docutils literal notranslate"><span class="pre">xarray</span></code> y <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> implementan esta idea con distintas sintaxis.</p>
+<p>La celda siguiente construye un pequeño cubo sintético de NDVI con 72 fechas (un año cada 5 días, como Sentinel-2) sobre una zona con bosque, cultivos con ciclo de siembra y cosecha, y un deslizamiento que ocurre a mitad de año, con nubes que ocultan aleatoriamente parte de cada fecha. Luego hace las operaciones típicas: enmascarar nubes, componer la mediana y extraer series de tiempo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">ndimage</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'figure.dpi'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+
+<span class="n">nt</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">120</span>
+<span class="n">dias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nt</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="n">yy</span><span class="p">,</span> <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">]</span>
+<span class="n">cultivo</span> <span class="o">=</span> <span class="n">xx</span> <span class="o">&lt;</span> <span class="mi">50</span>
+<span class="n">desliz</span> <span class="o">=</span> <span class="p">((</span><span class="n">xx</span> <span class="o">-</span> <span class="mi">85</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">8</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">yy</span> <span class="o">-</span> <span class="mi">60</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">20</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span>
+<span class="n">cubo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nt</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dias</span><span class="p">):</span>
+    <span class="n">ndvi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">cultivo</span><span class="p">,</span> <span class="mf">0.25</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">d</span> <span class="o">-</span> <span class="mi">150</span><span class="p">)</span> <span class="o">/</span> <span class="mi">45</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">d</span> <span class="o">-</span> <span class="mi">300</span><span class="p">)</span> <span class="o">/</span> <span class="mi">35</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="mf">0.82</span><span class="p">)</span>
+    <span class="n">ndvi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">desliz</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">d</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">),</span> <span class="mf">0.12</span> <span class="o">+</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">((</span><span class="n">d</span> <span class="o">-</span> <span class="mi">180</span><span class="p">)</span> <span class="o">/</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ndvi</span><span class="p">)</span>   <span class="c1"># pérdida de vegetación y revegetación lenta</span>
+    <span class="n">cubo</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">ndvi</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+<span class="c1"># nubes: campos aleatorios suaves, más frecuentes en la temporada de lluvias</span>
+<span class="n">nubes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">cubo</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dias</span><span class="p">):</span>
+    <span class="n">prob</span> <span class="o">=</span> <span class="mf">0.35</span> <span class="o">+</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">-</span> <span class="mi">60</span><span class="p">)</span> <span class="o">/</span> <span class="mi">365</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">campo</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="n">nubes</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">campo</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">campo</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">prob</span><span class="p">)</span>
+<span class="n">observado</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">nubes</span><span class="p">,</span> <span class="mf">0.05</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">cubo</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">cubo</span><span class="p">)</span>   <span class="c1"># las nubes tienen NDVI bajo</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Dimensiones del cubo (tiempo, y, x): </span><span class="si">{</span><span class="n">cubo</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">; fracción de píxeles nublados: </span><span class="si">{</span><span class="n">nubes</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">.0%</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dimensiones del cubo (tiempo, y, x): (72, 120, 120); fracción de píxeles nublados: 50%
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sin enmascarar las nubes, cualquier compuesto queda contaminado. En las plataformas reales la máscara viene con cada imagen: la banda QA_PIXEL en Landsat Collection 2, la banda de clasificación de escena (SCL) en Sentinel-2 L2A, o la probabilidad de nubes de s2cloudless. Aquí se usa la máscara simulada.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enmascarado</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">nubes</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">observado</span><span class="p">)</span>
+<span class="n">periodos</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'primer semestre'</span><span class="p">:</span> <span class="n">dias</span> <span class="o">&lt;</span> <span class="mi">180</span><span class="p">,</span> <span class="s1">'segundo semestre'</span><span class="p">:</span> <span class="n">dias</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">}</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">observado</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'RdYlGn'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'una fecha (día </span><span class="si">{</span><span class="n">dias</span><span class="p">[</span><span class="mi">30</span><span class="p">]</span><span class="si">}</span><span class="s1">) con nubes'</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">observado</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'RdYlGn'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'media anual sin máscara'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">sel</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="n">periodos</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">enmascarado</span><span class="p">[</span><span class="n">sel</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'RdYlGn'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'mediana sin nubes, </span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/24815156a550bd533684958d73ecba0d85504b29792d7529fc75bb334ad934de.png" src="_images/24815156a550bd533684958d73ecba0d85504b29792d7529fc75bb334ad934de.png" />
+</div>
+</div>
+<p>El compuesto del segundo semestre muestra la cicatriz del deslizamiento, que no existía en el primero. La diferencia entre los dos compuestos es un método sencillo y robusto de detección de cambios, el mismo que se usa para inventariar deslizamientos después de un evento de lluvias o un sismo. Las series de tiempo de píxeles individuales muestran además la fenología de los cultivos y el momento del cambio.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dif</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">enmascarado</span><span class="p">[</span><span class="n">dias</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">enmascarado</span><span class="p">[</span><span class="n">dias</span> <span class="o">&lt;</span> <span class="mi">180</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">'width_ratios'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dif</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'RdBu'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.6</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">dif</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'cambio de NDVI (2.º - 1.er semestre)'</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([]);</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">fy</span><span class="p">,</span> <span class="n">fx</span><span class="p">),</span> <span class="n">nom</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[((</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="s1">'cultivo'</span><span class="p">,</span> <span class="s1">'tab:orange'</span><span class="p">),</span> <span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="s1">'bosque'</span><span class="p">,</span> <span class="s1">'tab:green'</span><span class="p">),</span> <span class="p">((</span><span class="mi">60</span><span class="p">,</span> <span class="mi">85</span><span class="p">),</span> <span class="s1">'deslizamiento'</span><span class="p">,</span> <span class="s1">'tab:red'</span><span class="p">)]:</span>
+    <span class="n">serie</span> <span class="o">=</span> <span class="n">enmascarado</span><span class="p">[:,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">fx</span><span class="p">]</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dias</span><span class="p">,</span> <span class="n">cubo</span><span class="p">[:,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">fx</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dias</span><span class="p">,</span> <span class="n">serie</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">nom</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">183</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="s1">'evento'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Día del año'</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'NDVI'</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'series de tiempo (puntos: observaciones sin nubes; línea: valor real)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">area</span> <span class="o">=</span> <span class="p">(</span><span class="n">dif</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">/</span> <span class="mf">1e4</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Área detectada como pérdida de vegetación: </span><span class="si">{</span><span class="n">area</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> ha (real </span><span class="si">{</span><span class="n">desliz</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="mf">1e4</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> ha, con píxeles de 10 m)'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3aff593f46727b4a2bb3a9bb99cfe6794e1c99ae66a54b0cd49c334b2c254e43.png" src="_images/3aff593f46727b4a2bb3a9bb99cfe6794e1c99ae66a54b0cd49c334b2c254e43.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Área detectada como pérdida de vegetación: 4.93 ha (real 4.93 ha, con píxeles de 10 m)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="google-earth-engine">
+<h2>Google Earth Engine<a class="headerlink" href="#google-earth-engine" title="Link to this heading">#</a></h2>
+<p>Google Earth Engine <span class="bibtex-citation" id="id3">[<a class="reference internal" href="bibliografia.html#id20" title="Noel Gorelick, Matt Hancher, Mike Dixon, Simon Ilyushchenko, David Thau, and Rebecca Moore. Google earth engine: planetary-scale geospatial analysis for everyone. Remote Sensing of Environment, 202:18–27, 2017.">Gorelick <em>et al.</em>, 2017</a>]</span> combina un catálogo de varios petabytes (Landsat completo, Sentinel-1, 2, 3 y 5P, MODIS, modelos de elevación, datos climáticos y muchos más) con un motor de cálculo distribuido. El usuario escribe un programa en JavaScript, en el editor de código, o en Python, con la biblioteca <code class="docutils literal notranslate"><span class="pre">earthengine-api</span></code> y paquetes como <code class="docutils literal notranslate"><span class="pre">geemap</span></code>, y el cálculo se hace en los servidores de Google; solo se descargan los resultados. Es gratuito para uso académico y no comercial, con una cuenta y un proyecto de Google Cloud registrados.</p>
+<p>Las operaciones del ejemplo anterior se escriben en Earth Engine casi igual. El fragmento siguiente, que no se ejecuta en este libro porque requiere autenticación, construye el compuesto de mediana de Sentinel-2 sin nubes para el Valle de Aburrá y calcula el NDVI:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ee</span>
+<span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s1">'mi-proyecto'</span><span class="p">)</span>
+
+<span class="n">aburra</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">([</span><span class="o">-</span><span class="mf">75.72</span><span class="p">,</span> <span class="mf">6.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">75.45</span><span class="p">,</span> <span class="mf">6.40</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">enmascarar_nubes</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="n">scl</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">'SCL'</span><span class="p">)</span>
+    <span class="n">validos</span> <span class="o">=</span> <span class="n">scl</span><span class="o">.</span><span class="n">neq</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">And</span><span class="p">(</span><span class="n">scl</span><span class="o">.</span><span class="n">neq</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span><span class="o">.</span><span class="n">And</span><span class="p">(</span><span class="n">scl</span><span class="o">.</span><span class="n">neq</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span><span class="o">.</span><span class="n">And</span><span class="p">(</span><span class="n">scl</span><span class="o">.</span><span class="n">neq</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>   <span class="c1"># sombra, nubes y cirros</span>
+    <span class="k">return</span> <span class="n">img</span><span class="o">.</span><span class="n">updateMask</span><span class="p">(</span><span class="n">validos</span><span class="p">)</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="n">s2</span> <span class="o">=</span> <span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">'COPERNICUS/S2_SR_HARMONIZED'</span><span class="p">)</span>
+      <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">aburra</span><span class="p">)</span>
+      <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">'2024-01-01'</span><span class="p">,</span> <span class="s1">'2024-12-31'</span><span class="p">)</span>
+      <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="s1">'CLOUDY_PIXEL_PERCENTAGE'</span><span class="p">,</span> <span class="mi">60</span><span class="p">))</span>
+      <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">enmascarar_nubes</span><span class="p">))</span>
+
+<span class="n">mediana</span> <span class="o">=</span> <span class="n">s2</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">aburra</span><span class="p">)</span>
+<span class="n">ndvi</span> <span class="o">=</span> <span class="n">mediana</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">'B8'</span><span class="p">,</span> <span class="s1">'B4'</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">'NDVI'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ndvi</span><span class="o">.</span><span class="n">reduceRegion</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">aburra</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="openeo-y-el-ecosistema-copernicus">
+<h2>openEO y el ecosistema Copernicus<a class="headerlink" href="#openeo-y-el-ecosistema-copernicus" title="Link to this heading">#</a></h2>
+<p>openEO <span class="bibtex-citation" id="id4">[<a class="reference internal" href="bibliografia.html#id21" title="Matthias Schramm, Edzer Pebesma, Milutin Milenković, and others. The openeo api: harmonising the use of earth observation cloud services using virtual data cube functionalities. Remote Sensing, 13(6):1125, 2021.">Schramm <em>et al.</em>, 2021</a>]</span> es una interfaz abierta y estándar para procesar cubos de datos en distintos proveedores en la nube, de modo que el mismo programa funciona en varios servicios. El Copernicus Data Space Ecosystem (CDSE), la plataforma oficial de los datos Copernicus, ofrece un navegador de imágenes (Copernicus Browser), un servicio openEO, la API de Sentinel Hub con su constructor de peticiones (Request Builder) y un entorno JupyterLab con los datos montados. El fragmento equivalente en openEO es:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
+<span class="n">con</span> <span class="o">=</span> <span class="n">openeo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'openeo.dataspace.copernicus.eu'</span><span class="p">)</span><span class="o">.</span><span class="n">authenticate_oidc</span><span class="p">()</span>
+
+<span class="n">cubo</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">load_collection</span><span class="p">(</span>
+    <span class="s1">'SENTINEL2_L2A'</span><span class="p">,</span>
+    <span class="n">spatial_extent</span><span class="o">=</span><span class="p">{</span><span class="s1">'west'</span><span class="p">:</span> <span class="o">-</span><span class="mf">75.72</span><span class="p">,</span> <span class="s1">'south'</span><span class="p">:</span> <span class="mf">6.05</span><span class="p">,</span> <span class="s1">'east'</span><span class="p">:</span> <span class="o">-</span><span class="mf">75.45</span><span class="p">,</span> <span class="s1">'north'</span><span class="p">:</span> <span class="mf">6.40</span><span class="p">},</span>
+    <span class="n">temporal_extent</span><span class="o">=</span><span class="p">[</span><span class="s1">'2024-01-01'</span><span class="p">,</span> <span class="s1">'2024-12-31'</span><span class="p">],</span>
+    <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s1">'B04'</span><span class="p">,</span> <span class="s1">'B08'</span><span class="p">,</span> <span class="s1">'SCL'</span><span class="p">])</span>
+<span class="n">scl</span> <span class="o">=</span> <span class="n">cubo</span><span class="o">.</span><span class="n">band</span><span class="p">(</span><span class="s1">'SCL'</span><span class="p">)</span>
+<span class="n">nubes</span> <span class="o">=</span> <span class="p">(</span><span class="n">scl</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">scl</span> <span class="o">==</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">scl</span> <span class="o">==</span> <span class="mi">9</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">scl</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">cubo</span> <span class="o">=</span> <span class="n">cubo</span><span class="o">.</span><span class="n">filter_bands</span><span class="p">([</span><span class="s1">'B04'</span><span class="p">,</span> <span class="s1">'B08'</span><span class="p">])</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">nubes</span><span class="p">)</span>
+<span class="n">ndvi</span> <span class="o">=</span> <span class="n">cubo</span><span class="o">.</span><span class="n">ndvi</span><span class="p">(</span><span class="n">red</span><span class="o">=</span><span class="s1">'B04'</span><span class="p">,</span> <span class="n">nir</span><span class="o">=</span><span class="s1">'B08'</span><span class="p">)</span><span class="o">.</span><span class="n">reduce_dimension</span><span class="p">(</span><span class="n">dimension</span><span class="o">=</span><span class="s1">'t'</span><span class="p">,</span> <span class="n">reducer</span><span class="o">=</span><span class="s1">'median'</span><span class="p">)</span>
+<span class="n">ndvi</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">'ndvi_aburra_2024.tif'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Los dos programas expresan la misma secuencia: seleccionar una colección, filtrarla en el espacio y el tiempo, enmascarar las nubes, reducir la dimensión temporal y calcular un índice. Esa es la forma de pensar que este capítulo busca transmitir, más que la sintaxis de una plataforma particular, que cambia con frecuencia.</p>
+</section>
+<section id="otras-plataformas">
+<h2>Otras plataformas<a class="headerlink" href="#otras-plataformas" title="Link to this heading">#</a></h2>
+<p>Microsoft Planetary Computer y Amazon Web Services publican los mismos archivos (Landsat, Sentinel) como objetos en la nube con catálogos STAC, que se leen directamente desde Python con <code class="docutils literal notranslate"><span class="pre">pystac-client</span></code> y <code class="docutils literal notranslate"><span class="pre">stackstac</span></code> u <code class="docutils literal notranslate"><span class="pre">odc-stac</span></code> y se procesan con <code class="docutils literal notranslate"><span class="pre">xarray</span></code> y <code class="docutils literal notranslate"><span class="pre">dask</span></code>. Open Data Cube es un programa libre para montar cubos de datos propios, que usan varias agencias nacionales. Las plataformas comerciales, como Planet o Sentinel Hub, ofrecen imágenes de mayor resolución o mayor frecuencia y servicios de procesamiento por suscripción.</p>
+</section>
+<section id="para-profundizar">
+<h2>Para profundizar<a class="headerlink" href="#para-profundizar" title="Link to this heading">#</a></h2>
+<p><span class="bibtex-citation" id="id5">Gorelick <em>et al.</em> [<a class="reference internal" href="bibliografia.html#id20" title="Noel Gorelick, Matt Hancher, Mike Dixon, Simon Ilyushchenko, David Thau, and Rebecca Moore. Google earth engine: planetary-scale geospatial analysis for everyone. Remote Sensing of Environment, 202:18–27, 2017.">2017</a>]</span> describe la arquitectura de Earth Engine; <span class="bibtex-citation" id="id6">Schramm <em>et al.</em> [<a class="reference internal" href="bibliografia.html#id21" title="Matthias Schramm, Edzer Pebesma, Milutin Milenković, and others. The openeo api: harmonising the use of earth observation cloud services using virtual data cube functionalities. Remote Sensing, 13(6):1125, 2021.">2021</a>]</span>, la de openEO; y <span class="bibtex-citation" id="id7">Mahecha <em>et al.</em> [<a class="reference internal" href="bibliografia.html#id22" title="Miguel D. Mahecha, Fabian Gans, Gunnar Brandt, and others. Earth system data cubes unravel global multivariate dynamics. Earth System Dynamics, 11(1):201–234, 2020.">2020</a>]</span>, el concepto de cubo de datos del sistema Tierra. Las lecturas recomendadas sobre plataformas de la página del curso comparan las opciones disponibles. Los tutoriales del curso de Google Earth Engine, Copernicus Browser, Request Builder y JupyterLab de CDSE se listan en el apéndice <a class="reference internal" href="A_Practicas.html"><span class="doc">Prácticas y talleres del curso</span></a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="13_SensoresActivos.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Sensores activos: radar, InSAR y LiDAR</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="A_Practicas.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Prácticas y talleres del curso</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cubos-de-datos">Cubos de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-earth-engine">Google Earth Engine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openeo-y-el-ecosistema-copernicus">openEO y el ecosistema Copernicus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-plataformas">Otras plataformas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-profundizar">Para profundizar</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Edier V. Aristizábal G.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>Desarrollado por <a href="https://github.com/edieraristizabal">Edier Aristizábal</a>, Facultad de Minas, Universidad Nacional de Colombia.
+<a href="https://edieraristizabal.github.io/Sensores-Remotos/">Página del curso</a> ·
+<a href="https://edieraristizabal.github.io/Sensores-Remotos/html/01_SensoresRemoto.html">Diapositivas</a></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

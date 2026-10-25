@@ -1,0 +1,893 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Preprocesamiento: correcciones geométricas y radiométricas &#8212; Sensores remotos para geociencias</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '10_Preprocesamiento';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://edieraristizabal.github.io/Sensores-Remotos/libro/10_Preprocesamiento.html" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Realce, índices y transformaciones" href="11_Realce.html" />
+    <link rel="prev" title="Fotogeomorfología y fotogeología" href="09_Fotogeologia.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Sensores remotos para geociencias - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Sensores remotos para geociencias - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Sensores remotos para geociencias
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentos físicos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_Introduccion.html">Introducción a los sensores remotos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Radiacion.html">Radiación electromagnética</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Interaccion.html">Interacción con la atmósfera y con la superficie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Plataformas.html">Plataformas, órbitas y sensores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Resolucion.html">Resolución de los sensores</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fotografía aérea y fotointerpretación</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="06_FotografiaAerea.html">Fotografía aérea y visión estereoscópica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Fotogrametria.html">Fotogrametría: escala, desplazamiento del relieve y paralaje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Fotointerpretacion.html">Criterios de fotointerpretación y lectura del relieve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Fotogeologia.html">Fotogeomorfología y fotogeología</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Imágenes de satélite</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Preprocesamiento: correcciones geométricas y radiométricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Realce.html">Realce, índices y transformaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_Clasificacion.html">Clasificación de imágenes y evaluación de la exactitud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_SensoresActivos.html">Sensores activos: radar, InSAR y LiDAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Plataformas_EO.html">Plataformas de observación de la Tierra y cubos de datos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="A_Practicas.html">Prácticas y talleres del curso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliografia.html">Bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/edieraristizabal/Sensores-Remotos/blob/master/libro/10_Preprocesamiento.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos/edit/master/libro/10_Preprocesamiento.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos/issues/new?title=Issue%20on%20page%20%2F10_Preprocesamiento.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/10_Preprocesamiento.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Preprocesamiento: correcciones geométricas y radiométricas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#niveles-de-procesamiento">Niveles de procesamiento</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correcciones-geometricas">Correcciones geométricas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ortorrectificacion">Ortorrectificación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remuestreo">Remuestreo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correcciones-radiometricas-errores-del-sensor">Correcciones radiométricas: errores del sensor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-nivel-digital-a-reflectancia-en-el-tope-de-la-atmosfera">De nivel digital a reflectancia en el tope de la atmósfera</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correccion-atmosferica">Corrección atmosférica</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correccion-topografica">Corrección topográfica</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-profundizar">Para profundizar</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="preprocesamiento-correcciones-geometricas-y-radiometricas">
+<h1>Preprocesamiento: correcciones geométricas y radiométricas<a class="headerlink" href="#preprocesamiento-correcciones-geometricas-y-radiometricas" title="Link to this heading">#</a></h1>
+<p>Una imagen recién captada por un sensor no es un mapa ni una medida directa de la superficie. Sus píxeles están desplazados respecto a su posición real por la geometría de la adquisición y por el relieve, y sus valores, los niveles digitales (ND), mezclan la reflectancia de la superficie con el efecto de la atmósfera, la iluminación y la calibración del sensor. El preprocesamiento corrige estas distorsiones para que la imagen se pueda superponer a otra información geográfica y para que sus valores sean comparables entre fechas y sensores <span class="bibtex-citation" id="id1">[<a class="reference internal" href="bibliografia.html#id2" title="Emilio Chuvieco. Teledetección ambiental: la observación de la Tierra desde el espacio. Ariel, Barcelona, 3 edition, 2008.">Chuvieco, 2008</a>, <a class="reference internal" href="bibliografia.html#id5" title="John A. Richards. Remote Sensing Digital Image Analysis: An Introduction. Springer, Berlin, 5 edition, 2013.">Richards, 2013</a>]</span>.</p>
+<section id="niveles-de-procesamiento">
+<h2>Niveles de procesamiento<a class="headerlink" href="#niveles-de-procesamiento" title="Link to this heading">#</a></h2>
+<p>Las agencias distribuyen las imágenes con distintos niveles de procesamiento. El nivel 0 son los datos crudos del sensor. El nivel 1 tiene correcciones radiométricas de calibración y geométricas de sistema; en Landsat (L1TP) y Sentinel-2 (L1C) además está ortorrectificado con un modelo de elevación, y sus valores son radiancia o reflectancia en el tope de la atmósfera (TOA). El nivel 2 está corregido atmosféricamente y sus valores son reflectancia de superficie, o de fondo de la atmósfera (BOA): es el producto Landsat Collection 2 Level-2 y Sentinel-2 L2A, el que conviene usar en casi todos los análisis. Los niveles superiores son productos derivados, como índices, temperaturas de superficie o coberturas.</p>
+</section>
+<section id="correcciones-geometricas">
+<h2>Correcciones geométricas<a class="headerlink" href="#correcciones-geometricas" title="Link to this heading">#</a></h2>
+<p>Las deformaciones geométricas de una imagen tienen causas sistemáticas, que se corrigen con modelos de la plataforma y del sensor (la rotación de la Tierra durante la adquisición, la curvatura terrestre, la variación de la escala a lo largo del barrido, la velocidad y la altitud de la plataforma), y causas no sistemáticas, como las variaciones de actitud (alabeo, cabeceo y guiñada) o el relieve. Las primeras se corrigen con la información orbital; las segundas exigen puntos de control en el terreno (GCP), puntos reconocibles en la imagen con coordenadas conocidas en el mapa.</p>
+<p>Con los puntos de control se ajusta una transformación entre las coordenadas de la imagen (columna, fila) y las del mapa (este, norte). La más simple es la afín, o polinomio de primer grado, que admite traslación, rotación, escala y sesgo:</p>
+<div class="math notranslate nohighlight">
+\[E = a_0 + a_1\,c + a_2\,f, \qquad N = b_0 + b_1\,c + b_2\,f.\]</div>
+<p>Con más de tres puntos el sistema se resuelve por mínimos cuadrados, y la calidad del ajuste se mide con el error medio cuadrático (RMSE) de los residuos, que debe ser menor que medio píxel. La celda siguiente hace el ajuste con puntos de control simulados.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">ndimage</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'figure.dpi'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># transformación verdadera: píxel de 30 m, rotación de 8°, origen en (430000, 690000)</span>
+<span class="n">ang</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">A_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">430000</span><span class="p">,</span> <span class="mi">30</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span><span class="p">),</span> <span class="mi">30</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ang</span><span class="p">)],</span>
+                   <span class="p">[</span><span class="mi">690000</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ang</span><span class="p">),</span> <span class="o">-</span><span class="mi">30</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span><span class="p">)]])</span>
+<span class="n">cf</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>                        <span class="c1"># (columna, fila) de 12 GCP</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span> <span class="n">cf</span><span class="p">])</span>
+<span class="n">EN</span> <span class="o">=</span> <span class="n">M</span> <span class="o">@</span> <span class="n">A_real</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>              <span class="c1"># coordenadas de mapa con error de 8 m</span>
+<span class="n">coef</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">EN</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">EN</span> <span class="o">-</span> <span class="n">M</span> <span class="o">@</span> <span class="n">coef</span>
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">res</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Coeficientes ajustados (E y N):'</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">coef</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'RMSE = </span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> m = </span><span class="si">{</span><span class="n">rmse</span><span class="o">/</span><span class="mi">30</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> píxeles'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="o">.</span><span class="n">T</span><span class="p">))[:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  GCP </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">: residuo </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="si">:</span><span class="s1">5.1f</span><span class="si">}</span><span class="s1"> m'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coeficientes ajustados (E y N):
+[[ 4.29993673e+05  2.97130000e+01  4.18400000e+00]
+ [ 6.90001743e+05 -4.17600000e+00 -2.97080000e+01]]
+RMSE = 7.3 m = 0.24 píxeles
+  GCP  3: residuo  13.4 m
+  GCP  8: residuo   9.4 m
+  GCP  6: residuo   9.0 m
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ortorrectificacion">
+<h2>Ortorrectificación<a class="headerlink" href="#ortorrectificacion" title="Link to this heading">#</a></h2>
+<p>La transformación afín no corrige el desplazamiento del relieve, que depende de la altura de cada punto (capítulo <a class="reference internal" href="07_Fotogrametria.html"><span class="doc">Fotogrametría: escala, desplazamiento del relieve y paralaje</span></a>). La ortorrectificación usa un modelo digital de elevación y un modelo riguroso del sensor, o un modelo de coeficientes polinomiales racionales (RPC) entregado con la imagen, para llevar cada píxel a su posición ortogonal. En imágenes de satélite con visión vertical el desplazamiento es pequeño, pero en imágenes apuntadas, como las de muy alta resolución tomadas con ángulos de 20 o 30°, puede llegar a cientos de metros en zonas montañosas como los Andes. La celda siguiente estima ese desplazamiento.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ang_vista</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'ángulo de visión </span><span class="si">{</span><span class="n">ang_vista</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">°, desnivel </span><span class="si">{</span><span class="n">h</span><span class="si">:</span><span class="s1">4d</span><span class="si">}</span><span class="s1"> m -&gt; desplazamiento horizontal </span><span class="si">{</span><span class="n">h</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">ang_vista</span><span class="p">))</span><span class="si">:</span><span class="s1">6.0f</span><span class="si">}</span><span class="s1"> m'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ángulo de visión  0°, desnivel  500 m -&gt; desplazamiento horizontal      0 m
+ángulo de visión  0°, desnivel 2000 m -&gt; desplazamiento horizontal      0 m
+ángulo de visión  5°, desnivel  500 m -&gt; desplazamiento horizontal     44 m
+ángulo de visión  5°, desnivel 2000 m -&gt; desplazamiento horizontal    175 m
+ángulo de visión 15°, desnivel  500 m -&gt; desplazamiento horizontal    134 m
+ángulo de visión 15°, desnivel 2000 m -&gt; desplazamiento horizontal    536 m
+ángulo de visión 30°, desnivel  500 m -&gt; desplazamiento horizontal    289 m
+ángulo de visión 30°, desnivel 2000 m -&gt; desplazamiento horizontal   1155 m
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="remuestreo">
+<h2>Remuestreo<a class="headerlink" href="#remuestreo" title="Link to this heading">#</a></h2>
+<p>Una vez definida la transformación, se crea la imagen corregida en una malla regular y, para cada píxel nuevo, se busca su posición en la imagen original. Como esa posición casi nunca coincide con el centro de un píxel, hay que interpolar. El vecino más cercano toma el valor del píxel más próximo; conserva los valores originales, lo que es importante para clasificaciones, pero produce bordes escalonados. La interpolación bilineal promedia los cuatro vecinos ponderados por la distancia y suaviza la imagen. La convolución cúbica usa 16 vecinos y produce un resultado más nítido, pero puede crear valores que no estaban en la imagen original.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>
+<span class="n">img</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">img</span><span class="p">[</span><span class="mi">18</span><span class="p">:</span><span class="mi">22</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'original'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">orden</span><span class="p">,</span> <span class="n">nom</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">'vecino más cercano'</span><span class="p">,</span> <span class="s1">'bilineal'</span><span class="p">,</span> <span class="s1">'cúbica'</span><span class="p">]):</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ndimage</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">orden</span><span class="p">,</span> <span class="n">reshape</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'rotada 20°, </span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/eca35a180f43453e00b2261c16326d002fb6311bfac85ec2df88e37213778106.png" src="_images/eca35a180f43453e00b2261c16326d002fb6311bfac85ec2df88e37213778106.png" />
+</div>
+</div>
+</section>
+<section id="correcciones-radiometricas-errores-del-sensor">
+<h2>Correcciones radiométricas: errores del sensor<a class="headerlink" href="#correcciones-radiometricas-errores-del-sensor" title="Link to this heading">#</a></h2>
+<p>Algunos defectos de la imagen vienen del sensor. El bandeado (striping) aparece cuando los detectores que registran líneas o columnas distintas no están perfectamente calibrados entre sí, y produce franjas periódicas; se corrige igualando la media y la desviación estándar de cada detector con las de toda la imagen. La pérdida de líneas (line drop) ocurre cuando un detector falla y deja líneas sin datos, que se rellenan con el promedio de las vecinas; el caso más conocido es el fallo del corrector de líneas de Landsat 7 en 2003, que dejó franjas sin datos en todas sus imágenes posteriores. El ruido aleatorio de bits produce píxeles aislados muy brillantes u oscuros, el efecto sal y pimienta, que se elimina con un filtro de mediana. La celda siguiente simula y corrige los tres defectos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">yy</span><span class="p">,</span> <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">]</span>
+<span class="n">limpia</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="o">+</span> <span class="mf">0.15</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xx</span> <span class="o">/</span> <span class="mi">15</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">yy</span> <span class="o">/</span> <span class="mi">22</span><span class="p">)</span> <span class="o">+</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># bandeado: 6 detectores con ganancia y desplazamiento distintos</span>
+<span class="n">ganancia</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span> <span class="n">despl</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">det</span> <span class="o">=</span> <span class="n">yy</span> <span class="o">%</span> <span class="mi">6</span>
+<span class="n">bandeada</span> <span class="o">=</span> <span class="n">limpia</span> <span class="o">*</span> <span class="n">ganancia</span><span class="p">[</span><span class="n">det</span><span class="p">]</span> <span class="o">+</span> <span class="n">despl</span><span class="p">[</span><span class="n">det</span><span class="p">]</span>
+<span class="c1"># pérdida de líneas y ruido sal y pimienta</span>
+<span class="n">defectuosa</span> <span class="o">=</span> <span class="n">bandeada</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">defectuosa</span><span class="p">[</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">mascara_sp</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">0.01</span>
+<span class="n">defectuosa</span><span class="p">[</span><span class="n">mascara_sp</span><span class="p">]</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="n">mascara_sp</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="n">corr</span> <span class="o">=</span> <span class="n">defectuosa</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">corr</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">median_filter</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>                         <span class="c1"># sal y pimienta y líneas aisladas</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>                                                  <span class="c1"># destriping por igualación de momentos</span>
+    <span class="n">filas</span> <span class="o">=</span> <span class="n">corr</span><span class="p">[</span><span class="n">d</span><span class="p">::</span><span class="mi">6</span><span class="p">]</span>
+    <span class="n">corr</span><span class="p">[</span><span class="n">d</span><span class="p">::</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">filas</span> <span class="o">-</span> <span class="n">filas</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">filas</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="n">corr</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">+</span> <span class="n">corr</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">im</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="p">[</span><span class="n">limpia</span><span class="p">,</span> <span class="n">defectuosa</span><span class="p">,</span> <span class="n">corr</span><span class="p">],</span> <span class="p">[</span><span class="s1">'escena real'</span><span class="p">,</span> <span class="s1">'con bandeado, líneas perdidas y ruido'</span><span class="p">,</span> <span class="s1">'corregida'</span><span class="p">]):</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.7</span><span class="p">);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Error medio absoluto respecto a la escena real: defectuosa </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">defectuosa</span><span class="o">-</span><span class="n">limpia</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, corregida </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">corr</span><span class="o">-</span><span class="n">limpia</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/03cfc4bdaaa784a7a5030a8cf65970d7965fc4d390dc7af3b1bd1e1509d73622.png" src="_images/03cfc4bdaaa784a7a5030a8cf65970d7965fc4d390dc7af3b1bd1e1509d73622.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error medio absoluto respecto a la escena real: defectuosa 0.060, corregida 0.026
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="de-nivel-digital-a-reflectancia-en-el-tope-de-la-atmosfera">
+<h2>De nivel digital a reflectancia en el tope de la atmósfera<a class="headerlink" href="#de-nivel-digital-a-reflectancia-en-el-tope-de-la-atmosfera" title="Link to this heading">#</a></h2>
+<p>El nivel digital es un número sin unidades. Para convertirlo en radiancia espectral en el sensor se usan los coeficientes de calibración que vienen en los metadatos de cada escena, una ganancia y un desplazamiento por banda: <span class="math notranslate nohighlight">\(L = G \cdot ND + B\)</span>. La radiancia depende todavía de la iluminación, que cambia con la fecha y la hora, de modo que para comparar imágenes se convierte en reflectancia en el tope de la atmósfera, corrigiendo la irradiancia solar exoatmosférica de la banda (<span class="math notranslate nohighlight">\(E_{sol}\)</span>), la distancia Tierra-Sol en unidades astronómicas (<span class="math notranslate nohighlight">\(d\)</span>) y el ángulo cenital solar (<span class="math notranslate nohighlight">\(\theta_s\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\rho_{TOA} = \frac{\pi\, L\, d^2}{E_{sol}\, \cos\theta_s}.\]</div>
+<p>Esta es la corrección solar. Los productos Landsat de nivel 1 ya traen coeficientes que convierten el ND directamente en reflectancia TOA, y Sentinel-2 L1C entrega directamente reflectancia TOA escalada por 10 000.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dist_tierra_sol</span><span class="p">(</span><span class="n">dia</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.01672</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mf">0.9856</span> <span class="o">*</span> <span class="p">(</span><span class="n">dia</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)))</span>
+
+<span class="n">ND</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">8500</span><span class="p">,</span> <span class="mi">9200</span><span class="p">,</span> <span class="mi">7600</span><span class="p">,</span> <span class="mi">21000</span><span class="p">])</span>                  <span class="c1"># rojo y NIR de dos coberturas, 16 bits</span>
+<span class="n">G</span><span class="p">,</span> <span class="n">Boff</span><span class="p">,</span> <span class="n">E_sol</span> <span class="o">=</span> <span class="mf">0.0118</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.0</span><span class="p">,</span> <span class="mf">1554.0</span>                     <span class="c1"># valores típicos para la banda roja de OLI</span>
+<span class="k">for</span> <span class="n">dia</span><span class="p">,</span> <span class="n">elev</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">52</span><span class="p">),</span> <span class="p">(</span><span class="mi">196</span><span class="p">,</span> <span class="mi">68</span><span class="p">)]:</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">G</span> <span class="o">*</span> <span class="n">ND</span> <span class="o">+</span> <span class="n">Boff</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">dist_tierra_sol</span><span class="p">(</span><span class="n">dia</span><span class="p">)</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="n">d</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">E_sol</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">90</span> <span class="o">-</span> <span class="n">elev</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'día </span><span class="si">{</span><span class="n">dia</span><span class="si">:</span><span class="s1">3d</span><span class="si">}</span><span class="s1">, elevación solar </span><span class="si">{</span><span class="n">elev</span><span class="si">}</span><span class="s1">°, d = </span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> UA -&gt; radiancia </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">  reflectancia TOA </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>día  15, elevación solar 52°, d = 0.9836 UA -&gt; radiancia [ 41.3  49.6  30.7 188.8]  reflectancia TOA [0.103 0.123 0.076 0.469]
+día 196, elevación solar 68°, d = 1.0165 UA -&gt; radiancia [ 41.3  49.6  30.7 188.8]  reflectancia TOA [0.093 0.112 0.069 0.425]
+</pre></div>
+</div>
+</div>
+</div>
+<p>El mismo nivel digital da reflectancias distintas en enero y en julio porque la iluminación es distinta. Sin esta corrección, una comparación entre las dos fechas confundiría el cambio de iluminación con un cambio en la superficie.</p>
+</section>
+<section id="correccion-atmosferica">
+<h2>Corrección atmosférica<a class="headerlink" href="#correccion-atmosferica" title="Link to this heading">#</a></h2>
+<p>La reflectancia TOA todavía incluye la contribución de la atmósfera: la radiancia de trayectoria, la luz dispersada hacia el sensor sin llegar a la superficie, que aclara la imagen sobre todo en el azul, y la atenuación de la señal en sus dos recorridos. La corrección atmosférica estima la reflectancia de superficie. Los métodos rigurosos usan modelos de transferencia radiativa, como 6S o MODTRAN, con datos de aerosoles y vapor de agua, y son los que aplican las agencias para generar los productos de nivel 2 (LaSRC en Landsat y Sen2Cor en Sentinel-2). Un método empírico sencillo es la sustracción del objeto oscuro (DOS) <span class="bibtex-citation" id="id2">[<a class="reference internal" href="bibliografia.html#id16" title="Pat S. Chavez. An improved dark-object subtraction technique for atmospheric scattering correction of multispectral data. Remote Sensing of Environment, 24(3):459–479, 1988.">Chavez, 1988</a>]</span>: supone que en cada banda hay píxeles que deberían tener reflectancia casi nula, como el agua profunda o las sombras, y que su valor observado se debe solo a la radiancia de trayectoria, que se resta a toda la banda. La celda siguiente aplica la idea a una escena simulada.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bandas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'azul'</span><span class="p">,</span> <span class="s1">'verde'</span><span class="p">,</span> <span class="s1">'rojo'</span><span class="p">,</span> <span class="s1">'NIR'</span><span class="p">]</span>
+<span class="n">rho_sup</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'agua'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="s1">'vegetación'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.42</span><span class="p">],</span> <span class="s1">'suelo'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">]}</span>
+<span class="n">trayectoria</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.055</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">])</span>          <span class="c1"># radiancia de trayectoria (en reflectancia), mayor en el azul</span>
+<span class="n">transm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.80</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.88</span><span class="p">,</span> <span class="mf">0.92</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="s2">"cobertura"</span><span class="si">:</span><span class="s1">11s</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="s2">"banda"</span><span class="si">:</span><span class="s1">6s</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="s2">"superficie"</span><span class="si">:</span><span class="s1">&gt;10s</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="s2">"TOA"</span><span class="si">:</span><span class="s1">&gt;7s</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="s2">"DOS"</span><span class="si">:</span><span class="s1">&gt;7s</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">oscuro</span> <span class="o">=</span> <span class="n">transm</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rho_sup</span><span class="p">[</span><span class="s1">'agua'</span><span class="p">])</span> <span class="o">*</span> <span class="n">transm</span> <span class="o">+</span> <span class="n">trayectoria</span>    <span class="c1"># píxel oscuro de la escena</span>
+<span class="n">oscuro_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">transm</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">transm</span> <span class="o">+</span> <span class="n">trayectoria</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">rho_sup</span><span class="o">.</span><span class="n">values</span><span class="p">()],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">cob</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">rho_sup</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">toa</span> <span class="o">=</span> <span class="n">transm</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">transm</span> <span class="o">+</span> <span class="n">trayectoria</span>
+    <span class="n">dos</span> <span class="o">=</span> <span class="n">toa</span> <span class="o">-</span> <span class="n">oscuro_min</span> <span class="o">+</span> <span class="mf">0.01</span>                          <span class="c1"># se deja un 1 % como reflectancia mínima esperada</span>
+    <span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t_</span><span class="p">,</span> <span class="n">d_</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bandas</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">toa</span><span class="p">,</span> <span class="n">dos</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">cob</span><span class="si">:</span><span class="s1">11s</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s1">6s</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s1">10.3f</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">t_</span><span class="si">:</span><span class="s1">7.3f</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">d_</span><span class="si">:</span><span class="s1">7.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cobertura   banda  superficie     TOA     DOS
+agua        azul        0.040   0.116   0.016
+agua        verde       0.050   0.091   0.010
+agua        rojo        0.030   0.053   0.010
+agua        NIR         0.010   0.018   0.010
+vegetación  azul        0.030   0.109   0.010
+vegetación  verde       0.080   0.113   0.032
+vegetación  rojo        0.040   0.061   0.018
+vegetación  NIR         0.420   0.365   0.357
+suelo       azul        0.100   0.154   0.055
+suelo       verde       0.150   0.163   0.082
+suelo       rojo        0.200   0.185   0.142
+suelo       NIR         0.280   0.247   0.239
+</pre></div>
+</div>
+</div>
+</div>
+<p>El DOS elimina la mayor parte del aclaramiento en el azul, pero no la atenuación, de modo que las reflectancias altas quedan algo subestimadas. Por eso, siempre que existan, conviene usar los productos de nivel 2 de las agencias.</p>
+</section>
+<section id="correccion-topografica">
+<h2>Corrección topográfica<a class="headerlink" href="#correccion-topografica" title="Link to this heading">#</a></h2>
+<p>En zonas montañosas, una misma cobertura se ve más brillante en las laderas que miran hacia el Sol y más oscura en las opuestas. La corrección topográfica tiene en cuenta la iluminación local, el coseno del ángulo de incidencia <span class="math notranslate nohighlight">\(i\)</span> entre el Sol y la normal al terreno, calculado con un modelo de elevación. La corrección del coseno, <span class="math notranslate nohighlight">\(\rho_h = \rho\,\cos\theta_s / \cos i\)</span>, sobrecorrige las laderas poco iluminadas; la corrección C, <span class="math notranslate nohighlight">\(\rho_h = \rho\,(\cos\theta_s + C)/(\cos i + C)\)</span>, con <span class="math notranslate nohighlight">\(C\)</span> estimada por regresión entre <span class="math notranslate nohighlight">\(\rho\)</span> y <span class="math notranslate nohighlight">\(\cos i\)</span>, es más robusta y es la más usada. La celda siguiente la aplica a un cerro sintético cubierto por un bosque homogéneo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">yy</span><span class="p">,</span> <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="mf">30.0</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="mi">1500</span> <span class="o">+</span> <span class="mi">600</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">xx</span> <span class="o">-</span> <span class="mi">3000</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">yy</span> <span class="o">-</span> <span class="mi">3000</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">1300</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">gy</span><span class="p">,</span> <span class="n">gx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">pend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">gx</span><span class="p">,</span> <span class="n">gy</span><span class="p">));</span> <span class="n">asp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="o">-</span><span class="n">gx</span><span class="p">,</span> <span class="n">gy</span><span class="p">)</span>
+<span class="n">theta_s</span><span class="p">,</span> <span class="n">az_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">cos_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta_s</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">pend</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta_s</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">pend</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">az_s</span> <span class="o">-</span> <span class="n">asp</span><span class="p">)</span>
+<span class="n">rho_real</span> <span class="o">=</span> <span class="mf">0.30</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">dem</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">rho_obs</span> <span class="o">=</span> <span class="n">rho_real</span> <span class="o">*</span> <span class="n">cos_i</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta_s</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.85</span> <span class="o">+</span> <span class="mf">0.15</span> <span class="o">*</span> <span class="n">rho_real</span>        <span class="c1"># parte difusa no depende de la pendiente</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">cos_i</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">rho_obs</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="mi">1</span><span class="p">);</span> <span class="n">C</span> <span class="o">=</span> <span class="n">b</span> <span class="o">/</span> <span class="n">m</span>
+<span class="n">rho_cos</span> <span class="o">=</span> <span class="n">rho_obs</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta_s</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">cos_i</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">rho_c</span> <span class="o">=</span> <span class="n">rho_obs</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta_s</span><span class="p">)</span> <span class="o">+</span> <span class="n">C</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">cos_i</span> <span class="o">+</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">im</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="p">[</span><span class="n">rho_obs</span><span class="p">,</span> <span class="n">rho_cos</span><span class="p">,</span> <span class="n">rho_c</span><span class="p">],</span> <span class="p">[</span><span class="s1">'observada'</span><span class="p">,</span> <span class="s1">'corrección del coseno'</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'corrección C (C = </span><span class="si">{</span><span class="n">C</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)'</span><span class="p">]):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'viridis'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.45</span><span class="p">);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="se">\n</span><span class="s1">desv. estándar </span><span class="si">{</span><span class="n">im</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'reflectancia NIR'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5726ac6334fe5a5a62131a1780eb2f5a8abf2a7a837a3bf0f8a6a9b1a512e403.png" src="_images/5726ac6334fe5a5a62131a1780eb2f5a8abf2a7a837a3bf0f8a6a9b1a512e403.png" />
+</div>
+</div>
+</section>
+<section id="para-profundizar">
+<h2>Para profundizar<a class="headerlink" href="#para-profundizar" title="Link to this heading">#</a></h2>
+<p>El capítulo 6 de <span class="bibtex-citation" id="id3">[<a class="reference internal" href="bibliografia.html#id2" title="Emilio Chuvieco. Teledetección ambiental: la observación de la Tierra desde el espacio. Ariel, Barcelona, 3 edition, 2008.">Chuvieco, 2008</a>]</span> y los capítulos 2 a 4 de <span class="bibtex-citation" id="id4">[<a class="reference internal" href="bibliografia.html#id5" title="John A. Richards. Remote Sensing Digital Image Analysis: An Introduction. Springer, Berlin, 5 edition, 2013.">Richards, 2013</a>]</span> tratan las correcciones geométricas y radiométricas en detalle. <span class="bibtex-citation" id="id5">Schowengerdt [<a class="reference internal" href="bibliografia.html#id6" title="Robert A. Schowengerdt. Remote Sensing: Models and Methods for Image Processing. Academic Press, Burlington, 3 edition, 2007.">2007</a>]</span> desarrolla los modelos de sensor y de remuestreo. El taller de descarga del curso muestra cómo obtener directamente productos de nivel 2 de Landsat y Sentinel-2.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="09_Fotogeologia.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Fotogeomorfología y fotogeología</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="11_Realce.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Realce, índices y transformaciones</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#niveles-de-procesamiento">Niveles de procesamiento</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correcciones-geometricas">Correcciones geométricas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ortorrectificacion">Ortorrectificación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remuestreo">Remuestreo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correcciones-radiometricas-errores-del-sensor">Correcciones radiométricas: errores del sensor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-nivel-digital-a-reflectancia-en-el-tope-de-la-atmosfera">De nivel digital a reflectancia en el tope de la atmósfera</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correccion-atmosferica">Corrección atmosférica</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correccion-topografica">Corrección topográfica</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-profundizar">Para profundizar</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Edier V. Aristizábal G.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>Desarrollado por <a href="https://github.com/edieraristizabal">Edier Aristizábal</a>, Facultad de Minas, Universidad Nacional de Colombia.
+<a href="https://edieraristizabal.github.io/Sensores-Remotos/">Página del curso</a> ·
+<a href="https://edieraristizabal.github.io/Sensores-Remotos/html/01_SensoresRemoto.html">Diapositivas</a></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

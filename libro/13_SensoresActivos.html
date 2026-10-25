@@ -1,0 +1,858 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Sensores activos: radar, InSAR y LiDAR &#8212; Sensores remotos para geociencias</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '13_SensoresActivos';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://edieraristizabal.github.io/Sensores-Remotos/libro/13_SensoresActivos.html" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Plataformas de observación de la Tierra y cubos de datos" href="14_Plataformas_EO.html" />
+    <link rel="prev" title="Clasificación de imágenes y evaluación de la exactitud" href="12_Clasificacion.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Sensores remotos para geociencias - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Sensores remotos para geociencias - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Sensores remotos para geociencias
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentos físicos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_Introduccion.html">Introducción a los sensores remotos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Radiacion.html">Radiación electromagnética</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Interaccion.html">Interacción con la atmósfera y con la superficie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Plataformas.html">Plataformas, órbitas y sensores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Resolucion.html">Resolución de los sensores</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fotografía aérea y fotointerpretación</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="06_FotografiaAerea.html">Fotografía aérea y visión estereoscópica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Fotogrametria.html">Fotogrametría: escala, desplazamiento del relieve y paralaje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Fotointerpretacion.html">Criterios de fotointerpretación y lectura del relieve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Fotogeologia.html">Fotogeomorfología y fotogeología</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Imágenes de satélite</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10_Preprocesamiento.html">Preprocesamiento: correcciones geométricas y radiométricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Realce.html">Realce, índices y transformaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_Clasificacion.html">Clasificación de imágenes y evaluación de la exactitud</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Sensores activos: radar, InSAR y LiDAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Plataformas_EO.html">Plataformas de observación de la Tierra y cubos de datos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="A_Practicas.html">Prácticas y talleres del curso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliografia.html">Bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/edieraristizabal/Sensores-Remotos/blob/master/libro/13_SensoresActivos.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos/edit/master/libro/13_SensoresActivos.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos/issues/new?title=Issue%20on%20page%20%2F13_SensoresActivos.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/13_SensoresActivos.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sensores activos: radar, InSAR y LiDAR</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principio-del-radar">Principio del radar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resolucion-del-radar">Resolución del radar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrodispersion">Retrodispersión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distorsiones-del-relieve">Distorsiones del relieve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moteado-speckle">Moteado (speckle)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interferometria-radar-insar">Interferometría radar (InSAR)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lidar">LiDAR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-profundizar">Para profundizar</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sensores-activos-radar-insar-y-lidar">
+<h1>Sensores activos: radar, InSAR y LiDAR<a class="headerlink" href="#sensores-activos-radar-insar-y-lidar" title="Link to this heading">#</a></h1>
+<p>Los sensores activos emiten su propia energía y registran el eco que regresa de la superficie. No dependen del Sol, de modo que funcionan de día y de noche, y los radares, que trabajan con microondas, atraviesan las nubes, una ventaja decisiva en los Andes tropicales, donde una imagen óptica sin nubes puede tardar meses. Este capítulo trata el radar de apertura sintética (SAR), su uso interferométrico para medir deformaciones del terreno (InSAR) y el LiDAR <span class="bibtex-citation" id="id1">[<a class="reference internal" href="bibliografia.html#id3" title="Thomas M. Lillesand, Ralph W. Kiefer, and Jonathan W. Chipman. Remote Sensing and Image Interpretation. Wiley, Hoboken, 7 edition, 2015.">Lillesand <em>et al.</em>, 2015</a>, <a class="reference internal" href="bibliografia.html#id18" title="Alberto Moreira, Pau Prats-Iraola, Marwan Younis, Gerhard Krieger, Irena Hajnsek, and Konstantinos P. Papathanassiou. A tutorial on synthetic aperture radar. IEEE Geoscience and Remote Sensing Magazine, 1(1):6–43, 2013.">Moreira <em>et al.</em>, 2013</a>]</span>.</p>
+<section id="principio-del-radar">
+<h2>Principio del radar<a class="headerlink" href="#principio-del-radar" title="Link to this heading">#</a></h2>
+<p>Un radar de imágenes emite pulsos de microondas hacia un lado de la trayectoria de la plataforma (visión lateral) y mide el tiempo de retorno y la intensidad del eco. El tiempo de retorno da la distancia oblicua al objeto, <span class="math notranslate nohighlight">\(R = c\,t/2\)</span>, y la intensidad, la retrodispersión, depende de las propiedades del terreno. La visión lateral es necesaria porque con visión vertical dos puntos a la misma distancia a ambos lados del nadir devolverían el eco al mismo tiempo y no se podrían separar.</p>
+<p>Las bandas de radar se designan con letras heredadas del uso militar. La banda X (unos 3 cm, TerraSAR-X, COSMO-SkyMed) da la mayor resolución pero penetra poco en la vegetación; la banda C (5.6 cm, Sentinel-1, RADARSAT) es el compromiso más usado; la banda L (24 cm, ALOS-2, NISAR) penetra el dosel de la vegetación y mantiene mejor la coherencia en zonas boscosas; la banda P (unos 70 cm, BIOMASS) penetra todavía más y se usa para estimar la biomasa forestal. En general, cuanto mayor es la longitud de onda, mayor es la penetración en la vegetación y en suelos secos.</p>
+</section>
+<section id="resolucion-del-radar">
+<h2>Resolución del radar<a class="headerlink" href="#resolucion-del-radar" title="Link to this heading">#</a></h2>
+<p>La resolución en la dirección de la distancia (range) depende de la duración del pulso <span class="math notranslate nohighlight">\(\tau\)</span>: dos objetos se separan si sus ecos no se superponen, es decir, si están a más de <span class="math notranslate nohighlight">\(c\,\tau/2\)</span> en distancia oblicua. En el terreno, esa distancia se proyecta como <span class="math notranslate nohighlight">\(c\,\tau / (2 \cos\theta)\)</span>, donde <span class="math notranslate nohighlight">\(\theta\)</span> es el ángulo de depresión; por eso la resolución en distancia mejora lejos del nadir. En la práctica se usan pulsos modulados en frecuencia (chirps) que, procesados, equivalen a pulsos muy cortos. La resolución en la dirección de vuelo (azimut) de un radar de apertura real es el ancho del haz, proporcional a <span class="math notranslate nohighlight">\(\lambda R / L\)</span>, con <span class="math notranslate nohighlight">\(L\)</span> la longitud de la antena; para un satélite a 800 km con una antena de 10 m en banda C sería de varios kilómetros. El radar de apertura sintética resuelve el problema: mientras el satélite avanza, un mismo punto queda dentro del haz durante cientos de pulsos, y el procesamiento combina todos esos ecos como si vinieran de una antena virtual de kilómetros de largo, con lo que la resolución en azimut llega a ser del orden de la mitad de la longitud de la antena real, independiente de la distancia.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">ndimage</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'figure.dpi'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">3e8</span>
+
+<span class="k">for</span> <span class="n">tau_us</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'pulso </span><span class="si">{</span><span class="n">tau_us</span><span class="si">}</span><span class="s1"> µs, ángulo de depresión </span><span class="si">{</span><span class="n">theta</span><span class="si">}</span><span class="s1">° -&gt; resolución en distancia sobre el terreno '</span>
+              <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">c</span><span class="o">*</span><span class="n">tau_us</span><span class="o">*</span><span class="mf">1e-6</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> m'</span><span class="p">)</span>
+<span class="n">lam</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="mf">0.056</span><span class="p">,</span> <span class="mf">850e3</span><span class="p">,</span> <span class="mf">12.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Apertura real (banda C, R = 850 km, antena 12 m): resolución en azimut </span><span class="si">{</span><span class="n">lam</span><span class="o">*</span><span class="n">R</span><span class="o">/</span><span class="n">L</span><span class="o">/</span><span class="mf">1e3</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> km'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Apertura sintética: resolución en azimut del orden de L/2 = </span><span class="si">{</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> m, longitud de la antena sintética </span><span class="si">{</span><span class="n">lam</span><span class="o">*</span><span class="n">R</span><span class="o">/</span><span class="n">L</span><span class="o">/</span><span class="mf">1e3</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> km'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pulso 0.1 µs, ángulo de depresión 20° -&gt; resolución en distancia sobre el terreno 16.0 m
+pulso 0.1 µs, ángulo de depresión 40° -&gt; resolución en distancia sobre el terreno 19.6 m
+pulso 0.05 µs, ángulo de depresión 20° -&gt; resolución en distancia sobre el terreno 8.0 m
+pulso 0.05 µs, ángulo de depresión 40° -&gt; resolución en distancia sobre el terreno 9.8 m
+Apertura real (banda C, R = 850 km, antena 12 m): resolución en azimut 4.0 km
+Apertura sintética: resolución en azimut del orden de L/2 = 6 m, longitud de la antena sintética 4.0 km
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="retrodispersion">
+<h2>Retrodispersión<a class="headerlink" href="#retrodispersion" title="Link to this heading">#</a></h2>
+<p>La intensidad del eco depende de la rugosidad de la superficie comparada con la longitud de onda, de la geometría local y de la constante dieléctrica, que crece con la humedad. Una superficie lisa a la escala de la longitud de onda, como el agua en calma, una pista o una playa, produce reflexión especular lejos del sensor y se ve oscura. Una superficie rugosa dispersa en todas las direcciones y devuelve parte de la energía: se ve en tonos medios. La vegetación produce dispersión de volumen, múltiples rebotes dentro del dosel. Los ángulos rectos formados por edificios y el suelo, o por troncos y el suelo inundado, producen doble rebote y aparecen muy brillantes. La humedad del suelo aumenta la retrodispersión, lo que permite estimarla, y las zonas inundadas se reconocen por su respuesta oscura. La polarización de la señal emitida y recibida (VV, VH, HH, HV) aporta información adicional: la polarización cruzada (VH, HV) es sensible sobre todo a la dispersión de volumen de la vegetación.</p>
+</section>
+<section id="distorsiones-del-relieve">
+<h2>Distorsiones del relieve<a class="headerlink" href="#distorsiones-del-relieve" title="Link to this heading">#</a></h2>
+<p>La geometría lateral produce distorsiones características en terreno montañoso. Las laderas que miran hacia el radar se ven acortadas (escorzo, foreshortening) y brillantes; si son más empinadas que el ángulo de incidencia, su cima devuelve el eco antes que su base y la ladera aparece invertida (inversión por relieve, layover). Las laderas opuestas, si son más empinadas que el ángulo de depresión, no reciben señal y quedan en sombra de radar. Estas zonas no tienen información útil, y en los Andes pueden cubrir una parte importante de la escena; combinar órbitas ascendentes y descendentes reduce el problema. La celda siguiente calcula las tres zonas para un perfil topográfico.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">2500</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="mi">8000</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2200</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1500</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="mi">14500</span><span class="p">)</span> <span class="o">/</span> <span class="mi">850</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">inc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">38</span><span class="p">)</span>                                       <span class="c1"># ángulo de incidencia; el radar está a la izquierda</span>
+<span class="n">pend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
+<span class="n">layover</span> <span class="o">=</span> <span class="n">pend</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">inc</span><span class="p">)</span>                           <span class="c1"># ladera hacia el radar más empinada que el ángulo de incidencia</span>
+<span class="n">sombra</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+    <span class="n">linea</span> <span class="o">=</span> <span class="n">z</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[:</span><span class="n">k</span><span class="p">])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">inc</span><span class="p">)</span>          <span class="c1"># rayo que pasa rozando los puntos anteriores</span>
+    <span class="n">sombra</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">linea</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'0.85'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="s1">'k'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">layover</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">z</span><span class="p">[</span><span class="n">layover</span><span class="p">],</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'tab:red'</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'inversión (layover)'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">sombra</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">z</span><span class="p">[</span><span class="n">sombra</span><span class="p">],</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'navy'</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'sombra de radar'</span><span class="p">)</span>
+<span class="n">esc</span> <span class="o">=</span> <span class="p">(</span><span class="n">pend</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">layover</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">esc</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">z</span><span class="p">[</span><span class="n">esc</span><span class="p">],</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'orange'</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'escorzo (ladera hacia el radar)'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">''</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">2200</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3300</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s1">'-&gt;'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">3400</span><span class="p">,</span> <span class="s1">'radar'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Distancia (km)'</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Elevación (m)'</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'upper right'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Distorsiones geométricas con un ángulo de incidencia de </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">inc</span><span class="p">)</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">°'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Fracción del perfil en inversión: </span><span class="si">{</span><span class="n">layover</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">.1%</span><span class="si">}</span><span class="s1">, en sombra: </span><span class="si">{</span><span class="n">sombra</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">.1%</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ba44a1072107efc3d8ab27691080c024f76ed22e2c8d16c153495451d62710dc.png" src="_images/ba44a1072107efc3d8ab27691080c024f76ed22e2c8d16c153495451d62710dc.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fracción del perfil en inversión: 11.8%, en sombra: 3.9%
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="moteado-speckle">
+<h2>Moteado (speckle)<a class="headerlink" href="#moteado-speckle" title="Link to this heading">#</a></h2>
+<p>Cada píxel de una imagen SAR contiene muchos dispersores elementales cuyos ecos se suman con fases aleatorias. La interferencia entre ellos produce el moteado, una variación granular de la intensidad entre píxeles vecinos aunque la superficie sea homogénea. Estadísticamente es un ruido multiplicativo: la intensidad de un píxel de una sola observación sigue una distribución exponencial alrededor del valor medio. Se reduce promediando varias observaciones independientes (procesamiento multilook), a costa de resolución, o con filtros adaptativos como el de Lee <span class="bibtex-citation" id="id2">[<a class="reference internal" href="bibliografia.html#id24" title="Jong-Sen Lee. Digital image enhancement and noise filtering by use of local statistics. IEEE Transactions on Pattern Analysis and Machine Intelligence, PAMI-2(2):165–168, 1980.">Lee, 1980</a>]</span>, que suavizan las zonas homogéneas y conservan los bordes. La celda siguiente simula una escena con moteado y la filtra.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">yy</span><span class="p">,</span> <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">]</span>
+<span class="n">sigma0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="mf">0.08</span><span class="p">)</span>                                   <span class="c1"># pasto</span>
+<span class="n">sigma0</span><span class="p">[(</span><span class="n">xx</span> <span class="o">-</span> <span class="mi">80</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">yy</span> <span class="o">-</span> <span class="mi">170</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="o">**</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.005</span>             <span class="c1"># lago (especular)</span>
+<span class="n">sigma0</span><span class="p">[(</span><span class="n">xx</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">yy</span> <span class="o">&lt;</span> <span class="mi">110</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.2</span>                            <span class="c1"># bosque (volumen)</span>
+<span class="n">sigma0</span><span class="p">[(</span><span class="n">xx</span> <span class="o">&gt;</span> <span class="mi">190</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xx</span> <span class="o">&lt;</span> <span class="mi">230</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">yy</span> <span class="o">&gt;</span> <span class="mi">160</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">yy</span> <span class="o">&lt;</span> <span class="mi">220</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.8</span>  <span class="c1"># zona urbana (doble rebote)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">con_moteado</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">looks</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">s</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="n">looks</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">looks</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lee</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">tam</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">looks</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">media</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">uniform_filter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">tam</span><span class="p">)</span>
+    <span class="n">var</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">uniform_filter</span><span class="p">(</span><span class="n">img</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">tam</span><span class="p">)</span> <span class="o">-</span> <span class="n">media</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">cu2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">looks</span>
+    <span class="n">ci2</span> <span class="o">=</span> <span class="n">var</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">media</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1e-12</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cu2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">ci2</span><span class="p">,</span> <span class="mf">1e-12</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">media</span> <span class="o">+</span> <span class="n">w</span> <span class="o">*</span> <span class="p">(</span><span class="n">img</span> <span class="o">-</span> <span class="n">media</span><span class="p">)</span>
+<span class="n">un_look</span> <span class="o">=</span> <span class="n">con_moteado</span><span class="p">(</span><span class="n">sigma0</span><span class="p">)</span>
+<span class="n">cuatro</span> <span class="o">=</span> <span class="n">con_moteado</span><span class="p">(</span><span class="n">sigma0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">im</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="p">[</span><span class="n">sigma0</span><span class="p">,</span> <span class="n">un_look</span><span class="p">,</span> <span class="n">cuatro</span><span class="p">,</span> <span class="n">lee</span><span class="p">(</span><span class="n">un_look</span><span class="p">)],</span>
+                    <span class="p">[</span><span class="s1">'retrodispersión real'</span><span class="p">,</span> <span class="s1">'una observación (1 look)'</span><span class="p">,</span> <span class="s1">'multilook (4 looks)'</span><span class="p">,</span> <span class="s1">'filtro de Lee 7x7'</span><span class="p">]):</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="kc">None</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">25</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ad56590a8b90ffe384c8fe5353123423647e62870e26dea33a5b7e9991374f40.png" src="_images/ad56590a8b90ffe384c8fe5353123423647e62870e26dea33a5b7e9991374f40.png" />
+</div>
+</div>
+</section>
+<section id="interferometria-radar-insar">
+<h2>Interferometría radar (InSAR)<a class="headerlink" href="#interferometria-radar-insar" title="Link to this heading">#</a></h2>
+<p>El eco de radar tiene amplitud y fase. La fase registra la distancia entre la antena y el terreno en fracciones de la longitud de onda. Si se toman dos imágenes SAR del mismo lugar desde posiciones casi idénticas, la diferencia de fase entre ellas, el interferograma, depende de la topografía (porque las dos posiciones no son exactamente iguales), de la deformación del terreno entre las dos fechas, de la atmósfera y del ruido <span class="bibtex-citation" id="id3">[<a class="reference internal" href="bibliografia.html#id19" title="Ramon F. Hanssen. Radar Interferometry: Data Interpretation and Error Analysis. Kluwer Academic Publishers, Dordrecht, 2001.">Hanssen, 2001</a>]</span>. Si la topografía se elimina con un modelo de elevación, lo que queda es la interferometría diferencial (DInSAR), que mide el desplazamiento del terreno en la dirección de visión del satélite (LOS) con precisión de centímetros o milímetros:</p>
+<div class="math notranslate nohighlight">
+\[d_{LOS} = \frac{\lambda}{4\pi}\,\Delta\phi.\]</div>
+<p>Cada ciclo completo de fase (una franja de colores) equivale a media longitud de onda de desplazamiento: 2.8 cm en banda C. La fase solo se conoce entre <span class="math notranslate nohighlight">\(-\pi\)</span> y <span class="math notranslate nohighlight">\(\pi\)</span> (está envuelta), y para obtener el desplazamiento total hay que desenvolverla, contando las franjas. La calidad del interferograma se mide con la coherencia, que baja cuando la superficie cambia entre las dos fechas, como ocurre con la vegetación densa, el agua o los movimientos rápidos.</p>
+<p>Las aplicaciones geológicas son muchas: deformación cosísmica de los terremotos, inflación y deflación de volcanes, subsidencia por extracción de agua o por minería, y movimientos lentos de laderas. Con series de decenas de imágenes, las técnicas de dispersores persistentes (PS-InSAR) y de líneas base cortas (SBAS) obtienen series temporales de desplazamiento con precisión milimétrica. La celda siguiente simula el interferograma de una subsidencia y de un deslizamiento lento, con ruido atmosférico, y recupera el desplazamiento.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lam_c</span> <span class="o">=</span> <span class="mf">0.0555</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">yy</span><span class="p">,</span> <span class="n">xx</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mf">40.0</span>                     <span class="c1"># píxeles de 40 m</span>
+<span class="n">subs</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.12</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">xx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">yy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">2500</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>         <span class="c1"># subsidencia de 12 cm</span>
+<span class="n">desl</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.05</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(((</span><span class="n">xx</span> <span class="o">-</span> <span class="mi">3500</span><span class="p">)</span> <span class="o">/</span> <span class="mi">600</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">((</span><span class="n">yy</span> <span class="o">+</span> <span class="mi">2500</span><span class="p">)</span> <span class="o">/</span> <span class="mi">900</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>   <span class="c1"># deslizamiento lento, 5 cm</span>
+<span class="n">atm</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span> <span class="mi">25</span><span class="p">);</span> <span class="n">atm</span> <span class="o">*=</span> <span class="mf">0.008</span> <span class="o">/</span> <span class="n">atm</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">d_los</span> <span class="o">=</span> <span class="n">subs</span> <span class="o">+</span> <span class="n">desl</span>
+<span class="n">fase</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">lam_c</span> <span class="o">*</span> <span class="p">(</span><span class="n">d_los</span> <span class="o">+</span> <span class="n">atm</span><span class="p">)</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+<span class="n">envuelta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">fase</span><span class="p">))</span>
+<span class="c1"># desenvolvimiento sencillo: integrar los gradientes de fase envuelta por filas y columnas (válido sin ruido fuerte)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">desenvolver</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d_rec</span> <span class="o">=</span> <span class="n">desenvolver</span><span class="p">(</span><span class="n">envuelta</span><span class="p">)</span> <span class="o">*</span> <span class="n">lam_c</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">d_rec</span> <span class="o">-=</span> <span class="n">d_rec</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">d_los</span> <span class="o">+</span> <span class="n">atm</span><span class="p">)[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">))</span>
+<span class="n">h0</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">d_los</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'RdBu'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">12</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">12</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'desplazamiento LOS real (cm)'</span><span class="p">)</span>
+<span class="n">h1</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">envuelta</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'hsv'</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'interferograma envuelto</span><span class="se">\n</span><span class="s1">(una franja = </span><span class="si">{</span><span class="n">lam_c</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> cm)'</span><span class="p">)</span>
+<span class="n">h2</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">d_rec</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'RdBu'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">12</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">12</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'desplazamiento recuperado (cm)'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="p">[</span><span class="n">h0</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">]):</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Franjas en la subsidencia: </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">subs</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">lam_c</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">; error medio cuadrático </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">d_rec</span><span class="o">-</span><span class="n">d_los</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> cm (incluye la atmósfera)'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fce1bf060b602b7dead679360addd00f1c23dba90a9c52d47b8721dcf8e26383.png" src="_images/fce1bf060b602b7dead679360addd00f1c23dba90a9c52d47b8721dcf8e26383.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Franjas en la subsidencia: 4.3; error medio cuadrático 0.82 cm (incluye la atmósfera)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lidar">
+<h2>LiDAR<a class="headerlink" href="#lidar" title="Link to this heading">#</a></h2>
+<p>El LiDAR (Light Detection and Ranging) emite pulsos láser, usualmente en el infrarrojo cercano, y mide el tiempo de retorno de cada uno. Montado en un avión o un dron, con un GNSS y una unidad inercial que dan la posición y la actitud del sensor, produce una nube de millones de puntos con coordenadas tridimensionales y precisión de pocos centímetros. Un mismo pulso puede producir varios retornos: el primero en la copa de los árboles, otros en las ramas y el último, a menudo, en el suelo, porque una parte del haz encuentra un hueco en el dosel. Clasificando los puntos de suelo se obtiene un modelo digital del terreno (MDT) sin vegetación, y con los primeros retornos un modelo digital de superficie (MDS); su diferencia es la altura del dosel.</p>
+<p>Para la geología, esta capacidad de ver el terreno bajo el bosque es la gran ventaja del LiDAR: revela escarpes de falla, cicatrices de deslizamientos antiguos, terrazas y abanicos que en las fotos quedan ocultos por la vegetación. La celda siguiente simula una nube de puntos sobre un terreno con un escarpe bajo un bosque y separa el terreno con un filtro sencillo de mínimos locales.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npts</span> <span class="o">=</span> <span class="mi">250000</span>
+<span class="n">px</span><span class="p">,</span> <span class="n">py</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="n">npts</span><span class="p">),</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="n">npts</span><span class="p">)</span>
+<span class="n">terreno</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">50</span> <span class="o">+</span> <span class="mf">0.05</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">220</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">zs</span> <span class="o">=</span> <span class="n">terreno</span><span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span>
+<span class="n">bosque</span> <span class="o">=</span> <span class="p">(</span><span class="n">px</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">px</span> <span class="o">&lt;</span> <span class="mi">450</span><span class="p">)</span>
+<span class="n">altura_copa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bosque</span><span class="p">,</span> <span class="mi">18</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">px</span> <span class="o">/</span> <span class="mi">15</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">py</span> <span class="o">/</span> <span class="mi">17</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">llega_suelo</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">npts</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bosque</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>               <span class="c1"># solo el 20 % de los pulsos llega al suelo en el bosque</span>
+<span class="n">pz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">llega_suelo</span><span class="p">,</span> <span class="n">zs</span><span class="p">,</span> <span class="n">zs</span> <span class="o">+</span> <span class="n">altura_copa</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">npts</span><span class="p">))</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="n">npts</span><span class="p">)</span>
+<span class="n">celda</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">ix</span><span class="p">,</span> <span class="n">iy</span> <span class="o">=</span> <span class="p">(</span><span class="n">px</span> <span class="o">//</span> <span class="n">celda</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="p">(</span><span class="n">py</span> <span class="o">//</span> <span class="n">celda</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">nc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">500</span> <span class="o">/</span> <span class="n">celda</span><span class="p">)</span>
+<span class="n">mds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nc</span><span class="p">,</span> <span class="n">nc</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">);</span> <span class="n">mdt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nc</span><span class="p">,</span> <span class="n">nc</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">mds</span><span class="p">,</span> <span class="p">(</span><span class="n">iy</span><span class="p">,</span> <span class="n">ix</span><span class="p">),</span> <span class="n">pz</span><span class="p">);</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">mdt</span><span class="p">,</span> <span class="p">(</span><span class="n">iy</span><span class="p">,</span> <span class="n">ix</span><span class="p">),</span> <span class="n">pz</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rellenar</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="n">vacias</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">distance_transform_edt</span><span class="p">(</span><span class="n">vacias</span><span class="p">,</span> <span class="n">return_distances</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">idx</span><span class="p">)]</span>
+<span class="n">mds</span><span class="p">,</span> <span class="n">mdt</span> <span class="o">=</span> <span class="n">rellenar</span><span class="p">(</span><span class="n">mds</span><span class="p">),</span> <span class="n">rellenar</span><span class="p">(</span><span class="n">mdt</span><span class="p">)</span>
+<span class="n">mdt</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">grey_opening</span><span class="p">(</span><span class="n">mdt</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>                                   <span class="c1"># elimina mínimos que no son suelo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">LightSource</span>
+<span class="n">ls</span> <span class="o">=</span> <span class="n">LightSource</span><span class="p">(</span><span class="mi">315</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">4.6</span><span class="p">))</span>
+<span class="n">sel</span> <span class="o">=</span> <span class="p">(</span><span class="n">py</span> <span class="o">&gt;</span> <span class="mi">240</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">py</span> <span class="o">&lt;</span> <span class="mi">260</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">px</span><span class="p">[</span><span class="n">sel</span><span class="p">],</span> <span class="n">pz</span><span class="p">[</span><span class="n">sel</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">llega_suelo</span><span class="p">[</span><span class="n">sel</span><span class="p">],</span> <span class="s1">'saddlebrown'</span><span class="p">,</span> <span class="s1">'forestgreen'</span><span class="p">));</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'franja de la nube: suelo (café) y vegetación (verde)'</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'x (m)'</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'z (m)'</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ls</span><span class="o">.</span><span class="n">hillshade</span><span class="p">(</span><span class="n">mds</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="n">celda</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="n">celda</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">'lower'</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'modelo digital de superficie'</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ls</span><span class="o">.</span><span class="n">hillshade</span><span class="p">(</span><span class="n">mdt</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="n">celda</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="n">celda</span><span class="p">,</span> <span class="n">vert_exag</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">'lower'</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'modelo digital del terreno: aparece el escarpe'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span> <span class="n">a</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">a</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/98233c4a5813ef185d8716e251114669c5f3d86230b5942c8fc72e1927bec885.png" src="_images/98233c4a5813ef185d8716e251114669c5f3d86230b5942c8fc72e1927bec885.png" />
+</div>
+</div>
+</section>
+<section id="para-profundizar">
+<h2>Para profundizar<a class="headerlink" href="#para-profundizar" title="Link to this heading">#</a></h2>
+<p>El tutorial de <span class="bibtex-citation" id="id4">Moreira <em>et al.</em> [<a class="reference internal" href="bibliografia.html#id18" title="Alberto Moreira, Pau Prats-Iraola, Marwan Younis, Gerhard Krieger, Irena Hajnsek, and Konstantinos P. Papathanassiou. A tutorial on synthetic aperture radar. IEEE Geoscience and Remote Sensing Magazine, 1(1):6–43, 2013.">2013</a>]</span> es la mejor introducción al SAR y está enlazado en la página del curso, igual que el curso ARSET de la NASA sobre radar. <span class="bibtex-citation" id="id5">Hanssen [<a class="reference internal" href="bibliografia.html#id19" title="Ramon F. Hanssen. Radar Interferometry: Data Interpretation and Error Analysis. Kluwer Academic Publishers, Dordrecht, 2001.">2001</a>]</span> es la referencia de la interferometría. El capítulo 6 de <span class="bibtex-citation" id="id6">[<a class="reference internal" href="bibliografia.html#id3" title="Thomas M. Lillesand, Ralph W. Kiefer, and Jonathan W. Chipman. Remote Sensing and Image Interpretation. Wiley, Hoboken, 7 edition, 2015.">Lillesand <em>et al.</em>, 2015</a>]</span> trata el radar y el LiDAR con ejemplos de aplicaciones. El taller de radar del curso procesa un par de imágenes Sentinel-1.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="12_Clasificacion.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Clasificación de imágenes y evaluación de la exactitud</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="14_Plataformas_EO.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Plataformas de observación de la Tierra y cubos de datos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principio-del-radar">Principio del radar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resolucion-del-radar">Resolución del radar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrodispersion">Retrodispersión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distorsiones-del-relieve">Distorsiones del relieve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moteado-speckle">Moteado (speckle)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interferometria-radar-insar">Interferometría radar (InSAR)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lidar">LiDAR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-profundizar">Para profundizar</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Edier V. Aristizábal G.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>Desarrollado por <a href="https://github.com/edieraristizabal">Edier Aristizábal</a>, Facultad de Minas, Universidad Nacional de Colombia.
+<a href="https://edieraristizabal.github.io/Sensores-Remotos/">Página del curso</a> ·
+<a href="https://edieraristizabal.github.io/Sensores-Remotos/html/01_SensoresRemoto.html">Diapositivas</a></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

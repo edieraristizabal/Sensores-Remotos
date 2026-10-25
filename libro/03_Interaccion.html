@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Interacción con la atmósfera y con la superficie &#8212; Sensores remotos para geociencias</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03_Interaccion';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://edieraristizabal.github.io/Sensores-Remotos/libro/03_Interaccion.html" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Plataformas, órbitas y sensores" href="04_Plataformas.html" />
+    <link rel="prev" title="Radiación electromagnética" href="02_Radiacion.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Sensores remotos para geociencias - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Sensores remotos para geociencias - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Sensores remotos para geociencias
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentos físicos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_Introduccion.html">Introducción a los sensores remotos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Radiacion.html">Radiación electromagnética</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interacción con la atmósfera y con la superficie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Plataformas.html">Plataformas, órbitas y sensores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Resolucion.html">Resolución de los sensores</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fotografía aérea y fotointerpretación</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="06_FotografiaAerea.html">Fotografía aérea y visión estereoscópica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Fotogrametria.html">Fotogrametría: escala, desplazamiento del relieve y paralaje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Fotointerpretacion.html">Criterios de fotointerpretación y lectura del relieve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Fotogeologia.html">Fotogeomorfología y fotogeología</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Imágenes de satélite</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10_Preprocesamiento.html">Preprocesamiento: correcciones geométricas y radiométricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Realce.html">Realce, índices y transformaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_Clasificacion.html">Clasificación de imágenes y evaluación de la exactitud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_SensoresActivos.html">Sensores activos: radar, InSAR y LiDAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Plataformas_EO.html">Plataformas de observación de la Tierra y cubos de datos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="A_Practicas.html">Prácticas y talleres del curso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliografia.html">Bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/edieraristizabal/Sensores-Remotos/blob/master/libro/03_Interaccion.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos/edit/master/libro/03_Interaccion.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/edieraristizabal/Sensores-Remotos/issues/new?title=Issue%20on%20page%20%2F03_Interaccion.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/03_Interaccion.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Interacción con la atmósfera y con la superficie</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atenuacion">Atenuación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorcion-y-ventanas-atmosfericas">Absorción y ventanas atmosféricas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion">Dispersión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interaccion-con-la-superficie">Interacción con la superficie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firmas-espectrales">Firmas espectrales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-profundizar">Para profundizar</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="interaccion-con-la-atmosfera-y-con-la-superficie">
+<h1>Interacción con la atmósfera y con la superficie<a class="headerlink" href="#interaccion-con-la-atmosfera-y-con-la-superficie" title="Link to this heading">#</a></h1>
+<p>Entre la fuente y el sensor la radiación interactúa dos veces con la atmósfera y una vez con la superficie. Cada interacción altera la señal, y entenderlas es la base tanto para elegir las bandas de un sensor como para interpretar o corregir una imagen <span class="bibtex-citation" id="id1">[<a class="reference internal" href="bibliografia.html#id2" title="Emilio Chuvieco. Teledetección ambiental: la observación de la Tierra desde el espacio. Ariel, Barcelona, 3 edition, 2008.">Chuvieco, 2008</a>, <a class="reference internal" href="bibliografia.html#id3" title="Thomas M. Lillesand, Ralph W. Kiefer, and Jonathan W. Chipman. Remote Sensing and Image Interpretation. Wiley, Hoboken, 7 edition, 2015.">Lillesand <em>et al.</em>, 2015</a>]</span>.</p>
+<section id="atenuacion">
+<h2>Atenuación<a class="headerlink" href="#atenuacion" title="Link to this heading">#</a></h2>
+<p>La intensidad de la radiación disminuye por dos razones. La atenuación geométrica se debe a que la energía se reparte sobre una superficie cada vez mayor a medida que se aleja de la fuente, de modo que la intensidad decrece con el cuadrado de la distancia. La atenuación atmosférica se debe a la absorción y la dispersión por gases y partículas, y sigue la ley de Beer-Lambert: la intensidad decrece exponencialmente con el espesor óptico <span class="math notranslate nohighlight">\(\tau\)</span> del medio atravesado,</p>
+<div class="math notranslate nohighlight">
+\[I = I_0 \, e^{-\tau / \cos\theta},\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\theta\)</span> es el ángulo cenital de la trayectoria. Cuanto más inclinado está el Sol, más larga es la trayectoria y mayor la atenuación, lo que explica parte de la diferencia entre imágenes tomadas en distintas épocas del año.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'figure.dpi'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">tau</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">'espesor óptico </span><span class="si">{</span><span class="n">tau</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Ángulo cenital solar (°)'</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Transmitancia directa $I/I_0$'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Ley de Beer-Lambert'</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ca837e870eb62128c05addc19a66cd7921066c64c7096bee8870a2fc5f7bf9ef.png" src="_images/ca837e870eb62128c05addc19a66cd7921066c64c7096bee8870a2fc5f7bf9ef.png" />
+</div>
+</div>
+</section>
+<section id="absorcion-y-ventanas-atmosfericas">
+<h2>Absorción y ventanas atmosféricas<a class="headerlink" href="#absorcion-y-ventanas-atmosfericas" title="Link to this heading">#</a></h2>
+<p>Los gases de la atmósfera absorben la radiación en bandas específicas. El ozono absorbe el ultravioleta, el vapor de agua y el dióxido de carbono absorben amplias regiones del infrarrojo, y el oxígeno tiene bandas estrechas en el rojo lejano. Las regiones donde la atmósfera es casi transparente se llaman ventanas atmosféricas, y en ellas se ubican las bandas de los sensores: el visible y el infrarrojo cercano, varias ventanas en el infrarrojo de onda corta (alrededor de 1.6 y 2.2 µm), la ventana térmica entre 8 y 14 µm y las microondas, que atraviesan casi sin pérdida las nubes. La figura siguiente es un esquema simplificado de la transmitancia de la atmósfera con las bandas de Landsat 8 superpuestas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">absorcion</span><span class="p">(</span><span class="n">centro</span><span class="p">,</span> <span class="n">ancho</span><span class="p">,</span> <span class="n">prof</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">prof</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">lam</span> <span class="o">-</span> <span class="n">centro</span><span class="p">)</span> <span class="o">/</span> <span class="n">ancho</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lam</span> <span class="o">&lt;</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.9</span>                         <span class="c1"># ozono (UV)</span>
+<span class="k">for</span> <span class="n">cen</span><span class="p">,</span> <span class="n">an</span><span class="p">,</span> <span class="n">pr</span> <span class="ow">in</span> <span class="p">[(</span><span class="mf">0.76</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.14</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.38</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.98</span><span class="p">),</span>
+                    <span class="p">(</span><span class="mf">1.87</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.98</span><span class="p">),</span> <span class="p">(</span><span class="mf">2.7</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">4.3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span> <span class="p">(</span><span class="mf">6.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">9.6</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)]:</span>
+    <span class="n">T</span> <span class="o">-=</span> <span class="n">absorcion</span><span class="p">(</span><span class="n">cen</span><span class="p">,</span> <span class="n">an</span><span class="p">,</span> <span class="n">pr</span><span class="p">)</span>
+<span class="n">T</span><span class="p">[(</span><span class="n">lam</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">lam</span> <span class="o">&lt;</span> <span class="mf">3.5</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">T</span><span class="p">[(</span><span class="n">lam</span> <span class="o">&gt;</span> <span class="mf">5.2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">lam</span> <span class="o">&lt;</span> <span class="mf">7.8</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.02</span>
+<span class="n">T</span><span class="p">[</span><span class="n">lam</span> <span class="o">&gt;</span> <span class="mf">13.5</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">T</span> <span class="o">*</span> <span class="mf">0.92</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">bandas_l8</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'B1'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.43</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">),</span> <span class="s1">'B2'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.51</span><span class="p">),</span> <span class="s1">'B3'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.53</span><span class="p">,</span> <span class="mf">0.59</span><span class="p">),</span> <span class="s1">'B4'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.64</span><span class="p">,</span> <span class="mf">0.67</span><span class="p">),</span> <span class="s1">'B5'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.88</span><span class="p">),</span>
+             <span class="s1">'B6'</span><span class="p">:</span> <span class="p">(</span><span class="mf">1.57</span><span class="p">,</span> <span class="mf">1.65</span><span class="p">),</span> <span class="s1">'B7'</span><span class="p">:</span> <span class="p">(</span><span class="mf">2.11</span><span class="p">,</span> <span class="mf">2.29</span><span class="p">),</span> <span class="s1">'B10'</span><span class="p">:</span> <span class="p">(</span><span class="mf">10.6</span><span class="p">,</span> <span class="mf">11.19</span><span class="p">),</span> <span class="s1">'B11'</span><span class="p">:</span> <span class="p">(</span><span class="mf">11.5</span><span class="p">,</span> <span class="mf">12.51</span><span class="p">)}</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'skyblue'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="ow">in</span> <span class="n">bandas_l8</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'tab:red'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">a</span> <span class="o">+</span> <span class="n">z</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span> <span class="k">if</span> <span class="n">z</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">'log'</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">]);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">'0.4'</span><span class="p">,</span> <span class="s1">'0.7'</span><span class="p">,</span> <span class="s1">'1'</span><span class="p">,</span> <span class="s1">'1.6'</span><span class="p">,</span> <span class="s1">'2.2'</span><span class="p">,</span> <span class="s1">'4'</span><span class="p">,</span> <span class="s1">'10'</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Longitud de onda (µm)'</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Transmitancia (esquema)'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Ventanas atmosféricas y bandas de Landsat 8 (esquema simplificado)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/137f56c5a9c3ab1319d2ff5d25c29bdf50bc10dd5e3fdd041b198fc036e6d22b.png" src="_images/137f56c5a9c3ab1319d2ff5d25c29bdf50bc10dd5e3fdd041b198fc036e6d22b.png" />
+</div>
+</div>
+</section>
+<section id="dispersion">
+<h2>Dispersión<a class="headerlink" href="#dispersion" title="Link to this heading">#</a></h2>
+<p>La dispersión redirige la radiación sin absorberla. Su tipo depende de la relación entre el tamaño de las partículas y la longitud de onda. La dispersión de Rayleigh la producen moléculas mucho más pequeñas que la longitud de onda; su intensidad es proporcional a <span class="math notranslate nohighlight">\(\lambda^{-4}\)</span>, de modo que el azul se dispersa unas cinco veces más que el rojo, lo que explica el color del cielo y el velo azulado de las imágenes de la banda azul. La dispersión de Mie la producen partículas de tamaño comparable a la longitud de onda, como el humo, el polvo o los aerosoles, y depende menos de ella. La dispersión no selectiva la producen gotas y cristales mucho mayores que la longitud de onda, afecta por igual a todo el visible y por eso las nubes y la niebla se ven blancas <span class="bibtex-citation" id="id2">[<a class="reference internal" href="bibliografia.html#id9" title="Canada Centre for Remote Sensing. Fundamentals of remote sensing: a canada centre for remote sensing tutorial. Natural Resources Canada, Ottawa, 2008.">Canada Centre for Remote Sensing, 2008</a>]</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lam_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lam_v</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.45</span> <span class="o">/</span> <span class="n">lam_v</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'Rayleigh, $\lambda^{-4}$'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lam_v</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.45</span> <span class="o">/</span> <span class="n">lam_v</span><span class="p">)</span><span class="o">**</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'Mie (aerosoles), $\lambda^{-1.3}$'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lam_v</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">lam_v</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">'No selectiva'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">l0</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">'azul'</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">),</span> <span class="p">(</span><span class="s1">'rojo'</span><span class="p">,</span> <span class="mf">0.66</span><span class="p">),</span> <span class="p">(</span><span class="s1">'NIR'</span><span class="p">,</span> <span class="mf">0.86</span><span class="p">),</span> <span class="p">(</span><span class="s1">'SWIR'</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">)]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">l0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'0.7'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">l0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'bottom'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Longitud de onda (µm)'</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Dispersión relativa al azul'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.35</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Rayleigh: el azul (0.45 µm) se dispersa </span><span class="si">{</span><span class="p">(</span><span class="mf">0.65</span><span class="o">/</span><span class="mf">0.45</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> veces más que el rojo (0.65 µm)'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7cf08a2729e975e5213b311a3e4318987435a5a4d1252471a60acba9c3ad0de5.png" src="_images/7cf08a2729e975e5213b311a3e4318987435a5a4d1252471a60acba9c3ad0de5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rayleigh: el azul (0.45 µm) se dispersa 4.4 veces más que el rojo (0.65 µm)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="interaccion-con-la-superficie">
+<h2>Interacción con la superficie<a class="headerlink" href="#interaccion-con-la-superficie" title="Link to this heading">#</a></h2>
+<p>La radiación que llega a la superficie se refleja, se absorbe o se transmite. La proporción de cada una depende de la longitud de onda y del material, y esa dependencia es lo que permite distinguir coberturas en una imagen. La forma de la reflexión depende de la rugosidad comparada con la longitud de onda: una superficie lisa, como el agua en calma, produce reflexión especular, en una sola dirección, mientras que una superficie rugosa produce reflexión difusa o lambertiana, igual en todas las direcciones. Casi todas las superficies naturales están entre estos dos extremos.</p>
+</section>
+<section id="firmas-espectrales">
+<h2>Firmas espectrales<a class="headerlink" href="#firmas-espectrales" title="Link to this heading">#</a></h2>
+<p>La curva de reflectancia en función de la longitud de onda se llama firma espectral, y cada material tiene una forma característica <span class="bibtex-citation" id="id3">[<a class="reference internal" href="bibliografia.html#id2" title="Emilio Chuvieco. Teledetección ambiental: la observación de la Tierra desde el espacio. Ariel, Barcelona, 3 edition, 2008.">Chuvieco, 2008</a>, <a class="reference internal" href="bibliografia.html#id3" title="Thomas M. Lillesand, Ralph W. Kiefer, and Jonathan W. Chipman. Remote Sensing and Image Interpretation. Wiley, Hoboken, 7 edition, 2015.">Lillesand <em>et al.</em>, 2015</a>]</span>.</p>
+<p>La vegetación sana absorbe el azul y el rojo para la fotosíntesis, por la clorofila, refleja algo más el verde y presenta un salto brusco de reflectancia en el borde rojo, cerca de 0.7 µm, porque la estructura interna de las hojas dispersa con fuerza el infrarrojo cercano. En el infrarrojo de onda corta la reflectancia baja de nuevo por la absorción del agua de las hojas, con mínimos a 1.45 y 1.95 µm. Una planta estresada pierde el contraste entre el rojo y el infrarrojo cercano, y en ese contraste se basa el NDVI.</p>
+<p>El agua clara refleja poco en el visible, sobre todo en el azul y el verde, y casi nada en el infrarrojo, donde la absorbe por completo; por eso los cuerpos de agua se ven negros en las bandas infrarrojas. Los sedimentos en suspensión aumentan su reflectancia en el visible.</p>
+<p>Los suelos y las rocas tienen curvas más suaves que aumentan con la longitud de onda. Su forma depende de la humedad, que baja la reflectancia en todo el espectro; de la materia orgánica, que la baja sobre todo en el visible; de los óxidos de hierro, que producen absorciones cerca de 0.9 µm y un aumento fuerte hacia el rojo; y de los minerales arcillosos y carbonatos, que producen absorciones características en el infrarrojo de onda corta, cerca de 2.2 y 2.33 µm. Estas absorciones son las que aprovecha la cartografía de alteraciones hidrotermales en exploración minera.</p>
+<p>La celda siguiente construye firmas espectrales simplificadas y simula cómo las vería Sentinel-2, promediando cada curva dentro de sus bandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">c</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">lam</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span> <span class="o">/</span> <span class="n">w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">borde</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">lam</span> <span class="o">-</span> <span class="mf">0.715</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.012</span><span class="p">))</span>
+<span class="n">caida_swir</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.65</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.62</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
+<span class="n">veg</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.04</span> <span class="o">+</span> <span class="mf">0.05</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.42</span> <span class="o">*</span> <span class="n">borde</span><span class="p">)</span> <span class="o">*</span> <span class="n">caida_swir</span>
+<span class="n">veg</span> <span class="o">*=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.08</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.55</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="mf">1.45</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.75</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="mf">1.95</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">)</span>
+<span class="n">veg_estres</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.06</span> <span class="o">+</span> <span class="mf">0.06</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="mf">0.57</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.24</span> <span class="o">*</span> <span class="n">borde</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.65</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">])</span>
+<span class="n">veg_estres</span> <span class="o">*=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="mf">1.45</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.55</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="mf">1.95</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">)</span>
+<span class="n">agua</span> <span class="o">=</span> <span class="mf">0.06</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">lam</span> <span class="o">-</span> <span class="mf">0.45</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.15</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="p">(</span><span class="n">lam</span> <span class="o">&lt;</span> <span class="mf">0.75</span><span class="p">)</span>
+<span class="n">agua</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lam</span> <span class="o">&gt;</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">,</span> <span class="n">agua</span><span class="p">)</span>
+<span class="n">suelo</span> <span class="o">=</span> <span class="mf">0.10</span> <span class="o">+</span> <span class="mf">0.22</span> <span class="o">*</span> <span class="p">(</span><span class="n">lam</span> <span class="o">-</span> <span class="mf">0.4</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.1</span> <span class="o">+</span> <span class="mf">0.04</span> <span class="o">*</span> <span class="n">borde</span> <span class="o">-</span> <span class="mf">0.06</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.08</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="mf">1.9</span><span class="p">,</span> <span class="mf">0.07</span><span class="p">)</span>
+<span class="n">suelo_hum</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">suelo</span>
+<span class="n">arcilla</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="o">+</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">lam</span> <span class="o">-</span> <span class="mf">0.4</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.4</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.12</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.14</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="mf">1.9</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.12</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">)</span>
+<span class="n">oxido</span> <span class="o">=</span> <span class="mf">0.06</span> <span class="o">+</span> <span class="mf">0.30</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">lam</span> <span class="o">-</span> <span class="mf">0.6</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.03</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.08</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.04</span> <span class="o">*</span> <span class="p">(</span><span class="n">lam</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">lam</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">firmas</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'vegetación sana'</span><span class="p">:</span> <span class="p">(</span><span class="n">veg</span><span class="p">,</span> <span class="s1">'green'</span><span class="p">),</span> <span class="s1">'vegetación estresada'</span><span class="p">:</span> <span class="p">(</span><span class="n">veg_estres</span><span class="p">,</span> <span class="s1">'olive'</span><span class="p">),</span>
+          <span class="s1">'agua clara'</span><span class="p">:</span> <span class="p">(</span><span class="n">agua</span><span class="p">,</span> <span class="s1">'tab:blue'</span><span class="p">),</span> <span class="s1">'suelo seco'</span><span class="p">:</span> <span class="p">(</span><span class="n">suelo</span><span class="p">,</span> <span class="s1">'saddlebrown'</span><span class="p">),</span>
+          <span class="s1">'suelo húmedo'</span><span class="p">:</span> <span class="p">(</span><span class="n">suelo_hum</span><span class="p">,</span> <span class="s1">'peru'</span><span class="p">),</span> <span class="s1">'roca con arcillas'</span><span class="p">:</span> <span class="p">(</span><span class="n">arcilla</span><span class="p">,</span> <span class="s1">'gray'</span><span class="p">),</span>
+          <span class="s1">'roca con óxidos de hierro'</span><span class="p">:</span> <span class="p">(</span><span class="n">oxido</span><span class="p">,</span> <span class="s1">'firebrick'</span><span class="p">)}</span>
+
+<span class="n">s2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'B2'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.49</span><span class="p">,</span> <span class="mf">0.065</span><span class="p">),</span> <span class="s1">'B3'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.56</span><span class="p">,</span> <span class="mf">0.035</span><span class="p">),</span> <span class="s1">'B4'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.665</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">),</span> <span class="s1">'B5'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.705</span><span class="p">,</span> <span class="mf">0.015</span><span class="p">),</span>
+      <span class="s1">'B6'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.74</span><span class="p">,</span> <span class="mf">0.015</span><span class="p">),</span> <span class="s1">'B7'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.783</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span> <span class="s1">'B8'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.842</span><span class="p">,</span> <span class="mf">0.115</span><span class="p">),</span> <span class="s1">'B8A'</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.865</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span>
+      <span class="s1">'B11'</span><span class="p">:</span> <span class="p">(</span><span class="mf">1.61</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">),</span> <span class="s1">'B12'</span><span class="p">:</span> <span class="p">(</span><span class="mf">2.19</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">)}</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">'width_ratios'</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="ow">in</span> <span class="n">firmas</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">cent</span> <span class="o">=</span> <span class="p">[</span><span class="n">s2</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">s2</span><span class="p">]</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">[(</span><span class="n">lam</span> <span class="o">&gt;=</span> <span class="n">c0</span> <span class="o">-</span> <span class="n">w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">lam</span> <span class="o">&lt;=</span> <span class="n">c0</span> <span class="o">+</span> <span class="n">w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">c0</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">s2</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cent</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s1">'o-'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c0</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">s2</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">c0</span> <span class="o">-</span> <span class="n">w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">c0</span> <span class="o">+</span> <span class="n">w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'0.9'</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Longitud de onda (µm)'</span><span class="p">);</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Reflectancia'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Firmas espectrales (simplificadas); en gris, bandas de Sentinel-2'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Centro de banda (µm)'</span><span class="p">);</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Lo que registra Sentinel-2'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7f2dbf969640ebf4b1dd0921569be17e507a475774b9db71922ad5a2b0da6ffb.png" src="_images/7f2dbf969640ebf4b1dd0921569be17e507a475774b9db71922ad5a2b0da6ffb.png" />
+</div>
+</div>
+<p>La segunda gráfica muestra que, al pasar de una curva continua a diez bandas, se pierden detalles finos como la absorción de las arcillas en 2.2 µm, que queda dentro de la banda ancha B12. Un sensor hiperespectral, con cientos de bandas estrechas, sí la resolvería. Este compromiso entre el número de bandas y su ancho es la resolución espectral, que se trata en el capítulo <a class="reference internal" href="05_Resolucion.html"><span class="doc">Resolución de los sensores</span></a>.</p>
+</section>
+<section id="para-profundizar">
+<h2>Para profundizar<a class="headerlink" href="#para-profundizar" title="Link to this heading">#</a></h2>
+<p>El capítulo 2 de <span class="bibtex-citation" id="id4">[<a class="reference internal" href="bibliografia.html#id2" title="Emilio Chuvieco. Teledetección ambiental: la observación de la Tierra desde el espacio. Ariel, Barcelona, 3 edition, 2008.">Chuvieco, 2008</a>]</span> y el capítulo 1 de <span class="bibtex-citation" id="id5">[<a class="reference internal" href="bibliografia.html#id3" title="Thomas M. Lillesand, Ralph W. Kiefer, and Jonathan W. Chipman. Remote Sensing and Image Interpretation. Wiley, Hoboken, 7 edition, 2015.">Lillesand <em>et al.</em>, 2015</a>]</span> presentan las firmas espectrales de los principales materiales. Las bibliotecas espectrales del USGS y de ECOSTRESS (antes ASTER) contienen miles de espectros medidos en laboratorio de minerales, rocas, suelos y vegetación, y son el punto de partida para cualquier trabajo de cartografía litológica.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_Radiacion.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Radiación electromagnética</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04_Plataformas.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Plataformas, órbitas y sensores</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atenuacion">Atenuación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorcion-y-ventanas-atmosfericas">Absorción y ventanas atmosféricas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion">Dispersión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interaccion-con-la-superficie">Interacción con la superficie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firmas-espectrales">Firmas espectrales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-profundizar">Para profundizar</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Edier V. Aristizábal G.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>Desarrollado por <a href="https://github.com/edieraristizabal">Edier Aristizábal</a>, Facultad de Minas, Universidad Nacional de Colombia.
+<a href="https://edieraristizabal.github.io/Sensores-Remotos/">Página del curso</a> ·
+<a href="https://edieraristizabal.github.io/Sensores-Remotos/html/01_SensoresRemoto.html">Diapositivas</a></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

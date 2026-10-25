@@ -1,0 +1,2466 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Sensores Remotos</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/serif.css" id="theme">
+	<script src="plugin/math/math.js"></script>
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+	<link rel="stylesheet" href="dist/style.css">
+
+
+
+	<style>
+		.primera #marca-agua {
+			display: none;
+		}
+
+		.primera #lecture {
+			display: none;
+		}
+
+		#clock {
+			font-size: 20px;
+			color: #51483D;
+			width: 120px;
+			margin: 0px;
+			text-align: center;
+			border: 2px solid black;
+			border-radius: 20px;
+		}
+
+
+		.reveal section p {
+			font-size: 0.7em;
+		}
+
+		.reveal section li {
+			font-size: 0.6em;
+		}
+
+		.reveal .slide-number {
+			right: 150px;
+			bottom: 3px
+		}
+
+		.reveal h3 {
+			text-align: left;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<script>
+		setInterval(showTime, 1000);
+		function showTime() {
+			let time = new Date();
+			let hour = time.getHours();
+			let min = time.getMinutes();
+			let sec = time.getSeconds();
+			am_pm = "am";
+
+			if (hour > 12) {
+				hour -= 12;
+				am_pm = "pm";
+			}
+			if (hour == 0) {
+				hr = 12;
+				am_pm = "am";
+			}
+
+			hour = hour < 10 ? "0" + hour : hour;
+			min = min < 10 ? "0" + min : min;
+			sec = sec < 10 ? "0" + sec : sec;
+
+			let currentTime = hour + ":"
+				+ min + ":" + sec + am_pm;
+
+			document.getElementById("clock")
+				.innerHTML = currentTime;
+		}
+
+		showTime();
+	</script>
+
+	<div class="reveal">
+		<div class="slides">
+			<div id="marca-agua"><img style="border:none;box-shadow:none;width:80px;position:absolute;top:0%;right:0%;"
+					src="https://i.pinimg.com/736x/ec/10/65/ec106586d015e2210e6b11d6b0b1468d.jpg" />
+			</div>
+			<div id="lecture"
+				style="font-style: italic;color:rgb(118, 35, 47) ;font-size:14px;position:relative;top:98%; text-align: center;">
+				Curso: Sensores Remotos - Prof. Edier Aristizábal - Universidad Nacional de Colombia, sede Medellín
+			</div>
+			<div id="clock" style="font-size:20px;position:absolute;top:94%;right:88%;">0:00:00</div>
+			<section data-background-color="#ffffff" ; data-state="primera">
+				<h1 style="font-size: 60px;">Sensores Remotos</h1>
+				<p>
+				<h4><a href="https://edieraristizabal.github.io/">Prof. Edier Aristizábal</a></h4>
+				</p>
+				<img src="https://i.pinimg.com/originals/f8/5b/28/f85b28f72a65d9c64d8c5e4a7bac57aa.png" alt="unal.jpg" width="500" />
+				<p id="demo" style="position:absolute;top:100%;right:40%;"></p>
+				<script>
+					var d = new Date();
+					var months = ["Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", "Jul.", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+					document.getElementById("demo").innerHTML = months[d.getMonth()] + " " + d.getDate() + " / " + d.getFullYear();
+				</script>
+			</section>
+
+<!--Intro-->
+			<section>
+				<section>
+					<h1>Intro al curso</h1>
+				</section>
+
+				<section>
+					<h3>Objetivos y alcances del curso</h3>
+						<p>En los últimos años, los satélites de observación de la Tierra han generado grandes cantidades de datos geoespaciales que están disponibles gratuitamente en plataformas web.</p>
+						<p>Este curso de Sensores Remotos está orientado para estudiantes de geociencias con el objeto de aprender a utilizar estas herramientas de teledetección en geología. El curso comprende la teoría general de sensores remotos y procesamiento de imágenes de satélite utilizando dos plataformas: Google Earth Engine (GEE) y openEO.</p>
+						<p>El procesamiento de imágenes es una herramienta ampliamente utilizada actualmente, adquirir estas herramientas seguramente le ampliará sus perspectivas profesionales en el campo de las geociencas aplicada en ingeniería.</p>
+				</section>
+
+				<section>
+					<h3>Recomendación</h3>
+					<p>Para tomar el curso se recomienda al estudiante tener conocimientos básicos en SIG, geología,
+						geomorfología, y geología estructural. De esta forma el estudiante podrá sacar el
+						máximo beneficio del contenido del curso.</p>
+					<p>En cualquier caso se recomienda que revise su carga académica para este semestre,
+						y tome una decisión responsable si tiene el tiempo suficiente para dedicarle a este
+						curso. Seguramente otro año lo podría tomar. Por que en caso contrario tiene altas
+						posibilidades de perder el curso</p>
+					<p style="text-align: center;"><b>Este curso es muy fácil de ganar. . . pero hay que trabajar
+							mucho.</b></p>
+				</section>
+			</section>
+
+<!--Definicion-->
+			<section>
+				<section>
+					<h1>Definición</h1>
+				</section>
+
+				<section>
+					<h3>Sensores remotos</h3>
+					<p>Los <i>sensores remotos</i> (teledetección) es el arte, ciencia y tecnología de observar
+						un objeto, escena o fenómeno por técnicas basadas en instrumentos. El término
+						<strong>remoto</strong> se refiere a la observación realizada a una distancia sin contacto
+						físico
+						con el objeto de interés. Se puede utilizar herramientas de detección y despliegue
+						en tiempo real o una herramienta que registra la energía, la cual es emitida o
+						reflejada desde el objeto o la escena en observación. La energía puede ser luz u
+						otra forma de radiaciones electromagnética, campos de fuerza o energía acústica.
+					</p>
+					<img src="https://geospatialmedia.s3.amazonaws.com/wp-content/uploads/2018/01/gis-remote.jpg"
+						width="500">
+				</section>
+
+				<section>
+					<img src="https://1.bp.blogspot.com/-1pqtskECzJo/XO4OuPVmZgI/AAAAAAAAABg/-abWFZ-3bostpswxU3I0Hy_mn2dAbjEAQCLcBGAs/s400/Intro-Rs-fig4.jpg"
+						width="600">
+				</section>
+			</section>
+
+<!--Historia-->
+			<section>
+				<section>
+					<h1>Historia</h1>
+				</section>
+
+				<section>
+					<h3>Antes de 1900</h3>
+					<ul>
+						<li>Invento de la fotografía en 1826
+							Nicephore Niepce, William
+							Henry Fox Talbot, Louis
+							Jacques Mande Daguerre</li>
+					</ul>
+					<img src="https://i.pinimg.com/564x/c9/7c/5a/c97c5ad738ac5858cb66882df946d6c2.jpg" width="500">
+				</section>
+
+				<section>
+					<h3>Primera fotografía de un ser humano</h3>
+					<img src="https://image.slidesharecdn.com/pptch01marien4e-205390-160530170114/95/ppt-ch01-marien4e205390-1-638.jpg?cb=1464628146"
+						width="800">
+				</section>
+
+				<section>
+					<ul>
+						<li>Primera F. aérea en 1858 sobre
+							Paris (Val de Bievre) desde
+							aprox. 400 m en globo
+							(Gaspard-felix Tournachon
+							Nadar)</li>
+					</ul>
+					<img src="https://www.artslife.com/wp-content/uploads/2019/10/Fig.19_Daumier_Nadar-e1571408709111-590x490.jpg"
+						width="700">
+				</section>
+
+				<section>
+					<img src="https://miguelgomezphotos.files.wordpress.com/2015/08/boston_as_the_eagle_and_the_wild_goose_see_it.jpg"
+						width="550">
+				</section>
+
+				<section>
+					<ul>
+						<li>Algunas de las fotografías más notables tomadas con cámaras suspendidas de cometas fueron obra de George R. Lawrence. Se tituló <i>San Francisco en ruinas</i> y fue tomada el 28 de mayo de 1906, pocas semanas después del terremoto de 1906</li>
+					</ul>
+					<img src="http://tile.loc.gov/storage-services/service/pnp/pan/6a34000/6a34500/6a34514r.jpg"
+						width="1000">
+				</section>
+
+				<section>
+					<h3>Entre 1900-1950</h3>
+					<img src="https://dronecenter.bard.edu/files/2014/01/49741939_vlcsnap-100965.jpg" width="1000">
+				</section>
+
+				<section>
+					<h3>WWI</h3>
+					<img src="https://dronecenter.bard.edu/files/2014/01/Aerial-photographers.jpg" width="900">
+				</section>
+
+				<section>
+					<h3>WWI</h3>
+					<img src="https://www.brownstonedetectives.com/wp-content/uploads/2014/12/aerialphotography.jpg"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Cámaras aéreas</h3>
+					<img src="https://i.pinimg.com/originals/9b/d0/ad/9bd0ada2815cf2085b0fafcbd78ed762.jpg" width="800">
+				</section>
+
+				<section>
+					<h3>Cámaras aéreas</h3>
+					<img src="https://media.springernature.com/lw785/springer-static/image/chp%3A10.1007%2F978-3-642-34085-7_11/MediaObjects/300621_1_En_11_Fig5_HTML.gif" width="800">
+				</section>
+
+				<section>
+					<h3>Cámaras aéreas</h3>
+					<img src="http://2.bp.blogspot.com/-JrhLvnVa0BM/TYMMQGfo63I/AAAAAAAABGc/TyEPoHKlRRk/s1600/camera.JPG" width="700">
+				</section>
+
+				<section>
+					<h3>Después de 1950</h3>
+					<img src="https://media.techeblog.com/images/first-photo-earth-from-space.jpg" width="600">
+				</section>
+
+				<section>
+					<p>En 1972 es lanzado el ERTS-1, el primer satélite para estudiar los recursos de
+						la tierra, mas tarde renombrado Landsat 1.</p>
+					<img src="https://i.pinimg.com/736x/e8/49/83/e849832cdc1542579e44a0cbea286ec1.jpg"
+						width="400">
+				</section>
+
+				<section>
+					<h3>Actualidad</h3>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/NASA_Earth_Science_Division_Operating_Missions.jpg/960px-NASA_Earth_Science_Division_Operating_Missions.jpg"
+						width="1000">
+				</section>
+
+				<section>
+					<h3>Basura espacial</h3>
+					<img src="https://i.pinimg.com/originals/41/74/2e/41742ee4ed161977dd5871541cfe2bb7.jpg" width="720">
+					<figcaption><a
+							href="https://medium.com/supervisionearth/how-can-we-tackle-the-growing-space-junk-problem-6f19ce785b09">https://medium.com/supervisionearth/how-can-we-tackle-the-growing-space-junk-problem-6f19ce785b09</a>
+					</figcaption>
+				</section>
+
+				<section>
+					<h3>Actualidad (multiespectral & multitemporal)</h3>
+					<img src="https://i.pinimg.com/originals/0d/b0/fa/0db0fa6f76be6593e1ebf1bec439aa2f.png"
+						width="400">
+					<img src="https://www.spiedigitallibrary.org/ContentImages/Journals/OPEGAR/59/9/090902/FigureImages/OE_59_9_090902_f007.png"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Hipercubos</h3>
+					<img src="https://i.pinimg.com/736x/74/1b/08/741b08d4881677050fe7de0fb4acb874.jpg"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Aplicaciones</h3>
+					<img src="https://d3i71xaburhd42.cloudfront.net/0eb3d6962fbca3a7232089612a54ca4dbb5bad8b/42-Figure2.2-1.png"
+						width="700">
+				</section>
+
+			</section>
+
+<!--Radiación y Ondas-->
+			<section>
+				<section>
+					<h1>Radiación & Ondas</h1>
+				</section>
+
+				<section>
+					<h3>Transferencia de energía</h3>
+					<p>Existen tres formas de transferencia de energía:</p>
+					<ul>
+						<li><b>Conducción: </b>es el mecanismo de transferencia de calor en escala atómica. Se
+							produce por la vibración y choque de unas moléculas con otras, donde las partículas
+							más energéticas le entregan energía a las menos energéticas.</li>
+						<li><b>Convencción: </b>mecanismo de transferencia de calor por movimiento de masa o
+							circulación dentro de la sustancia, es propia de fluidos (líquidos o gaseosos) en
+							movimiento.</li>
+						<li style="color: blue"><b>Radiación: </b> es energía emitida por la materia que se encuentra a
+							una temperatura dada. Esta energía es producida por los cambios en las configuraciones
+							electrónicas de los átomos o moléculas. Esta energía es transportada por ondas
+							electromagnéticas o fotones, por lo que recibe el nombre de radiación electromagnética
+							que se propaga a través del vacío y a la velocidad de la luz.</li>
+
+					</ul>
+				</section>
+
+				<section>
+					<img src="https://d20khd7ddkh5ls.cloudfront.net/electromagnetic_raditation_2.jpeg" width="700">
+					<figcaption><a
+							href="https://www.expii.com/t/electromagnetic-radiation-overview-types-8301">https://www.expii.com/t/electromagnetic-radiation-overview-types-8301</a>
+					</figcaption>
+				</section>
+
+				<section>
+					<img src="https://d20khd7ddkh5ls.cloudfront.net/wavelength_and_frequency_2.jpeg" width="900">
+					<figcaption><a
+							href="https://www.expii.com/t/electromagnetic-radiation-overview-types-8301">https://www.expii.com/t/electromagnetic-radiation-overview-types-8301</a>
+					</figcaption>
+				</section>
+
+				<section>
+					<img src="https://ars.els-cdn.com/content/image/3-s2.0-B9780128092545000026-f02-01-9780128092545.jpg"
+						width="800">
+				</section>
+
+				<section>
+					<img src="https://dwg31ai31okv0.cloudfront.net/images/Article_Images/ImageForArticle_146(1).jpg"
+						width="700">
+					<figcaption><a
+							href="https://www.thoughtco.com/wave-particle-duality-2699037">https://www.thoughtco.com/wave-particle-duality-2699037</a>
+					</figcaption>
+				</section>
+
+				<section>
+					<img src="https://images.squarespace-cdn.com/content/v1/5c6dc609e666695214ebd4d8/1551322569633-2SS6RN5VVPQEA865TXN8/ke17ZwdGBToddI8pDm48kPmLlvCIXgndBxNq9fzeZb1Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIFMLRh9LbupWL4Bv1SDYZc4lRApws2Snwk0j_RSxbNHMKMshLAGzx4R3EDFOm1kBS/Plancks_Equation.jpg"
+						width="250">
+					<img src="https://cdn.britannica.com/96/96596-004-1D8E9F0F/light-fringes-double-slit-experiment-path-difference-slits.jpg"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Espectro electromagnético</h3>
+					<img src="https://d20khd7ddkh5ls.cloudfront.net/electromagnetic_waves_spectrum_2.jpeg" width="900">
+					<figcaption><a
+							href="https://www.expii.com/t/electromagnetic-radiation-overview-types-8301">https://www.expii.com/t/electromagnetic-radiation-overview-types-8301</a>
+					</figcaption>
+				</section>
+
+				<section>
+					<h3>Ley de Stefan-Boltzmann & Ley de Wien</h3>
+					<img src="http://3.bp.blogspot.com/--LNjn2jEHcg/UTsc-31r9GI/AAAAAAAADrs/3ZMIwpZ0FO8/s1600/spectral_emissive_power_of_a_288k_balckbody.jpg"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Radiación solar</h3>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Solar_Spectrum.png" width="800">
+				</section>
+
+				<section>
+					<h3>Radiación solar & Radiación terrestre</h3>
+					<img src="https://media.cheggcdn.com/media%2Fc21%2Fc2109982-6c81-47a9-884e-cba8a9c3d57c%2FphpEF50FM.png"
+						width="900">
+				</section>
+
+			</section>
+
+<!--Sensores opticos-->
+
+				<section>
+					<h1 style="font-size:larger">Sensores ópticos</h1>
+				</section>
+
+<!--Fotografia aereas-->
+			<section>
+				
+				<section>
+					<h1>Fotografías aéreas</h1>
+				</section>
+
+				<section>
+					<img src="https://static.bhphotovideo.com/explora/sites/default/files/27416-topshot.png" width="900">
+				</section>
+
+				<section>
+					<h3>Análogo</h3>
+					<img src="https://media.defense.gov/2014/Jan/14/2000883991/-1/-1/0/140114-F-DW547-003.JPG"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Resolución espacial</h3>
+					<p><b>Poder de resolución de la película:</b> pares de líneas por milímetro (LPM). Por ejemplo, si el ancho de una línea más el espacio contiguo mide 0.04 mm, un par de líneas cada 0.04 mm equivale a una resolución de 25 LPM.</p>
+					<img src="https://www.cloudynights.com/uploads/monthly_12_2011/post-17464-14073829930923_thumb.gif"
+						width="500">
+				</section>
+				
+				<section>
+					<h3>Tipos de fotografías aéreas</h3>
+					<img src="https://1.bp.blogspot.com/-2WZkLjfs1LE/XslDMmyL0wI/AAAAAAAAB-M/xxlHqxjMiLwR96C5jEP5IAjrbuzAqtXnQCLcBGAsYHQ/s1600/k.jpg" width="900">
+				</section>
+
+				<section>
+					<h3>Fotografía aérea vertical</h3>
+					<img src="https://i.pinimg.com/originals/fa/26/92/fa26921591c0137e94b8d6577bf7dd10.jpg" width="570">
+				</section>
+
+				<section>
+					<h3>Fotografía aérea oblicua baja</h3>
+					<img src="https://i.pinimg.com/originals/76/24/0b/76240bee4c08b16d0dbb778fb61959c3.jpg" width="790">
+				</section>
+
+				<section>
+					<h3>Fotografía aérea oblicua alta</h3>
+					<img src="https://i.pinimg.com/originals/fa/7f/14/fa7f141a17affff50ee2fe8d5aa69405.jpg" width="600">
+				</section>
+
+				<section>
+					<img src="https://image.slidesharecdn.com/fotogrametra-maestraengeomtica-usach-130510174818-phpapp01/95/fotogrametra-maestra-en-geomtica-usach-24-638.jpg?cb=1368208282" width="850">
+				</section>
+
+				<section>
+					<img src="https://image.slidesharecdn.com/fotogrametra-maestraengeomtica-usach-130510174818-phpapp01/95/fotogrametra-maestra-en-geomtica-usach-25-638.jpg?cb=1368208282" width="800">
+				</section>
+
+				<section>
+					<img src="https://image.slidesharecdn.com/fotoareayfotointerpretacin-130603074152-phpapp02/95/fotografa-area-y-fotointerpretacin-24-638.jpg?cb=1395392946" width="800">
+				</section>
+
+				<section>
+					<img src="https://image.slidesharecdn.com/fotoareayfotointerpretacin-130603074152-phpapp02/95/fotografa-area-y-fotointerpretacin-42-638.jpg?cb=1395392946" width="800">
+				</section>
+
+				<section>
+					<h3>Definiciones</h3>
+					<ul>
+						<li>Altura de vuelo: es la altura del vuelo en el momento de la toma, referida al nivel del
+							mar.</li>
+						<li>Distancia focal: distancia que existe entre el foco del lente y el negativo de la película</li>
+						<li>Nadir: proyección vertical del centro de la cámara sobre el terreno en el momento de
+							la exposición</li>
+						<li>Punto principal: es el punto de intersección sobre la fotografía de un eje perpendicular
+							al plano terrestre</li>
+						<li>Base instrumental: separación entre dos puntos iguales del estereograma</li>
+						<li>Base aérea: distancia entre los puntos de toma medida en el terreno</li>
+						<li>Fotobase: es la base aérea medida a escala de la foto</li>
+						<li>Estereograma. Es un par estereoscópico, correctamente orientado y montado, cada
+							imagen al lado de la otra, a fin de facilitar la visión estereoscópica mediante el uso del
+							estereoscopio de espejos. Una variación del estereograma es el estereotriplete, el cual
+							usa tres fotografías sucesivas extendiendo así el área de observación.</li>
+						<li>Línea de vuelo: es la línea que marca la trayectoria del avión</li>
+					</ul>
+				</section>
+
+				<section>
+					<img src="https://image.slidesharecdn.com/fotoareayfotointerpretacin-130603074152-phpapp02/95/fotografa-area-y-fotointerpretacin-26-638.jpg?cb=1395392946" width="800">
+				</section>
+
+				<section>
+					<h3>Mapa líneas de vuelo</h3>
+					<img src="https://i.pinimg.com/564x/4e/b1/35/4eb135660e79cf84044befbd2ec363e3.jpg" width="550">
+				</section>		
+							
+				<section>
+					<a href="https://www.colombiaenmapas.gov.co/#">Colombia en mapas</a></br>
+					<img src="img/figuras/logo_colombia_en_mapas.png">
+				</section>
+
+				<section>
+					<h3>Geometría</h3>
+					<img src="https://i.pinimg.com/736x/a9/15/af/a915afbb60f21edbdb046c688d1fdefa.jpg" width="500">
+					<figcaption>Fuente: https://www.onestopgis.com/Aerial-Photography/Principles-of-Photogrammetry/Aerial-Photo-Geometric-Characteristics/2-Airphoto-Geometry-Vertical-and-Tilted-Air-Photos-Flight-Path-and-Overlap.html</figcaption>
+				</section>
+
+				<section>
+					<h3>Escala</h3>
+					<img src="https://i.pinimg.com/564x/fb/c4/4c/fbc44c4f3ec4db40bb6db0e94ad48804.jpg" width="800">
+				</section>
+		
+				<section>
+					<h3>Variación de la escala</h3>
+					<img src="https://i.pinimg.com/564x/1a/a5/89/1aa58990002270e8820d0574a1256f20.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Exageración de la escala</h3>
+					<img src="https://i.pinimg.com/564x/08/1d/57/081d572707c72a5aa4f1a5000595744a.jpg" width="700">
+				</section>
+
+			</section>
+
+<!--Fotointerpretacion-->
+           <section>
+				<section>
+					<h1>Fotointerpretación</h1>
+				</section>
+
+				<section>
+					<p>Hacia dónde está abierto este libro?</p>
+					<img src="https://i.pinimg.com/170x/85/d8/f9/85d8f9675caab4ac9dd039bb621fb168.jpg" width="500">
+				</section>
+
+				<section>
+					<h3>Percepción del relieve: Superposición</h3>
+					<img src="https://i.pinimg.com/originals/75/57/e9/7557e9967766b39cee7ed2a575fbe347.png" width="600">
+				</section>
+
+				<section>
+					<h3>Percepción del relieve: Sombras</h3>
+					<img src="https://i.pinimg.com/originals/81/eb/4a/81eb4a6f201ec5ca30a7f86f845f4b0e.jpg" width="600">
+				</section>
+
+				<section>
+					<h3>Percepción del relieve: Tamaño</h3>
+					<img src="https://i.pinimg.com/originals/53/f4/d6/53f4d631836c2f500bea502c5028b85f.png" width="600">
+				</section>
+
+				<section>
+					<h3>Percepción del relieve: Altura</h3>
+					<img src="https://i.pinimg.com/originals/1b/fc/ca/1bfccaccd787e07b225fa16ba38b8294.gif" width="600">
+				</section>
+
+				<section>
+					<h3>Percepción del relieve: Perspectiva</h3>
+					<img src="https://i.pinimg.com/originals/49/b9/f3/49b9f338c2ed1a378a6f46b137823001.jpg" width="600">
+				</section>
+
+				<section>
+					<h3>Percepción del relieve: Gradiente en la textura</h3>
+					<img src="https://c2.staticflickr.com/4/3163/2297308960_f935e675d6_b.jpg" width="800">
+				</section>
+
+				<section>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Gustave_Caillebotte_-_Paris_Street%2C_Rainy_Day_-_1964.336_-_Art_Institute_of_Chicago.jpg/1280px-Gustave_Caillebotte_-_Paris_Street%2C_Rainy_Day_-_1964.336_-_Art_Institute_of_Chicago.jpg" width="800">
+				</section>
+
+				<section>
+					<h3>El Efecto GESTALT</h3>
+					<p>El todo es distinto de la suma de las partes (Kurt Koffka)</p>
+					<img src="https://i.pinimg.com/564x/fd/7e/6b/fd7e6b6bce7b2de6d4f7151978a063e9.jpg" width="1000">
+				</section>
+
+				<section>
+					<img src="https://www.stampaprint.net/es/blog/wp-content/uploads/2016/05/teoria-de-la-gestalt.png" width="600">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/736x/46/5d/72/465d72d2cfb23a691c3ea3c41f0e0ba0.jpg" width="700">
+				</section>
+
+				<section>
+					<img src="https://petapixel.com/assets/uploads/2019/07/opticalillustion.jpg" width="900">
+				</section>
+
+				<section>
+					<img src="https://i.insider.com/55673600eab8eac65f0b488b?width=600&format=jpeg&auto=webp" width="750">
+				</section>
+
+				<section>
+					<img src="http://brainden.com/images/sander-illusion.jpg" width="700">
+				</section>
+
+				<section>
+					<img src="https://www.imta.ch/wp-content/uploads/2018/04/Muller-Lyer-circle-heads.gif" width="700">
+				</section>
+
+				<section>
+					<img src="https://hips.hearstapps.com/ghk.h-cdn.co/assets/16/29/1468855284-optical-illusion.jpg" width="900">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/originals/ee/66/b5/ee66b543fd77124b9bb035a3a229eb22.gif" width="600">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/originals/e0/87/29/e08729a63ba3356cd0ec0430e9498f05.jpg" width="800">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/736x/4c/ee/6a/4cee6a19683d85c0fdd48ee55b008728.jpg" width="650">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/originals/f6/e7/fa/f6e7fa0329f1ac168d527280e57c3f5a.jpg" width="700">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/1200x/d0/81/8f/d0818f7b1c095060d5d10c2d093beadb.jpg" width="800">
+				</section>
+	
+				<section>
+					<h3>Visión binocular: El ojo humano</h3>
+					<p><b>Bastones (rod): </b>brillo (intensidad). Tienen la misma sensibilidad de frecuencia
+						(0,55 um). A baja luz vemos monocromático</p>
+					<p><b>Conos: </b>colores (frecuencia). Sensibles longitudes de onda del azul, verde y rojo,
+						cuando lo tres tipos de conos son estimulados de forma percibimos el color blanco. El ojo
+						humano discrimina más colores que tonos de grises</p>
+					<img src="https://i.pinimg.com/originals/5f/36/8b/5f368b34f98cead163242f0bd047d65f.jpg" width="600">
+				</section>
+
+				<section>
+					<h3>Fundamentos de la visión estereoscópica</h3>
+					<ul>
+						<li>Nuestros ojos captan dos imágenes desde dos puntos de vista
+							distintos</li>
+						<li>Las imágenes son interpretadas como una única imagen
+							(fusión y estereopsis)</li>
+						<li>La sensación de profundidad es función de la separación
+							intraocular</li>
+					</ul>
+					<img src="http://3.bp.blogspot.com/-RKsyaeaO5QQ/TfSqDJM1hyI/AAAAAAAAAHY/COHs50lFnww/s1600/AV+estereo.jpg" width="700">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/originals/61/94/6f/61946fc0d0eaf7419aab8b7ba5cc103d.png" width="900">
+				</section>
+
+				<section>
+					<h3>Estereoscopio de espejos</h3>
+					<img src="https://i.pinimg.com/564x/8e/ee/a7/8eeea70ae20e90bf164141c5e2d6c89b.jpg" width="800">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/564x/93/e3/be/93e3bedf033adaef33401ce0f83af6ac.jpg" width="800">
+				</section>
+
+				<section>
+					<h3>Estereoscopio de bolsillo</h3>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Pocket_stereoscope.jpg/1280px-Pocket_stereoscope.jpg" width="800">
+				</section>
+
+				<section>
+					<h3>Anaglifos</h3>
+					<img src="https://i.pinimg.com/736x/d0/45/ef/d045ef99864f31228f804fcb5690d28a.jpg" width="800">
+				</section>
+
+				<section>
+					<h3>Anaglifos</h3>
+					<img src="https://i.pinimg.com/1200x/c9/e1/bc/c9e1bc7a7fe683e7957ec75267f137cb.jpg" width="500">
+				</section>
+
+				<section>
+					<a href=http://www.ign.es/3d-stereo/>Modelo 3d Anaglifo España</a>
+				</section>
+
+				<section>
+					<h3>Desplazamiento del relieve</h3>
+					<img src="https://i.pinimg.com/originals/67/e9/15/67e915b01443a025ef239203c4853032.png" width="650">
+					<figcaption>Source: https://jerrymahun.com/index.php/home/open-access/xii-photogrammetry/246-chapter-c-single-vertical-photo?start=4</figcaption>
+				</section>
+
+				<section>
+					<h3>Desplazamiento del relieve</h3>
+					<img src="https://i.pinimg.com/564x/0b/1c/db/0b1cdbec12a8285b43bc1200d4397228.jpg" width="500">
+					<figcaption>Source: https://jerrymahun.com/index.php/home/open-access/xii-photogrammetry/246-chapter-c-single-vertical-photo?start=4</figcaption>
+				</section>
+
+				<section>
+					<h3>Paralaje</h3>
+					<p>Cambio en la posición de los objetos estacionarios debido al cambio en la posicion del observador. Los desplazamientos del paralaje ocurren solamente paralelos a la línea de vuelo,
+						y es directamente porporcional a la altura de los objetos
+					</p>
+					<img src="https://media.springernature.com/original/springer-static/image/chp%3A10.1007%2F978-1-4020-9014-1_3/MediaObjects/978-1-4020-9014-1_3_Fig8_HTML.gif" width="700">
+				</section>
+
+				<section>
+					<h3>Paralaje absoluto</h3>
+					<p>Es la diferencia de las distancias entre los puntos principales y las imágenes homologas, medidas paralelas a la línea de vuelo.</p>
+					<img src="https://i.pinimg.com/originals/70/a6/d0/70a6d07834255c2561f6ca8cde2f6fdb.png" width="800">
+				</section>
+
+				<section>
+					<h3>Paralaje absoluto</h3>
+					<p>Es directamente porporcional a la altura de los objetos.</p>
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPtZ3ZslNEzwlILFJHTVUl9SmTz0ZwcwH8QLA0_MpOaHq_caVQX2jaiOILK0yCJxl6tUI&usqp=CAU" width="500">
+				</section>
+
+				<section>
+					<h3>Paralaje relativo</h3>
+					<img src="https://i.pinimg.com/564x/19/3d/21/193d21ccc7c26490960d5fc871cddeb3.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Paralaje relativo</h3>
+					<img src="https://i.pinimg.com/564x/86/66/53/866653f186bb81eba96440656864dc02.jpg" width="900">
+				</section>
+
+				<section>
+					<h3>Medición del relieve</h3>
+					<img src="https://i.pinimg.com/736x/ef/31/4e/ef314e17ac064674a353cf9bfa319b83.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Medición del relieve</h3>
+					<img src="https://i.pinimg.com/564x/ab/d6/27/abd627a039b64e0cd39e5c8e40a48d00.jpg" width="900">
+				</section>
+
+				<section>
+					<h3>Metodología fotointerpretación</h3>
+					<img src="https://i.pinimg.com/564x/71/51/6e/71516eaaed34ed8ed7aa36188a8cd9bf.jpg" width="1000">
+				</section>
+
+				<section>
+					<h3>Procedimiento</h3>
+					<img src="https://i.pinimg.com/564x/61/8d/51/618d513fb9e1637e02ef40a55f34dcfe.jpg" width="600">
+				</section>
+
+				<section>
+					<h3>Criterios</h3>
+					<img src="https://i.pinimg.com/1200x/e2/8e/86/e28e86fb12155c81d8c96bb568b30c27.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Criterios</h3>
+					<img src="https://i.pinimg.com/1200x/01/63/35/016335ff398f79c06eae23aa564130fd.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Color</h3>
+					<img src="https://i.pinimg.com/736x/6e/a9/04/6ea9044e2c912f82a1cf050530cb7516.jpg" width="500">
+				</section>
+
+				<section>
+					<h3>Tono</h3>
+					<img src="https://media.cheggcdn.com/media/913/913e5449-78db-4516-87e8-507d8e6bbb63/php9f4Zv9.png" width="500">
+				</section>
+
+				<section>
+					<h3>Textura</h3>
+					<img src="https://i.pinimg.com/736x/24/f0/d8/24f0d8be40a31b5dd3d2ec19254fe98f.jpg" width="500">
+				</section>
+
+				<section>
+					<h3>Tono y texturas</h3>
+					<img src="https://i.pinimg.com/1200x/72/d9/1e/72d91eff156095988c904fbea5aa5e8a.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Formas</h3>
+					<img src="https://images.fineartamerica.com/images-medium-large/shiveluch-volcano-satellite-image-nasa.jpg" width="500">
+				</section>
+
+				<section>
+					<h3>Sombras</h3>
+					<img src="https://live.staticflickr.com/8455/8055670105_2f9fa92d1b_b.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Sombras</h3>
+					<p>Inversión del relieve</p>
+					<img src="https://i.pinimg.com/564x/f3/95/a2/f395a2e9511fcfb592924becd436f11d.jpg" width="750">
+				</section>
+
+				<section>
+					<h3>Tamaño</h3>
+					<img src="https://miro.medium.com/max/1024/0*BdPmexGiSUFAVc2A.jpg" width="900">
+				</section>
+
+				<section>
+					<h3>Asociación</h3>
+					<img src="http://paesaggididecrescita.files.wordpress.com/2012/08/imagi_alex_maclean-12.jpg?w=652" width="800">
+				</section>
+
+				<section>
+					<h3>Temporalidad</h3>
+					<img src="https://www.scirp.org/html/3-2630060/74e3ed16-e45b-4a7e-b66d-45973d2d77d0.jpg" width="900">
+				</section>
+
+				<section>
+					<h3>Patrón de drenaje y morfología</h3>
+					<img src="https://2.bp.blogspot.com/-DI7XdKA99j0/Wq6rTNqElsI/AAAAAAAAPRE/u7d1Uy27ky8r6zM3sNMQOmP-zgoZ1BTcQCLcBGAs/s640/Types%2Bof%2BDrainage%2BPatterns%2B2C__1521396534_46.35.74.194.jpg" width="800">
+				</section>
+
+				<section>
+					<p><b>Patrones dendríticos</b>: son de lejos los más comunes y se desarrollan donde la roca (o el material no consolidado) bajo el cauce no tiene una fábrica o estructura particular y se erosiona con la misma facilidad en todas las direcciones. Ejemplos son el granito, el gneis, las rocas volcánicas y las rocas sedimentarias no plegadas.</p>
+					<p><b>Patrones de drenaje enrejados (trellis)</b>: se desarrollan típicamente donde las rocas sedimentarias han sido plegadas o inclinadas y luego erosionadas en distinto grado según su resistencia.</p>
+					<p><b>Patrones rectangulares</b>: se desarrollan en áreas de poca topografía con un sistema de planos de estratificación, fracturas o fallas que forman una red rectangular.</p>
+					<p><b>Sistema de drenaje paralelo</b>: es un patrón de ríos causado por pendientes fuertes con algo de relieve. Por la pendiente, las corrientes son rápidas y rectas, con muy pocos tributarios, y todas fluyen en la misma dirección. Un patrón paralelo también se desarrolla en regiones con geoformas paralelas y alargadas, como franjas de roca resistente aflorante.</p>
+				</section>
+
+				<section>
+					<h3>Dendrítico</h3>
+					<img src="https://cdn.britannica.com/56/7756-050-66E689B8/drainage-pattern-limestone-Yemen.jpg" width="430">
+				</section>
+
+				<section>
+					<h3>Enrejado (trellis)</h3>
+					<img src="https://i.pinimg.com/originals/a6/8d/bb/a68dbbe88a4fd1291ed548e4e921d297.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Rectangular</h3>
+					<img src="http://www.pmfias.com/wp-content/uploads/2015/12/Rectangular-drainage.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Estratos horizontales</h3>
+					<img src="https://image.slidesharecdn.com/geologicmaps-141012161350-conversion-gate01/95/geologic-maps-4-638.jpg?cb=1413130482" width="700">
+				</section>
+
+				<section>
+					<h3>Estratos buzantes</h3>
+					<img src="https://image.slidesharecdn.com/geologicmaps-141012161350-conversion-gate01/95/geologic-maps-6-638.jpg?cb=1413130482" width="700">
+				</section>
+
+				<section>
+					<h3>Estratos plegados</h3>
+					<img src="https://image.slidesharecdn.com/geologicmaps-141012161350-conversion-gate01/95/geologic-maps-14-638.jpg?cb=1413130482" width="700">
+				</section>
+
+				<section>
+					<h3>Intrusiones graníticas</h3>
+					<img src="https://i.pinimg.com/564x/8e/22/eb/8e22ebd8a1ec0439025bae110a95862e.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Gneis</h3>
+					<img src="https://i.pinimg.com/564x/9b/35/0f/9b350f086e4151d185c39d538b285884.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Esquistos</h3>
+					<img src="https://i.pinimg.com/564x/bf/3b/1a/bf3b1a4b8436bf1e07e85d5a48da73b7.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Rocas sedimentarias</h3>
+					<img src="https://i.pinimg.com/564x/c8/02/23/c8022328fc86df48f986f8a4a1154bcf.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Rocas sedimentarias</h3>
+					<img src="https://i.pinimg.com/564x/7e/1e/5f/7e1e5f3277046c49b04f4d81099e5201.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Rocas sedimentarias</h3>
+					<img src="https://i.pinimg.com/564x/8e/96/82/8e96828c8491d7b1bccf0f7a09c9d5ad.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Rocas sedimentarias</h3>
+					<img src="https://i.pinimg.com/564x/1c/4f/c5/1c4fc51beab23cf42e85a541fe1693df.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Areniscas</h3>
+					<img src="https://i.pinimg.com/564x/5f/44/e8/5f44e841d4cdd68d483788fa73b85c56.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Areniscas</h3>
+					<img src="https://i.pinimg.com/564x/d8/f1/6e/d8f16ecb946f3cadea6b6978e5746874.jpg" width="700">
+				</section>
+
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<img src="https://cdn.shopify.com/s/files/1/0384/0233/files/3_9565e481-103f-4b7d-9633-aa656d965443_1024x1024.png?v=1509964566" width="900">
+				</section>
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<img src="https://cdn.shopify.com/s/files/1/0384/0233/files/1_d1d254ce-944a-46b9-a03e-ce24e20ef30d_1024x1024.png?v=1509960016" width="900">
+				</section>
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<img src="https://pbs.twimg.com/media/DjmwVHZW4AEv63g.jpg" width="500">
+				</section>
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<img src="https://www.rei.com/dam/side_view_v3.jpg" width="900">
+				</section>
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<p>Suave: las curvas de nivel de una pendiente uniforme y suave están igualmente espaciadas y separadas. Se camina con facilidad.</p>
+					<img src="https://i.pinimg.com/originals/4e/59/4d/4e594dae6f46e2ae8d0fb72f458889f2.png" width="800">
+					<figcaption><a href="https://www.bushwalking101.org/interpreting-map-features/"></a>https://www.bushwalking101.org/interpreting-map-features</figcaption>
+				</section>
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<p>Empinada: las curvas de nivel de una pendiente uniforme y fuerte están igualmente espaciadas pero muy juntas. El tránsito es muy difícil o imposible (las curvas pueden estar tan juntas que forman un escarpe infranqueable).</p>
+					<img src="https://i.pinimg.com/originals/cc/21/47/cc21476715d7a8826a4918318ed8f938.png" width="800">
+					<figcaption><a href="https://www.bushwalking101.org/interpreting-map-features/"></a>https://www.bushwalking101.org/interpreting-map-features</figcaption>
+				</section>
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<p>Cóncava: las curvas de nivel de una pendiente cóncava están juntas en la parte alta y separadas en la parte baja. Quien sube la ladera la encuentra cada vez más empinada y difícil.</p>
+					<img src="https://i.pinimg.com/originals/e7/ed/58/e7ed58e32315bfca95d4697711382f7a.png" width="800">
+					<figcaption><a href="https://www.bushwalking101.org/interpreting-map-features/"></a>https://www.bushwalking101.org/interpreting-map-features</figcaption>
+				</section>
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<p>Convexa: las curvas de nivel de una pendiente convexa están separadas en la parte alta y juntas en la parte baja. Quien baja la ladera no alcanza a ver la mayor parte de ella ni el terreno de abajo, por lo que debe tener cuidado al elegir la ruta.</p>
+					<img src="https://i.pinimg.com/originals/a3/c4/07/a3c407cbfcc80f9173f12a29f74b53db.png" width="800">
+					<figcaption><a href="https://www.bushwalking101.org/interpreting-map-features/"></a>https://www.bushwalking101.org/interpreting-map-features</figcaption>
+				</section>
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<p>Peak = a mountain with a pointed top.</p>
+					<img src="https://i.pinimg.com/originals/ef/e1/dd/efe1dd8e2ababe93ad2beaa225ae7ea7.png" width="800">
+					<figcaption><a href="https://www.bushwalking101.org/interpreting-map-features/"></a>https://www.bushwalking101.org/interpreting-map-features</figcaption>
+				</section>
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<p>Silla o collado: es una depresión o punto bajo entre dos zonas más altas. No es necesariamente el terreno bajo entre dos cimas; puede ser solo una depresión o quiebre a lo largo de una cresta. Parado en una silla, hay terreno alto en dos direcciones opuestas y terreno bajo en las otras dos. Suele verse como un reloj de arena.</p>
+					<img src="https://i.pinimg.com/originals/ff/e3/48/ffe348a48656ba9b184eee994b1b3081.png" width="800">
+				</section>
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<p>Cárcava: es un surco alargado en el terreno, formado usualmente por un curso de agua, con terreno alto en tres de sus lados. Según su tamaño y ubicación, a veces corre agua por ella, de lo alto a lo bajo. Las curvas de nivel de una cárcava tienen forma de U o de V. Para saber hacia dónde fluye el agua se miran las curvas: el extremo cerrado de la U o la V siempre apunta aguas arriba, hacia el terreno alto. Un valle es una cárcava grande, a menudo plana, amplia y abierta, con un curso de agua importante.</p>
+					<img src="https://i.pinimg.com/originals/e6/38/89/e63889d017d8f2499f7b2830a3a2b132.png" width="800">
+					<figcaption><a href="https://www.bushwalking101.org/interpreting-map-features/"></a>https://www.bushwalking101.org/interpreting-map-features</figcaption>
+				</section>
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<p>Cuchilla o divisoria: es una línea inclinada de terreno alto. Parado sobre su eje, suele haber terreno bajo en tres direcciones y terreno alto en una, con pendientes variables. Al cruzarla en ángulo recto hay un ascenso fuerte hasta la cresta y luego un descenso fuerte hasta la base. Al recorrerla a lo largo, según el sitio, la pendiente puede ser casi imperceptible o muy marcada. Sus curvas de nivel tienen forma de U o de V, y el extremo cerrado apunta en sentido contrario al terreno alto.</p>
+					<img src="https://i.pinimg.com/originals/6d/88/55/6d8855c3ba88cb1555d336ad05666ff5.png" width="800">
+					<figcaption><a href="https://www.bushwalking101.org/interpreting-map-features/"></a>https://www.bushwalking101.org/interpreting-map-features</figcaption>
+				</section>
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<p>Espolón: es una línea corta y continua de terreno alto inclinado que suele sobresalir del costado de una cuchilla. Con frecuencia se forma entre dos corrientes aproximadamente paralelas que bajan por el flanco de la cuchilla. El terreno desciende en tres direcciones y asciende en una. En el mapa, la U o la V de las curvas apunta en sentido contrario al terreno alto.</p>
+					<img src="https://i.pinimg.com/originals/d7/49/60/d74960d5f62dc3f5d224fe643c30ed74.png" width="800">
+					<figcaption><a href="https://www.bushwalking101.org/interpreting-map-features/"></a>https://www.bushwalking101.org/interpreting-map-features</figcaption>
+				</section>
+
+				<section>
+					<h3>Leer mapas topográficos</h3>
+					<p>Escarpe: es un rasgo vertical o casi vertical, un cambio abrupto del terreno. Cuando la pendiente es tan fuerte que las curvas de nivel se funden en una sola curva que las agrupa, esta a veces lleva marcas que apuntan hacia el terreno bajo (imagen inferior). Los escarpes también se reconocen por curvas de nivel muy juntas que en algunos casos se tocan.</p>
+					<img src="https://i.pinimg.com/originals/c8/f1/5e/c8f15e979dba1086789040c53f2b9397.png" width="800">
+					<figcaption><a href="https://www.bushwalking101.org/interpreting-map-features/"></a>https://www.bushwalking101.org/interpreting-map-features</figcaption>
+				</section>
+
+				<section>
+					<h3>Leer DEM</h3>
+					<img src="https://thor-f5.er.usgs.gov/ngtoc/metadata/waf/collections/browse/dem_1m_col_thumbnail.jpg" width="800">
+				</section>
+
+				<section>
+					<h3>Leer DEM</h3>
+					<img src="https://historybytez.files.wordpress.com/2015/09/mesa_rock_lidar.jpg?w=965" width="700">
+				</section>
+
+				<section>
+					<h3>Leer DEM</h3>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Dem.jpg" width="800">
+				</section>
+				
+			</section>
+
+<!--Orbitas y plataformas-->
+			<section>
+				<section>
+					<h1>Órbitas & Plataformas</h1>
+				</section>
+				
+				<section>
+					<h3>Plataformas</h3>
+					<img src="https://i.pinimg.com/736x/fa/66/af/fa66af7f2bd3befee68826626384cc02.jpg"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Órbitas</h3>
+					<img src="https://www.schoolphysics.co.uk/age11-14/Astronomy/text/Artificial_satellites/images/1.png"
+						width="1000">
+				</section>
+
+				<section>
+					<h3>Órbitas</h3>
+					<img src="https://s2.studylib.net/store/data/012649228_1-9619d2aa8968700b3ac3cb1461a94031.png"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Órbitas sincrónicas</h3>
+					<img src="https://i.pinimg.com/736x/96/68/29/9668294a780d63d2dc3a30543db5f7a9.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Órbitas ascendente y descendente</h3>
+					<img src="https://i.pinimg.com/736x/b1/fb/c3/b1fbc30d56e948c89343ad01f3cf0c61.jpg"
+						width="700">
+				</section>
+
+				<section>
+					<h3>Órbitas geoestacionarias</h3>
+					<img src="https://www.tele.soumu.go.jp/e/adm/system/satellit/move/__icsFiles/artimage/2019/12/03/crelic500026/001.png"
+						width="1000">
+				</section>
+
+				<section>
+					<h3>Órbitas geoestacionarias</h3>
+					<img src="https://cdn.mos.cms.futurecdn.net/WHBBLTzkJc64iEaYgJBwEc.jpg" width="800">
+				</section>
+
+				<section>
+					<h3>Swath</h3>
+					<img src="https://www.restec.or.jp/en/knowledge/sensing/img-sensing3-01.jpg" width="800">
+				</section>
+
+				<section>
+					<h3></h3>
+					<img src="https://i.pinimg.com/736x/97/fb/6f/97fb6f8d2fbd94e4c235752ca43a6146.jpg"
+						width="700">
+				</section>
+			</section>
+
+<!--Sensores & Detectores-->
+			<section>
+				<section>
+					<h1>Sensores & Detectores</h1>
+				</section>
+
+				<section>
+					<h3>Tipos de sensores</h3>
+					<img src="https://i.pinimg.com/736x/4d/39/a1/4d39a18887931cc1abaf8f484bc71f0b.jpg"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Tipos de sensores</h3>
+					<img src="https://i.pinimg.com/originals/7d/e0/b2/7de0b26f95650e756160ebc8a9349c8c.png"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Tipos de sensores</h3>
+					<img src="https://www.intechopen.com/media/chapter/57384/media/F6.png" width="800">
+				</section>
+
+				
+				<section>
+					<h3>Detectores</h3>
+					<p>Los detectores son definidos como instrumentos que reciben un flujo de energía y
+						proporcionan una señal.</p>
+					<ul>
+						<li><b>Cuánticos: </b>responden a fotones individuales</li>
+						<li><b>Térmicos: </b>responden al contenido de calor</li>
+					</ul>
+					<img src="https://i.pinimg.com/originals/c8/63/0a/c8630a41fb8dbc382f8c1625eb0de67f.png"
+						width="600">
+				</section>
+
+				<section>
+				<h3>Detectores térmicos</h3>
+					<img src="https://blogs.unimelb.edu.au/hypersens/files/2018/11/thermal2-1hgdjtn.jpg" width="180">
+				</section>
+
+				<section>
+					<h3>Detectores cuánticos</h3>
+					<img src="https://1.bp.blogspot.com/-nLh34EfZzKw/XgNMTg_X_hI/AAAAAAAACak/7RxhNh03UWE9b89XQ2PV6IPJyUS7VhvLgCLcBGAsYHQ/s640/Comparison%2Bbetween%2BCCD%2Band%2BCMOS%2BImage%2BSensor.jpg"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Detectores cuánticos</h3>
+					<img src="https://www.adimec.com/wp-content/uploads/2019/11/CCD-and-CMOS-trends.png" width="800">
+				</section>
+
+				<section>
+					<h3>Detectores</h3>
+					<img src="https://i.pinimg.com/736x/63/aa/b3/63aab3ccc1f9113d028ca55f997ff56a.jpg"
+						width="400">
+				</section>
+
+				<section>
+					<h1>Unidades</h1>
+					<ul>
+						<li><b>Energía radiante: </b> total de energía radiada en todas las direcciones (J).</li>
+						<li><b>Flujo radiante: </b>energía radiada en todas las direcciones por unidad de tiempo (W).</li>
+						<li><b>Irradiancia: </b>flujo radiante incidente sobre unidad de área (w/m2).</li>
+						<li style="color: blue;"><b>Radiancia: </b>flujo radiante emitido o reflejado por unidad de área y
+							por ángulo solido de medida (W Sr/m2).</li>
+						<li><b>Emisividad: </b>relación entre la emitancia y la de un emisor perfecto.</li>
+						<li style="color: blue;"><b>Reflectancia: </b> relación entre el flujo incidente y el flujo
+							reflejado por una superficie.</li>
+						<li><b>Absortancia: </b>relación entre el flujo incidente y el flujo que absorbe una superficie.
+						</li>
+						<li><b>Transmitancia: </b>relación entre el flujo incidente y el transmitido por una superficie.
+						</li>
+					</ul>
+					<img src="https://i.pinimg.com/originals/e3/8c/01/e38c011765249465c48dbad96b8ace35.png"
+						width="500">
+				</section>
+
+				<section>
+					<h3>Arreglo detectores: Frame vs Scanning</h3>
+					<img src="https://i.pinimg.com/736x/73/c5/ef/73c5ef6bb624b4c033edbdb8af40d2f8.jpg" width="600">
+				</section>
+
+				<section>
+					<h3>Whiskbroom (barrido) vs Pushbroom (empuje)</h3>
+					<img src="https://ars.els-cdn.com/content/image/3-s2.0-B9780128092545000038-f03-18-9780128092545.jpg"
+						width="700">
+				</section>
+
+				<section>
+					<h3>Whiskbroom - Cross-track - Barrido </h3>
+					<img src="https://i.pinimg.com/736x/3e/95/7a/3e957a930d187b414d34831c33274f15.jpg" width="450">
+				</section>
+
+				<section>
+					<h3>Pushbroom - Along-track - Empuje </h3>
+					<img src="https://i.pinimg.com/originals/5d/8a/73/5d8a73b1cf436c72ca5926d6700c7781.png"
+						width="700">
+				</section>
+
+				<section>
+					<h3>Frame vs Pushbroom</h3>
+					<img src="https://ars.els-cdn.com/content/image/1-s2.0-S0034425719305541-gr2.jpg" width="1000">
+				</section>
+
+			</section>
+
+<!--Resolucion-->
+			<section>
+				
+				<section>
+					<h1>Resolución</h1>
+				</section>
+
+				<section>
+					<h3>IFOV --> GSD --> Pixel --> Resolución espacial</h3>
+					<img src="https://ars.els-cdn.com/content/image/1-s2.0-S1350449509001017-gr1.jpg" width="450">
+				</section>
+
+				<section>
+					<h3>IFOV --> GSD --> Pixel --> Resolución espacial</h3>
+					<img src="https://i.pinimg.com/originals/d3/31/3c/d3313cffe57396e28a01b3d4819061fe.png" width="550">
+					<figcaption>Source: Understanding spatial resolution by George Joseph - GIM International (2020)</figcaption>
+				</section>
+
+				<section>
+					<h3>IFOV</h3>
+					<img src="https://www.novuslight.com/uploads//n/Defense_Fig.-1_IFOV_diagram.jpg" width="800">
+				</section>
+
+				<section>
+					<h3>IFOV</h3>
+					<img src="https://www.nrcan.gc.ca/sites/www.nrcan.gc.ca/files/earthsciences/images/resource/tutor/fundam/images/dyk_2_3.gif"
+						width="450">
+					<img src="data:image/png;base64,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"
+						width="450">
+				</section>
+
+				<section>
+					<h3>GRC = H * IFOV</h3>
+					<img src="https://miro.medium.com/max/772/1*dltj_yAikQ9Bve_182vsJQ.png" width="300">
+					<br>
+					<p>GRD = H(m)/f(mm)*R(LPM)</p>
+					<figcaption><a href="https://medium.com/sentinel-hub/the-most-misunderstood-words-in-earth-observation-d0106adbe4b0">Source: Sentinel Hub Blog</a></figcaption>
+				</section>
+
+				<section>
+					<h3>Pixel size</h3>
+					<img src="https://seos-project.eu/remotesensing/images/spatial-resolution_400.png" width="700">
+				</section>
+
+				<section>
+					<img src="https://miro.medium.com/max/385/0*BL2opZhfAmH32Ne3.gif" width="850">
+					<figcaption>Efecto de aumentar la escala con una resolución espacial constante. Crédito: ArcGIS</figcaption>
+				</section>
+
+				<section>
+					<img src="https://miro.medium.com/max/599/1*9py1AUZxr-zQ1ZkFH9jBXQ.png" width="850">
+					<figcaption>Efecto de aumentar la resolución de los datos con una escala constante. Crédito: ArcGIS</figcaption>
+				</section>
+
+				<section>
+					<h3>Relación entre escala y resolución</h3>
+					<p>El procesamiento de imágenes está interesado:</p>
+						<li><b>Detección:</b> discernir discretamente los objetos</li>
+						<li><b>Reconocer: </b>determinar que tipo de objeto es</li>
+						<li><b>Identificar: </b>identificar el objeto específicamente</li>
+					
+				</section>
+
+				<section>
+					<h3>Área Mínima Cartografiable (AMC)</h3>
+					<p>La relación entre la resolución espacial y la escala está mediada por el AMC (mínima área de un
+						elemento que debe ser representado en un mapa)</p>
+					<img src="https://4.bp.blogspot.com/-877gV5vYyW0/V5bxRasaSVI/AAAAAAAAFxQ/UDFfEhYSykMPJoTeJ6v92IW3CjmBPdsjgCLcB/s1600/AREAMINIMA.png"
+						width="650">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/564x/89/c9/68/89c968579b6138ad6211a352a85abefe.jpg" width="800">
+				</section>
+
+				<section>
+					<h3>Tamaño del pixel recomendado</h3>
+					<p>Regla de Waldo Tobler --> Map scale = raster resolution (in meters) x 2 x 1000</p>
+					<img src="https://i1.wp.com/acolita.com/wp-content/uploads/2019/06/scale-and-cell-size.png?resize=398%2C240&ssl=1"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Resolución espectral</h3>
+					<img src="https://i.pinimg.com/originals/08/3b/f8/083bf89baa1ca90c3de70710c660ebcb.png"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Resolución espectral</h3>
+					<img src="https://i.pinimg.com/originals/c7/cc/56/c7cc569cdf45f4e3948134512c61b06c.jpg"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Resolución espectral</h3>
+					<img src="https://media.springernature.com/original/springer-static/image/chp%3A10.1007%2F978-1-4614-6423-5_101-1/MediaObjects/212922_0_En_101-1_Fig1_HTML.gif"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Resolución espectral</h3>
+					<img src="https://i.pinimg.com/736x/b7/68/55/b76855d68192a5caabcbf76f6bf0ca86.jpg"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Resolución espectral</h3>
+					<img src="https://i.pinimg.com/736x/17/f8/96/17f89692a2873068f471589b3d387cc9.jpg"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Resolución radiométrica</h3>
+					<img src="https://i.pinimg.com/originals/c6/40/6d/c6406d2f4f7cd64b1ac547245ea96013.gif"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Resolución radiométrica</h3>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Decreasing_radiometric_resolution_from_L7_15m_panchromatic.svg"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Resolución temporal vs Resolución espacial</h3>
+					<img src="https://i.pinimg.com/736x/52/33/1b/52331b86de2face77512ce32bf5723ca.jpg"
+						width="650">
+				</section>
+
+				<section>
+					<h3>Resolución trade-off</h3>
+					<img src="https://www.nrcan.gc.ca/sites/www.nrcan.gc.ca/files/earthsciences/images/resource/tutor/fundam/images/dyk_2_5.gif"
+						width="500">
+				</section>
+			</section>
+
+<!--Interaccion con la atmosfera-->
+			<section>
+				<section>
+					<h1>Interacción con la atmósfera</h1>
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/originals/12/a8/e7/12a8e7225b0fcab0d77abf12da3e7282.png"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Balance de energía terrestre</h3>
+					<img src="https://i.pinimg.com/originals/ef/81/22/ef81225eb5dad160cd7754ae21b49f28.jpg"
+						width="750">
+				</section>
+
+				<section>
+					<h3>Interacción de la atmósfera</h3>
+					<img src="https://ltb.itc.utwente.nl/uploads/studyarea/498/Pics_2015_jpg/Fig2_6.jpg" width="650">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/736x/59/1a/97/591a971406022eadc5aca766a3ebbb66.jpg"
+						width="700">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/originals/93/d9/f2/93d9f2a00076548c17c2d2f5eef3e12f.jpg"
+						width="1000">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/originals/49/b8/ff/49b8ff86701af89d5ce19d3538d95ebd.jpg"
+						width="700">
+				</section>
+
+				<section>
+					<img src="https://pbs.twimg.com/media/Cr2V5GJUAAAU6DX.jpg" width="1000">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/originals/1b/71/6e/1b716e60c8a74245c2e15b2641545851.png"
+						width="600">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/736x/61/57/14/6157146bf692ba64984a5aed23b626a6.jpg"
+						width="600">
+				</section>
+
+			</section>
+
+<!--Interaccion con el objeto-->
+			<section>
+				<section>
+					<h1>Interacción con el objeto</h1>
+				</section>
+
+				<section>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Lambert2.gif" width="850">
+				</section>
+
+				<section>
+					<img src="https://www.pngkit.com/png/full/126-1267614_58774-p022a-specular-and-diffuse-reflection-gcse.png"
+						width="500">
+				</section>
+
+				<section>
+					<img src="https://www.mdpi.com/remotesensing/remotesensing-09-00690/article_deploy/html/images/remotesensing-09-00690-g001-550.jpg"
+						width="700">
+				</section>
+
+				<section>
+					<img src="https://ars.els-cdn.com/content/image/1-s2.0-S0924271616300429-gr1.jpg" width="600">
+				</section>
+
+				<section>
+					<h3>Firma espectral</h3>
+					<p>La firma espectral se define como el comportamiento diferencial que presenta la radiación
+						reflejada
+						(reflectancia) o emitida (emitancia) desde algún tipo de superficie u objeto terrestre en los
+						distintos
+						rangos del espectro electromagnético. Una forma gráfica de estudiar este comportamiento es
+						disponer los datos de reflectancia (%) en el eje Y y la longitud de onda λ en el eje X. Al unir
+						los
+						puntos con una línea continua se origina una representación bidimensional de la firma espectral.
+					</p>
+					<img src="https://crisp.nus.edu.sg/~research/tutorial/hcube.gif" width="500">
+				</section>
+
+				<section>
+					<img src="https://ars.els-cdn.com/content/image/1-s2.0-S1537511017302635-gr4.jpg" width="800">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/originals/2d/41/70/2d4170e9e2a960afa5ad3123b8604fcb.jpg"
+						width="1000">
+				</section>
+
+				<section>
+					<h3>Firma espectral de la vegetación</h3>
+					<img src="https://i.pinimg.com/originals/08/d9/40/08d940f59ff1f52c36df39a5f433e3f3.png"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Firma espectral de la vegetación</h3>
+					<img src="https://i.pinimg.com/originals/84/72/f5/8472f5c72891d07b1f2e82609beeea8d.png"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Firma espectral del agua</h3>
+					<img src="https://www.intechopen.com/media/chapter/45249/media/image6_w.jpg" width="1000">
+				</section>
+
+				<section>
+					<h3>Firma espectral del suelo</h3>
+					<img src="https://i.pinimg.com/originals/d3/c3/27/d3c32734cbe888dd651e2c865f8e385b.png"
+						width="840">
+				</section>
+
+				<section>
+					<h3>Firma espectral del suelo</h3>
+					<img src="https://itsremotelysensational.files.wordpress.com/2018/10/ground-spectral-signatures-over-dry-and-wet-soil-in-the-lakatameia-pipeline.png?w=768"
+						width="840">
+				</section>
+			</section>
+
+<!--Tratamiento de imagenes-->
+			<section>
+				<section>
+					<h1>Tratamiento de imágenes de satélite</h1>
+				</section>
+
+				<section>
+					<h1>Herramientas</h1>
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/736x/8d/8e/8b/8d8e8b9fb8b94813cbc01d43c3bd00b9.jpg" width="800">
+				</section>
+
+				<section>
+					<iframe src="https://browser.dataspace.copernicus.eu/" width="800" height="600" style="border:1px solid #ccc;"></iframe>
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/736x/34/f4/1e/34f41e3d96fb5b06497e1dd25492798d.jpg" width="800" >
+				</section>
+
+				<section>
+					<iframe src="https://www.lexcube.org/" width="800" height="600" style="border:1px solid #ccc;"></iframe>
+				</section>
+
+				<section>
+					<iframe src="https://realearth.ssec.wisc.edu/#" width="800" height="600" style="border:1px solid #ccc;"></iframe>
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/736x/4d/37/2e/4d372eadbfd4cf6a8458b11e5cbea770.jpg" width="800" >
+				</section>	
+				
+				<section>
+					<h1>Tratamiento de imágenes de satélite</h1>
+					<p>Existen una gran cantidad de procedimientos para el análisis de imágenes de satélite. En este
+						curso nos concentraremos en 4 de ellas:</p>
+					<ul>
+						<li>Pro-procesamiento de imágenes</li>
+						<li>Mejoramiento de imágenes</li>
+						<li>Transformaciones de imágenes</li>
+						<li>Clasificación de imágenes</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Pre-procesamiento de imágenes</h3>
+					<p>Cualquier imagen adquirida por un sensor remoto presenta una serie
+						de alteraciones radiométricas y geométricas.</p>
+					<img src="https://i.pinimg.com/564x/4e/3d/6f/4e3d6ffc5e3aef2c2afdc9a55b611281.jpg" width="800">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/564x/1d/8a/ab/1d8aabd7459dbc07cb7b0dd8766c0d21.jpg" width="800">
+				</section>
+
+				<section>
+					<h2 >Niveles de Procesamiento en Teledetección</h2>
+					
+					<table style="width: 100%; border-collapse: collapse; font-size: 0.4em; text-align: left;">
+						<thead style="background-color: #424242; color: #ffffff;">
+							<tr>
+								<th style="padding: 10px; border: 1px solid #555;">Nivel</th>
+								<th style="padding: 10px; border: 1px solid #555;">Producto Clave</th>
+								<th style="padding: 10px; border: 1px solid #555;">Corrección Principal</th>
+								<th style="padding: 10px; border: 1px solid #555;">Uso Principal / Estado</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="background-color: #f0f0f0;">
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Nivel 0 (L0)</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Telemetría Pura (Binario)</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Ninguna</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Exclusivo de agencias espaciales.</td>
+							</tr>
+							<tr>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: middle; text-align: center;" rowspan="3">
+									<br> Nivel 1 (L1)
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">1A: DNs Crudos (Ordenados)</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Descompresión</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Calibración de sensor (raro).</td>
+							</tr>
+							<tr style="background-color: #f0f0f0;">
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">1B: Radiancia TOA (en Sensor)</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Calibración Radiométrica</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Base científica. <em>Contiene distorsión por relieve.</em></td>
+							</tr>
+							<tr>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">1T: Radiancia TOA Ortorrectificada</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong >Corrección Geométrica (DEM+GCPs)</strong></td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong >Estándar para mapeo y análisis visual.</strong></td>
+							</tr>
+							<tr style="background-color: #f0f0f0;">
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Nivel 2 (L2)</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Reflectancia Superficial (SR) / T° (LST)</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong>Corrección Atmosférica</strong></td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong>Análisis científico cuantitativo.</strong></td>
+							</tr>
+							<tr>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"> <br> Nivel 3 / 4</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Compuestos (L3) / Salidas de Modelo (L4)</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Agregación temporal / Modelado</td>
+								<td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Análisis regional (L3) / Aplicaciones científicas avanzadas.</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Causas de la Deformación Geométrica</h2>
+
+					<table style="width: 100%; border-collapse: collapse; font-size: 0.5em; text-align: left;">
+						<thead style="background-color: #424242; color: #ffffff;">
+							<tr>
+								<th style="padding: 10px; border: 1px solid #555; width: 35%;">Sensor y Plataforma (Interna)</th>
+								<th style="padding: 10px; border: 1px solid #555; width: 35%;">Tierra y Observación (Externa)</th>
+								<th style="padding: 10px; border: 1px solid #555; width: 30%;">Medio (Atmosférica)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="background-color: #f9f9f9; vertical-align: top;">
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b style="color: #2c3e50;">Actitud (Attitude):</b>
+									<ul style="margin-left: 15px; margin-top: 5px; padding-left: 0;">
+										<li><b>Pitch (Cabeceo):</b> Compresión/Expansión</li>
+										<li><b>Roll (Alabeo):</b> Desplazamiento lateral</li>
+										<li><b>Yaw (Guiñada):</b> Sesgo (Skew)</li>
+									</ul>
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b >Desplazamiento por Relieve:</b>
+									<ul style="margin-left: 15px; margin-top: 5px; padding-left: 0;">
+										<li>¡El más crítico! (Proyección en perspectiva)</li>
+										<li>Cimas se desplazan hacia afuera.</li>
+										<li>Valles se desplazan hacia adentro.</li>
+										<li><strong >Requiere DEM para corregir.</strong></li>
+									</ul>
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b >Refracción Atmosférica:</b>
+									<ul style="margin-left: 15px; margin-top: 5px; padding-left: 0;">
+										<li>Luz se curva al entrar a la atmósfera.</li>
+										<li>Desplazamiento aparente del objeto.</li>
+										<li>Efecto mayor en ángulos oblicuos.</li>
+									</ul>
+								</td>
+							</tr>
+							<tr style="background-color: #f0f0f0; vertical-align: top;">
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b >Sistema de Barrido:</b>
+									<ul style="margin-left: 15px; margin-top: 5px; padding-left: 0;">
+										<li><u>Whiskbroom:</u> Distorsión panorámica.</li>
+										<li><u>Pushbroom:</u> Variación "Dwell time".</li>
+									</ul>
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b >Rotación de la Tierra (Coriolis):</b>
+									<ul style="margin-left: 15px; margin-top: 5px; padding-left: 0;">
+										<li>Introduce un <b>sesgo (skew)</b> sistemático.</li>
+									</ul>
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<!-- Celda vacía para mantener la estructura -->
+								</td>
+							</tr>
+							<tr style="background-color: #f9f9f9; vertical-align: top;">
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b>Óptica:</b>
+									<ul style="margin-left: 15px; margin-top: 5px; padding-left: 0;">
+										<li>Distorsión de Barril / Cojín.</li>
+									</ul>
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b >Curvatura de la Tierra:</b>
+									<ul style="margin-left: 15px; margin-top: 5px; padding-left: 0;">
+										<li>Estiramiento en bordes (Swath ancho).</li>
+									</ul>
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<!-- Celda vacía para mantener la estructura -->
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Métodos de Corrección Geométrica</h2>
+
+					<table style="width: 100%; border-collapse: collapse; font-size: 0.5em; text-align: left;">
+						<thead style="background-color: #424242; color: #ffffff;">
+							<tr>
+								<th style="padding: 10px; border: 1px solid #555;">Método</th>
+								<th style="padding: 10px; border: 1px solid #555;">Base del Modelo</th>
+								<th style="padding: 10px; border: 1px solid #555;">Puntos Clave / Uso</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="background-color: #f9f9f9; vertical-align: top;">
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b style="font-size: 1.1em;">Paramétricos (Físicos)</b><br>
+									(Ej. Colinealidad, Orbital)
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									Basado en la <b>física</b> del sensor y la plataforma (posición, actitud, telemetría).
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									Es el más preciso. Modela la geometría de adquisición exacta.
+									<br>
+									<strong> Requiere un DEM para Ortorectificación (corregir relieve).</strong>
+								</td>
+							</tr>
+							<tr style="background-color: #f0f0f0; vertical-align: top;">
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b style="font-size: 1.1em;">No Paramétricos (Empíricos)</b><br>
+									(Ej. Polinomios, Splines)
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									Basado en <b>matemáticas</b> (transformación 2D) y <b>Puntos de Control Terrestre (GCPs)</b>. Ignora la física.
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									"Rubber sheeting". Simple de aplicar.
+									<br>
+									<strong >No corrige el desplazamiento por relieve! Solo útil para terreno plano.</strong>
+								</td>
+							</tr>
+							<tr style="background-color: #f9f9f9; vertical-align: top;">
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b style="font-size: 1.1em;">Híbrido (Estándar Moderno)</b><br>
+									(Ej. RPCs)
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b>Abstracción</b> (Funciones Racionales) que mapea <b>3D (Lat, Lon, Alt)</b> a 2D (fila, col).
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									Universal, eficiente y oculta la física.
+									<br>
+									<strong>USO: Software + RPC + DEM = Ortorectificación.</strong>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+
+				<section>
+					<h3>Proyección ortográfica</h3>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/OrthoPerspective.svg/1280px-OrthoPerspective.svg.png"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Ortorrectificación de imágenes</h3>
+					<img src="https://i.pinimg.com/736x/4e/28/3b/4e283b9681c5cf978569626ca242daa3.jpg"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Ortorrectificación de una imagen IKONOS</h3>
+					<img src="https://i.pinimg.com/originals/e2/87/0e/e2870e1d85d9acc06cdf4e62058eda97.gif" width="500">
+				</section>
+
+				<section>
+					<h3>Remuestreo</h3>
+					<img src="https://i.pinimg.com/originals/93/11/8a/93118a82a231dc047be4f44b79b6b7e3.png"
+						width="700">
+				</section>
+
+				<section>
+					<h2>Corrección Radiométrica</h2>
+			
+					<p> $L_{sensor} = L_{superficie} + L_{atmosfera} + L_{sensor\_error}$</p>
+
+					<table style="width: 100%; border-collapse: collapse; font-size: 0.5em; text-align: left;">
+						<thead style="background-color: #424242; color: #ffffff;">
+							<tr>
+								<th style="padding: 10px; border: 1px solid #555; width: 28%;">Etapa / Producto</th>
+								<th style="padding: 10px; border: 1px solid #555; width: 37%;">Objetivo (El Problema)</th>
+								<th style="padding: 10px; border: 1px solid #555; width: 35%;">Corrección (La Solución)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="background-color: #f9f9f9; vertical-align: top;">
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b style="font-size: 1.1em;">Etapa 1: Calibración</b><br>
+									<b style="color: #2980b9;">Producto: L1T (Radiancia TOA)</b>
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b style="display: block; margin-bottom: 5px;">Problema:</b> Errores del hardware.
+									<ul style="margin: 0; padding-left: 15px;">
+										<li>Detectores no uniformes (ruido).</li>
+										<li>"Bias" (corriente oscura, no leen cero).</li>
+										<li>Respuesta no uniforme (causa "striping").</li>
+									</ul>
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b>Solución:</b> Aplicar coeficientes <b>Gain</b> y <b>Offset</b> (de los metadatos) a cada detector.
+									<br>
+									<code style="font-size: 0.9em; color: #333; margin-top: 5px; display: block;">$L_{TOA} = (Gain \cdot DN) + Offset$</code>
+								</td>
+							</tr>
+							<tr style="background-color: #f0f0f0; vertical-align: top;">
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b style="font-size: 1.1em;">Etapa 2: Corrección Atmosférica</b><br>
+									<b style="color: #27ae60;">Producto: L2 (Reflectancia)</b>
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b style="display: block; margin-bottom: 5px;">Problema:</b> Contaminación atmosférica.
+									<ul style="margin: 0; padding-left: 15px;">
+										<li><b>Aditivo:</b> Radiancia de Trayectoria (bruma).</li>
+										<li><b>Multiplicativo:</b> Absorción y dispersión (atenúa la señal real de la superficie).</li>
+									</ul>
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b>Solución (Métodos):</b>
+									<ul style="margin: 0; padding-left: 15px; font-size: 0.95em;">
+										<li><b>Empíricos (ej. DOS):</b> Simple, resta el "objeto oscuro".</li>
+										<li><b>Físicos (ej. 6S, LaSRC):</b> "Gold Standard". Modelan la física atmosférica (requieren AOT, H₂O).</li>
+									</ul>
+								</td>
+							</tr>
+							<tr style="background-color: #f9f9f9; vertical-align: top;">
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b style="font-size: 1.1em;">Etapa 3: Normalización (BRDF/Topo)</b><br>
+									<b style="color: #f00c18;">Producto: L2 (Reflectancia Normalizada)</b>
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b style="display: block; margin-bottom: 5px;">Problema:</b> Iluminación variable (sombras).
+									<ul style="margin: 0; padding-left: 15px;">
+										<li><b>Angular:</b> Sol bajo (invierno) vs. sol alto (verano).</li>
+										<li><b>Topográfico:</b> Laderas iluminadas vs. laderas en sombra (BRDF).</li>
+									</ul>
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b>Solución:</b>
+									<ul style="margin: 0; padding-left: 15px; font-size: 0.95em;">
+										<li><b>Ángulo Solar:</b> Normalizar por $\cos(\theta_z)$.</li>
+										<li><strong>Corrección Topográfica:</strong> Usa un <b>DEM</b> para eliminar sombras de laderas.</li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h3>Corrección radiométrica: bandeado (striping)</h3>
+					<img src="https://d3i71xaburhd42.cloudfront.net/52ecdf3f8086959f68bebe4fe6f494cb67e0962e/2-Figure1-1.png"
+						width="850">
+				</section>
+
+				<section>
+					<h3>Corrección radiométrica: pérdida de líneas</h3>
+					<img src="https://www.nrcan.gc.ca/sites/www.nrcan.gc.ca/files/earthsciences/images/resource/tutor/fundam/images/nois.jpg"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Corrección radiométrica: error de bit o ruido, efecto "sal y pimienta"</h3>
+					<img src="https://i.pinimg.com/originals/64/ec/ba/64ecbaf77a95bb6ccab6c95cea43a624.png"
+						width="950">
+				</section>
+
+				<section>
+					<h3>Corrección radiométrica: corrección solar</h3>
+					<p>La corrección solar tiene en cuenta la influencia del Sol en los valores de los píxeles. Convierte la radiancia en el sensor a reflectancia en el tope de la atmósfera (TOA) incorporando la irradiancia solar exoatmosférica (la potencia del Sol), la distancia Tierra-Sol y el ángulo de elevación solar</p>
+					<img src="https://grass.osgeo.org/grass76/manuals/i_topo_corr_angles.png" width="500">
+				</section>
+
+				<section>
+					<h3>Corrección radiométrica: corrección atmosférica</h3>
+					<p>La energía que captan los sensores Landsat está influida por la atmósfera terrestre. Estos efectos incluyen la dispersión y la absorción por las interacciones de la radiación electromagnética con las partículas atmosféricas (gases, vapor de agua y aerosoles)</p>
+					<img src="https://8430352m.files.wordpress.com/2013/11/sensor_radiance.png" width="450">
+				</section>
+
+				<section>
+					<h3>Corrección radiométrica: corrección topográfica</h3>
+					<p>La corrección topográfica tiene en cuenta los efectos de iluminación de la pendiente, el aspecto y la elevación, que pueden causar variaciones en la reflectancia de coberturas similares ubicadas en distintas posiciones del terreno (Riaño et al. 2003).</p>
+					<img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs41324-019-00274-0/MediaObjects/41324_2019_274_Fig1_HTML.png"
+						width="700">
+				</section>
+
+				<section>
+					<h3>Corrección radiométrica: TOA (nivel 1) frente a BOA (nivel 2)</h3>
+					<img src="https://i.pinimg.com/originals/34/67/63/346763b79742e41988860c4d3a93076d.png"
+						width="1000">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/736x/45/70/0d/45700d73312c19b13c9ab7dfbc982fcd.jpg"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Radiación termal</h3>
+						<img src="https://i.pinimg.com/736x/92/4f/04/924f0463506745787405e5f3e1ea44d6.jpg" width="700">
+				</section>
+
+				<section>
+						<img src="https://i.pinimg.com/736x/bd/36/da/bd36daf8df7f842f42e3efa383003a07.jpg" width="400">
+				</section>
+
+				<section>
+					<h2>Mejoramiento de imágenes (realce)</h2>
+					<table style="width: 100%; border-collapse: collapse; font-size: 0.4em; text-align: left;">
+						<thead style="background-color: #424242; color: #ffffff;">
+							<tr>
+								<th style="padding: 5px; border: 1px solid #555; width: 25%;">Categoría</th>
+								<th style="padding: 5px; border: 1px solid #555; width: 35%;">Objetivo (El Problema)</th>
+								<th style="padding: 5px; border: 1px solid #555; width: 40%;">Métodos Principales y Relevancia</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="background-color: #f9f9f9; vertical-align: top;">
+								<td style="padding: 5px; border: 1px solid #ddd;">
+									<b style="font-size: 1.1em;">1. Realce de Contraste</b><br>
+									(Ajuste Radiométrico)
+								</td>
+								<td style="padding: 5px; border: 1px solid #ddd;">
+									<b style="display: block; margin-bottom: 1px;">Problema:</b> Imagen "plana". Datos de 16-bit (sensor) en un rango estrecho, pero monitor de 8-bit (visual).
+									<br><br>
+									<b>Objetivo:</b> "Estirar" (stretch) el histograma de interés (ej. 2%-98%) para que ocupe todo el rango visual (0-255).
+								</td>
+								<td style="padding: 5px; border: 1px solid #ddd;">
+									<ul style="margin: 0; padding-left: 15px; font-size: 1.5em;">
+										<li><b>Lineal (Min-Max):</b> Estiramiento por defecto. Simple.</li>
+										<li><b>Ecualización (No-lineal):</b> "Aplana" el histograma.</li>
+										<li><b>Gaussiano (No-lineal):</b> Fuerza una curva normal.</li>
+									</ul>
+								</td>
+							</tr>
+							<tr style="background-color: #f0f0f0; vertical-align: top;">
+								<td style="padding: 5px; border: 1px solid #ddd;">
+									<b style="font-size: 1.1em;">2. Realce Espacial</b><br>
+									(Filtros de Convolución)
+								</td>
+								<td style="padding: 5px; border: 1px solid #ddd;">
+									<b style="display: block; margin-bottom: 1px;">Problema:</b> Texturas, bordes y líneas no son claros.
+									<br><br>
+									<b>Objetivo:</b> Modificar un píxel basándose en sus vecinos (usando un "kernel" de convolución).
+								</td>
+								<td style="padding: 5px; border: 1px solid #ddd;">
+									<ul style="margin: 0; padding-left: 15px; font-size: 1.5em;">
+										<li><b>Paso Bajo (Suavizado):</b> Promedia píxeles. Elimina ruido (difumina).</li>
+										<li><b>Paso Alto (Realce de Bordes):</b> Resta vecinos. Acentúa bordes.</li>
+									</ul>
+								</td>
+							</tr>
+							<tr style="background-color: #f9f9f9; vertical-align: top;">
+								<td style="padding: 5px; border: 1px solid #ddd;">
+									<b style="font-size: 1.1em;">3. Realce Espectral</b><br>
+									(Combinación de Bandas)
+								</td>
+								<td style="padding: 5px; border: 1px solid #ddd;">
+									<b style="display: block; margin-bottom: 1px;">Problema:</b> Info. de material/minerales está "oculta". <b>Sombras topográficas</b> contaminan el brillo.
+									<br><br>
+									<b>Objetivo:</b> Crear nueva información combinando bandas para cancelar ruido y realzar materiales.
+								</td>
+								<td style="padding: 5px; border: 1px solid #ddd;">
+									<ul style="margin: 0; padding-left: 15px; font-size: 1.5em;">
+										<li><b>Ratios de Bandas (ej. B5/B7):</b></li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h1>Realce de imágenes</h1>
+					<img src="https://desktop.arcgis.com/en/arcmap/latest/manage-data/raster-and-images/GUID-E383F01A-627E-45CA-9262-A3987C68AF94-web.gif"
+						width="700">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/1200x/aa/ed/e7/aaede7b6c6e815f8da8e591ad56cd56b.jpg" width="700">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/1200x/62/48/fa/6248fae4cbcd18e8ff762232dad8d37b.jpg"
+						width="700">
+				</section>
+
+				<section>
+					<h3>Filtros</h3>
+					<img src="https://image.slidesharecdn.com/imageenhancementtechniquepkmani-140117025656-phpapp02/95/image-enhancement-technique-digital-image-analysis-in-remote-sensing-p-k-mani-11-638.jpg?cb=1440825408"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Filtros</h3>
+					<img src="https://media.springernature.com/original/springer-static/image/chp%3A10.1007%2F978-3-319-58039-5_3/MediaObjects/442937_1_En_3_Fig15_HTML.png"
+						width="700">
+				</section>
+
+				<section>
+					<h3>Filtros</h3>
+					<img src="https://www.mdpi.com/jimaging/jimaging-06-00121/article_deploy/html/images/jimaging-06-00121-g001.png"
+						width="600">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Convolution_arithmetic_-_Same_padding_no_strides.gif"
+						width="300">
+				</section>
+
+				<section>
+					<h3>Cocientes</h3>
+					<img src="https://image.slidesharecdn.com/lectureforlandsat-100627045135-phpapp01/95/lecture-for-landsat-25-728.jpg?cb=1277614644" width="700">
+				</section>
+
+				<section>
+					<h3>Pan-sharpening</h3>
+					<img src="https://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/GUID-6E0028FA-DCF0-4AF6-BF23-311F6CF6AD84-web.png"
+						width="520">
+				</section>
+
+				<section>
+					<h3>Pan-sharpening</h3>
+					<img src="https://i.ytimg.com/vi/UM8WhUEHvzo/hqdefault.jpg" width="800">
+				</section>
+
+				<section>
+					<h3>Composición de bandas</h3>
+					<img src="https://eo.belspo.be/sites/default/files/images/teledetection/graph_colour_mixing_en_0.png"
+						width="1000">
+				</section>
+
+				<section>
+					<h3>Combinación de bandas </h3>
+					<img src="https://i.pinimg.com/originals/31/64/d9/3164d9d8f7196edaad3333877017d94d.gif"
+						width="550">
+				</section>
+
+				<section>
+					<h3>Combinación de bandas</h3>
+					<img src="https://www.geosage.com/highview/figures/Landsat8_BandCombo_Overview.jpg" width="800">
+				</section>
+
+				<section>
+					<h3>Combinación de "bandas" ---> radios</h3>
+					<img src="https://blog.arabnubia.com/wp-content/uploads/2019/10/1-1-1.jpg" width="800">
+				</section>
+
+
+				<section>
+					<h3>Índices</h3>
+					<img src="https://i.pinimg.com/originals/67/33/f0/6733f075d1c4cc743b5ce4956bc74559.png"
+						width="1000">
+				</section>
+
+				<section>
+					<h3>NDVI Index</h3>
+					<img src="https://ece.montana.edu/seniordesign/archive/SP15/OpticalWeedMapping/uploads/4/9/2/7/49273335/1429843234.png"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Soil Vegetation Wetness Index (SVWI)</h3>
+					<img src="https://i.pinimg.com/originals/34/c5/01/34c501436906f43a5023930d75c6b369.png"
+						width="1000">
+				</section>
+
+				<section>
+					<h3>Transformaciones de imágenes</h3>
+					<img src="https://www.nrcan.gc.ca/sites/www.nrcan.gc.ca/files/earthsciences/images/resource/tutor/fundam/images/pca.gif"
+						width="600">
+				</section>
+
+				<section>
+					<h2>Transformación de Imágenes</h2>
+					<p style="text-align: left; font-size: 0.5em; margin-bottom: 10px;">
+						Es un proceso matemático que <b>reproyecta</b> $n$ bandas en un nuevo espacio para <b>reducir redundancia</b> y <b>extraer señales</b>.
+					</p>
+
+					<table style="width: 100%; border-collapse: collapse; font-size: 0.4em; text-align: left;">
+						<thead style="background-color: #424242; color: #ffffff;">
+							<tr>
+								<th style="padding: 10px; border: 1px solid #555; width: 22%;">Técnica</th>
+								<th style="padding: 10px; border: 1px solid #555; width: 18%;">Tipo / Concepto</th>
+								<th style="padding: 10px; border: 1px solid #555; width: 28%;">Componentes Clave</th>
+								<th style="padding: 10px; border: 1px solid #555; width: 32%;">Uso Geológico y Limitación</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="background-color: #f9f9f9; vertical-align: top;">
+								<td style="padding: 2px; border: 1px solid #ddd;">
+									<b style="font-size: 1.1em;">PCA</b><br>
+									(Análisis Comp. Principales)
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b>Estadística (No Supervisada)</b><br>
+									Depende de las estadísticas de <i>esta</i> imagen.
+								</td>
+								<td style="padding: 2px; border: 1px solid #ddd;">
+									<ul style="margin: 0; padding-left: 15px;font-size: 1.2em;">
+										<li><b>PC1:</b> Brillo / Topografía (>95% varianza).</li>
+										<li><b>PCn (Menores):</b> Varianza "oculta" (color/material).</li>
+									</ul>
+								</td>
+								<td style="padding: 2px; border: 1px solid #ddd;">
+									<b>Uso:</b> Realce visual (composición RGB de PC2, PC3, PC4) para identificar litología/alteración.
+									<br>
+									<b style="color: margin-top: 5px; display: block;">Limitación:</b> Resultados abstractos. <b>No comparable</b> entre fechas.
+								</td>
+							</tr>
+							<tr style="background-color: #f0f0f0; vertical-align: top;">
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b style="font-size: 1.1em;">Tasseled Cap (TC)</b>
+								</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">
+									<b>Física (Fija / Supervisada)</b><br>
+									Coeficientes fijos <i>por sensor</i>.
+								</td>
+								<td style="padding: 2px; border: 1px solid #ddd;">
+									<ul style="margin: 0; padding-left: 15px;font-size: 1.2em;">
+										<li><b>TC1:</b> Brillo (Albedo).</li>
+										<li><b>TC2:</b> Verdor (Biomasa).</li>
+										<li><b>TC3:</b> Humedad (Suelo / Vegetación).</li>
+									</ul>
+								</td>
+								<td style="padding: 2px; border: 1px solid #ddd;">
+									<b>Uso:</b> ¡Análisis cuantitativo de series de tiempo! Monitoreo de <b>TC3 (Humedad)</b> para precursores de deslizamientos.
+									<br>
+									<b style="margin-top: 5px; display: block;">Ventaja:</b> Componentes físicos. <b>Totalmente comparable</b> entre fechas.
+								</td>
+							</tr>
+							<tr style="background-color: #f9f9f9; vertical-align: top;">
+								<td style="padding: 2px; border: 1px solid #ddd;">
+									<b style="font-size: 1.1em;">IHS</b><br>
+									(Intensidad, Tono, Saturación)
+								</td>
+								<td style="padding: 2px; border: 1px solid #ddd;">
+									<b>Fusión de Datos (Espacio de Color)</b><br>
+									Transforma RGB $\to$ IHS.
+								</td>
+								<td style="padding: 2px; border: 1px solid #ddd;">
+									<ul style="margin: 0; padding-left: 15px;font-size: 1.2em;">
+										<li><b>I:</b> Intensidad (Brillo).</li>
+										<li><b>H:</b> Tono (Color puro).</li>
+										<li><b>S:</b> Saturación (Pureza).</li>
+									</ul>
+								</td>
+								<td style="padding: 2px; border: 1px solid #ddd;">
+									<b>Uso:</b> Fusión <b>"Pan-Sharpening"</b>. Reemplazar <b>"I"</b> (baja res.) con <b>Banda PAN</b> (alta res.) $\to$ Imagen nítida a color.
+									<br>
+									<b style="margin-top: 5px; display: block;">Limitación:</b> Solo para visualización. Causa <b>alta distorsión espectral</b>.
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+
+				<section>
+					<h3>Componentes principales</h3>
+					<img src="https://d3i71xaburhd42.cloudfront.net/90e6bfaf598797b0770f68a74294edc96c015ba0/8-Figure5-1.png"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Componentes principales</h3>
+					<img src="https://i.pinimg.com/originals/af/50/cd/af50cd26606006d441c121018477dd5a.png" width="400">
+				</section>
+
+				<section>
+					<h3>Tasseled cap</h3>
+					<img src="https://images.squarespace-cdn.com/content/v1/551e8d99e4b0751e1a311984/1431094487685-7N905UJJGJZQCX05T6EY/ke17ZwdGBToddI8pDm48kNkXWAY4c19ZL2Q6aDTJ9edZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVGOUWlvG4s0Yb7ZvY0GELybJMhZBqcGjIFsQEQp_eFUg91lH3P2bFZvTItROhWrBJ0/Tasseled_cap_figure.png"
+						width="600">
+				</section>
+
+				<section>
+					<h3>RGB --> IHS</h3>
+					<img src="https://i.pinimg.com/originals/8a/d1/dc/8ad1dcf8a01d8926972d969c08056651.png"
+						width="800">
+				</section>
+
+				<section>
+					<img src="https://acsess.onlinelibrary.wiley.com/cms/asset/6619d2a0-5bc2-4df0-9d36-87b440d30c8a/ppj220007-fig-0005-m.jpg"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Clasificación de imágenes</h3>
+					<img src="https://i.pinimg.com/564x/c9/8b/86/c98b8625c7f333d35803412773228c29.jpg"
+						width="800">
+						<figcaption>Source: NASA’s Applied Remote Sensing Training Program</figcaption>
+				</section>
+
+				<section>
+					<h3>Métodos no supervisado & supervisado</h3>
+					<img src="https://i.pinimg.com/564x/32/a0/e4/32a0e4db77981d082af26523d7dc5fa3.jpg"
+						width="700">
+						<figcaption>Source: NASA’s Applied Remote Sensing Training Program</figcaption>
+				</section>
+
+				<section>
+					<h3>Métodos no supervisado & supervisado</h3>
+					<img src="https://i.pinimg.com/564x/dd/f1/7d/ddf17d4164509911ee66b6b2c70d0fdd.jpg"
+						width="800">
+						<figcaption>Source: NASA’s Applied Remote Sensing Training Program</figcaption>
+				</section>
+
+				<section>
+					<h3>Clasificación de imágenes</h3>
+					<img src="https://www.mdpi.com/remotesensing/remotesensing-08-00705/article_deploy/html/images/remotesensing-08-00705-g003.png"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Clasificación de imágenes</h3>
+					<img src="https://i.pinimg.com/originals/64/09/bf/6409bfd49587c5d1810a04aa39046b45.png"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Evaluación</h3>
+					<img src="https://i.pinimg.com/564x/31/29/85/312985109feaa25587ab52fb064be62c.jpg" width="800">
+				</section>
+
+				<section>
+					<h3>Cohen´s kappa</h3>
+					<img src="http://1.bp.blogspot.com/-F6bcDBs0EmM/Uvs_BMCWn1I/AAAAAAAAAQA/gV4bx-rVKNA/s1600/representaci%C3%B3n+gr%C3%A1fica+de+kappa.jpg"
+						width="600">
+					<img src="https://study.com/cimages/multimages/16/kappa-formula.jpg" width="400">
+				</section>
+
+				<section>
+					<h3>Cohen´s kappa</h3>
+					<img src="https://i.pinimg.com/564x/85/8a/81/858a81295ac73478848e066ad15a37c9.jpg" width="900">
+					<figcaption>Source: NASA’s Applied Remote Sensing Training Program</figcaption>
+				</section>
+
+
+			</section>
+
+<!--Sensores activos-->
+
+			<section>
+				<h1>Sensores Activos</h1>
+			</section>
+
+<!--Radares-->
+			<section>
+
+				<section>
+					<img src="https://i.pinimg.com/originals/25/6a/c1/256ac1174ab8a5d49ebe73c4d3cd8ec0.jpg"
+						width="800">
+					<figcaption>Source: ISCCP</figcaption>
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/originals/f6/97/7c/f6977c2328ee06254e2ab25434e318a1.gif" width="800">
+					<figcaption>Source: <a
+							href="https://www.csr.utexas.edu/rs/sensors/whatissar/rar.html">https://www.csr.utexas.edu/rs/sensors/whatissar/rar.html</a>
+					</figcaption>
+				</section>
+
+				<section>
+					<img src="https://www.nrcan.gc.ca/sites/www.nrcan.gc.ca/files/earthsciences/images/resource/tutor/fundam/images/radar.gif"
+						width="700">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/originals/47/e4/35/47e4353b316c2cdb69290f723e4f4b15.png"
+						width="700">
+				</section>
+
+				<section>
+					<img src="https://i.pinimg.com/originals/fd/a3/93/fda3933778c09e7cb0a8b10fb5ab5c3e.png"
+						width="700">
+				</section>
+
+				<section>
+					<img src="img/figuras/radar_resolucion_rango.png"
+						width="800">
+					<figcaption><a
+							href="https://www.myseatime.com/blog/detail/marine-radar-how-best-to-set-up-to-have-a-perfect-targets-on-screen">source:
+							MySeaTime</a></figcaption>
+				</section>
+
+				<section>
+					<h3>Resolución en alcance</h3>
+					<div style="background-color: black;">
+						<img src="https://www.radartutorial.eu/01.basics/pic/ra2-200m.gif" alt="">
+						<img src="https://www.radartutorial.eu/01.basics/pic/ra3-100m.gif" alt="">
+					</div>
+					<figcaption><a href="https://www.radartutorial.eu/01.basics/Range%20Resolution.en.html">Source:
+							Radartutorial.eu</a></figcaption>
+				</section>
+
+				<section>
+					<h3>Retrodispersión</h3>
+					<img src="https://i.pinimg.com/originals/88/64/f8/8864f888bb970e3a6b5fa51deba53c82.jpg"
+						width="800">
+					<figcaption>Source: <a
+							href="https://www.intelligence-airbusds.com/">https://www.intelligence-airbusds.com/</a>
+					</figcaption>
+				</section>
+
+				<section>
+					<h3>Atenuación atmosférica</h3>
+					<img src="https://ars.els-cdn.com/content/image/3-s2.0-B9780128094136000059-f05-02-9780128094136.jpg"
+						width="700">
+					<figcaption>Source: Ron Goodman</figcaption>
+				</section>
+
+				<section>
+					<h3>Detección de cambios por amplitud (ACD)</h3>
+					<img src="https://i.pinimg.com/originals/b5/92/fd/b592fd6600fea6a5e3066389b38522c4.jpg"
+						width="800">
+					<figcaption>Source: India’s Indira Gandhi International Airport from <a
+							href="https://www.intelligence-airbusds.com/">https://www.intelligence-airbusds.com/</a>
+					</figcaption>
+				</section>
+
+				<section>
+					<h3>Detección de cambios por coherencia (CCD)</h3>
+					<img src="https://i.pinimg.com/originals/59/b7/7a/59b77afd8f95c4112d26e51f4f313a44.jpg"
+						width="800">
+					<figcaption>Source: India’s Indira Gandhi International Airport from <a
+							href="https://www.intelligence-airbusds.com/">https://www.intelligence-airbusds.com/</a>
+					</figcaption>
+				</section>
+
+				<section>
+					<h3>Bandas</h3>
+					<img src="https://www.mdpi.com/remotesensing/remotesensing-05-00716/article_deploy/html/images/remotesensing-05-00716f1-1024.png"
+						width="900">
+				</section>
+
+				<section>
+					<h3>Penetración en función de la longitud de onda</h3>
+					<img src="https://i.pinimg.com/originals/fd/e5/6f/fde56f1ce744ceecf8bea1388060566d.png"
+						width="1000">
+				</section>
+
+				<section>
+					<h3>Distorsiones de las imágenes de radar</h3>
+					<img src="https://i.pinimg.com/originals/d5/db/86/d5db86f5ed563b73ad815c7624abcb40.png"
+						width="900">
+				</section>
+
+				<section>
+					<h3>Distorsiones de las imágenes de radar</h3>
+					<img src="https://i.pinimg.com/originals/34/b1/5b/34b15b6a695d04f630dc0c0d8a27a908.jpg" width="900">
+				</section>
+
+				<section>
+					<h3>Distorsiones de las imágenes de radar</h3>
+					<img src="https://i.pinimg.com/736x/34/b1/5b/34b15b6a695d04f630dc0c0d8a27a908.jpg"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Distorsiones de las imágenes de radar</h3>
+					<img src="https://i.pinimg.com/736x/e5/cb/37/e5cb37f78fe340d3dda888a815a2eaa8.jpg"
+						width="600">
+				</section>
+
+				<section>
+					<h3>Modos de operación</h3>
+					<img src="https://javaboys74.files.wordpress.com/2015/07/schema_radarsat1.gif" width="1000">
+				</section>
+
+				<section>
+					<h3>Synthetic Aperture RAdar (SAR)</h3>
+					<img src="http://www.radartutorial.eu/20.airborne/pic/sar_principle.print.png" width="450">
+				</section>
+
+				<section>
+					<h3>Synthetic Aperture RAdar (SAR)</h3>
+					<img src="https://i.pinimg.com/originals/0b/0a/60/0b0a60dfc45c9d032b762b7b471e8159.png"
+						width="800">
+				</section>
+
+				<section>
+					<h3>Satélites SAR</h3>
+					<img src="https://site.tre-altamira.com/wp-content/uploads/InSAR_satellite_list.png" width="800">
+				</section>
+
+				<section>
+					<h3>Fase de la onda</h3>
+					<img src="https://www.un-spider.org/sites/default/files/phase_amp.PNG" width="800">
+				</section>
+
+				<section>
+					<h3>Interferometry</h3>
+					<img src="https://cdn.britannica.com/96/96596-004-1D8E9F0F/light-fringes-double-slit-experiment-path-difference-slits.jpg"
+						width="1000">
+				</section>
+
+				<section>
+					<h3>Interferometry Synthetic Aperture RAdar (InSAR)</h3>
+					<p>La comparación de la fase de dos o más imágenes de radar de una escena determinada adquiridas
+						desde posiciones ligeramente diferentes o en momentos diferentes, es la idea básica de la
+						interferometría SAR</p>
+					<img src="https://i.pinimg.com/originals/70/e4/7e/70e47e2cd25e4e689dc9ef1282a38f76.webp" width="640">
+				</section>
+
+				<section>
+					<h3>Interferograma</h3>
+					<p>Un interferograma diferencial se construye utilizando (i), un método de dos pasos en el que se
+						utiliza un modelo de elevación digital externo
+						(digital elevation model, DEM) y se resta del interferograma, y (ii), un método de tres pasos en
+						el que se utiliza otra adquisición de
+						SAR para crear un par topográfico con una de las otras dos adquisiciones, y se supone que el par
+						no tiene deformación y el interferograma
+						del par topográfico se resta del interferograma del par de deformación</p>
+					<img src="https://site.tre-altamira.com/wp-content/uploads/DInSAR-Differential-InSAR.jpg"
+						width="550">
+				</section>
+
+				<section>
+					<h3>Tipos de interferometría de radar</h3>
+					<img src="https://i.pinimg.com/564x/e9/49/a4/e949a475fe3973bb240f907edb444b25.jpg" width="1000">
+					<figcaption>Source: <a href="http://arset.gsfc.nasa.gov">ARSET: Applied Remote Sensing Training</a>
+						- Prof. Eric Fielding</figcaption>
+				</section>
+
+				<section>
+					<h3>Toma de datos 1</h3>
+					<img src="https://i.pinimg.com/564x/d7/27/61/d72761a59061620d9b8455db832ce88b.jpg" width="1000">
+					<figcaption>Source: <a href="http://arset.gsfc.nasa.gov">ARSET: Applied Remote Sensing Training</a>
+						- Prof. Eric Fielding</figcaption>
+				</section>
+
+				<section>
+					<h3>Toma de datos 2</h3>
+					<img src="https://i.pinimg.com/564x/a7/c1/d3/a7c1d32e7a9d0d13b75113f3523e4db6.jpg" width="1000">
+					<figcaption>Source: <a href="http://arset.gsfc.nasa.gov">ARSET: Applied Remote Sensing Training</a>
+						- Prof. Eric Fielding</figcaption>
+				</section>
+
+				<section>
+					<h3>Diferential Interferometry Synthetic Aperture RAdar (DInSAR)</h3>
+					<p> El diferencial InSAR es el proceso de eliminar la topografía del interferograma aplanado para
+						obtener la señal de deformación del terreno.</p>
+					<img src="https://www.un-spider.org/sites/default/files/insar_explain2.gif" width="890">
+				</section>
+
+				<section>
+					<h3>Differential Interferometry Synthetic Aperture RAdar (DInSAR)</h3>
+					<img src="https://www.ga.gov.au/__data/assets/image/0008/22859/13-7402-1-sml1.jpg" width="700">
+				</section>
+
+				<section>
+					<h3>Diferential Interferometry Synthetic Aperture RAdar (DInSAR)</h3>
+					<img src="https://i.pinimg.com/564x/1a/0c/dc/1a0cdc765b53ea93f1a3407abaefef02.jpg" width="1000">
+					<figcaption>Source: <a href="http://arset.gsfc.nasa.gov">ARSET: Applied Remote Sensing Training</a>
+						- Prof. Eric Fielding</figcaption>
+				</section>
+
+				<section>
+					<h3>Diferential Interferometry Synthetic Aperture RAdar (DInSAR)</h3>
+					<img src="https://i.pinimg.com/564x/b7/ff/0a/b7ff0a646cc294d6a3cc94ae2f882a14.jpg" width="1000">
+					<figcaption>Source: <a href="http://arset.gsfc.nasa.gov">ARSET: Applied Remote Sensing Training</a>
+						- Prof. Eric Fielding</figcaption>
+				</section>
+
+				<section>
+					<h3>Diferential Interferometry Synthetic Aperture RAdar (DInSAR)</h3>
+					<img src="https://i.pinimg.com/564x/36/7c/6a/367c6ae0117606f7aaa9480505551dc3.jpg" width="1000">
+					<figcaption>Source: <a href="http://arset.gsfc.nasa.gov">ARSET: Applied Remote Sensing Training</a>
+						- Prof. Eric Fielding</figcaption>
+				</section>
+
+				<section>
+					<a href="https://insar.ngu.no/">Sistema InSAR en Noruega</a>
+				</section>
+
+				<section>
+					<h3>Dispersión de las señales SAR</h3>
+					<img src="https://miro.medium.com/max/1400/1*u76a3n-whWlHucqipNP0HQ.jpeg" width="1000">
+					<figcaption><a
+							href="https://medium.com/nerd-for-tech/beginners-guide-to-synthetic-aperture-radars-sar-b068fdfca34e"></a>Source:
+						NerdForTech</figcaption>
+				</section>
+
+				<section>
+					<h3>Light Detection And Ranging (LiDAR)</h3>
+					<img src="https://www.elprocus.com/wp-content/uploads/2017/04/LASAR.jpg" width="900">
+				</section>
+
+				<section>
+					<h3>Light Detection And Ranging (LiDAR)</h3>
+					<img src="https://geospatialmedia.s3.amazonaws.com/wp-content/uploads/2018/01/Cork-City-Area-DSM.jpg"
+						width="900">
+				</section>
+
+				<section>
+					<h3>LIDAR</h3>
+					<img src="https://ars.els-cdn.com/content/image/1-s2.0-S018846111472816X-gr2.jpg" width="900">
+				</section>
+
+				<section>
+					<h3>LIDAR & DEM</h3>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/The_difference_between_Digital_Surface_Model_%28DSM%29_and_Digital_Terrain_Models_%28DTM%29_when_talking_about_Digital_Elevation_models_%28DEM%29.svg"
+						width="900">
+				</section>
+
+			</section>
+
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/menu/menu.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			slideNumber: 'c/t',
+			hash: true,
+			menu: {
+				side: 'left', // 'left' or 'right'.
+				width: 'normal', // 'normal', 'wide', 'third', 'half', 'full', or
+				numbers: false,
+				titleSelector: 'h1, h2, h3',
+				useTextContentForMissingTitles: false,
+				hideMissingTitles: false,
+				markers: true,
+				custom: false,
+				themes: true,
+				themesPath: 'dist/theme/',
+				transitions: false,  // ['None', 'Fade', 'Slide']
+				openButton: true,
+				openSlideNumber: true,
+				keyboard: true,
+				sticky: false,
+				autoOpen: true,
+				delayInit: false,
+				openOnInit: false,
+				loadIcons: true
+			},
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealMath, RevealMarkdown],
+			dependencies: [
+
+			]
+		});
+	</script>
+</body>
+
+</html>
