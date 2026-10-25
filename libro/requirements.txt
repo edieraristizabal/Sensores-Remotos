@@ -1,0 +1,2 @@
+jupyter-book>=1.0.2,<2
+sphinxcontrib-bibtex<3

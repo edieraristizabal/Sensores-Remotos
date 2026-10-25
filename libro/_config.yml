@@ -1,0 +1,59 @@
+# Configuración del libro (Jupyter Book 1.x)
+# https://jupyterbook.org/customize/config.html
+
+title: Sensores remotos para geociencias
+author: Edier V. Aristizábal G.
+email: edieraristizabal@gmail.com
+copyright: "2026"
+logo: images/logo.png
+only_build_toc_files: true
+
+# Los notebooks se publican con las salidas guardadas; la Action no los ejecuta.
+execute:
+  execute_notebooks: "off"
+
+latex:
+  latex_documents:
+    targetname: SensoresRemotos_libro.tex
+
+bibtex_bibfiles:
+  - references.bib
+
+sphinx:
+  config:
+    bibtex_reference_style: author_year
+    language: es
+    html_show_copyright: true
+    suppress_warnings: ["bibtex.duplicate_citation", "bibtex.duplicate_label"]
+
+repository:
+  url: https://github.com/edieraristizabal/Sensores-Remotos
+  path_to_book: libro  
+  branch: master  
+
+launch_buttons:
+  colab_url: https://colab.research.google.com
+
+html:
+  use_issues_button: true
+  use_repository_button: true
+  use_edit_page_button: true
+  home_page_in_navbar: true
+  baseurl: https://edieraristizabal.github.io/Sensores-Remotos/libro/
+  extra_footer: |
+    <p>Desarrollado por <a href="https://github.com/edieraristizabal">Edier Aristizábal</a>, Facultad de Minas, Universidad Nacional de Colombia.
+    <a href="https://edieraristizabal.github.io/Sensores-Remotos/">Página del curso</a> ·
+    <a href="https://edieraristizabal.github.io/Sensores-Remotos/html/01_SensoresRemoto.html">Diapositivas</a></p>
+
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution

@@ -1,0 +1,27 @@
+format: jb-book
+root: intro
+parts:
+  - caption: Fundamentos físicos
+    chapters:
+      - file: 01_Introduccion
+      - file: 02_Radiacion
+      - file: 03_Interaccion
+      - file: 04_Plataformas
+      - file: 05_Resolucion
+  - caption: Fotografía aérea y fotointerpretación
+    chapters:
+      - file: 06_FotografiaAerea
+      - file: 07_Fotogrametria
+      - file: 08_Fotointerpretacion
+      - file: 09_Fotogeologia
+  - caption: Imágenes de satélite
+    chapters:
+      - file: 10_Preprocesamiento
+      - file: 11_Realce
+      - file: 12_Clasificacion
+      - file: 13_SensoresActivos
+      - file: 14_Plataformas_EO
+  - caption: Apéndices
+    chapters:
+      - file: A_Practicas
+      - file: bibliografia

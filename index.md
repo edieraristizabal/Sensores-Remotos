@@ -16,10 +16,15 @@ Martes & Jueves 10:00 - 12:00 a.m.
 M2-327
 
 ## Programa del curso
-[Ir al programa...](/Programa_SensoresRemoto.pdf)
+[Ir al programa...](Programa_SensoresRemoto.pdf)
 
-## Presentación
-[Ir a presentación...](/html/01_SensoresRemoto.html)
+## Presentaciones
+[Sensores remotos...](html/01_SensoresRemoto.html)
+
+[Fotointerpretación...](html/02_Fotointerpretacion.html)
+
+## Libro del curso
+[Ir al libro...](https://edieraristizabal.github.io/Sensores-Remotos/libro/) *Sensores remotos para geociencias*, con la teoría del curso en notebooks ejecutables de Python.
 
 ## Contenido del curso
 
@@ -46,9 +51,9 @@ El contenido del curso comprende los siguientes temas a desarrollar:
 - Paralaje
 - Medición del relieve
 
-[Taller 1](/TALLERES/Taller_Fotogrametria.pdf) Fotogrametría
+[Taller 1](TALLERES/Taller_Fotogrametria.pdf) Fotogrametría
 
-[Guía para uso de Anaglifos](/TALLERES/Taller_Anaglifos.pdf)
+[Guía para uso de Anaglifos](TALLERES/Taller_Anaglifos.pdf)
 
 
 3. Criterios de Fotointerpretación
@@ -60,7 +65,7 @@ El contenido del curso comprende los siguientes temas a desarrollar:
 - Paisaje estructural
 - Procesos morfodinámicos
 
-[Taller 2](/TALLERES/Taller_Fotointerpretacion.pdf) Fotointerpretación
+[Taller 2](TALLERES/Taller_Fotointerpretacion.pdf) Fotointerpretación
 
 
 4. Plataformas para la Observación de la Tierra
@@ -82,7 +87,7 @@ Lectura recomendada: [Sentinel-2 User Handbook](https://sentinels.copernicus.eu/
 
 Lectura recomendada: [Landsat 9 Data Users Handbook](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-2082_L9-Data-Users-Handbook_v1.pdf)
 
-[Taller 3](/TALLERES/Taller_Calculo.pdf) Cálculo de índices
+[Taller 3](TALLERES/Taller_Calculo.pdf) Cálculo de índices
 
 1. Imágenes de satélite
 - Procesamiento de imágenes
@@ -94,7 +99,7 @@ Lectura recomendada: [Index database](https://www.indexdatabase.de/)
 
 Lectura recomendada: [A comparison of resampling methods for remote sensing classification and accuracy assessment](https://www.sciencedirect.com/science/article/pii/S0034425718300324?casa_token=HfduZb8dUaMAAAAA:WDBJ63TyMwApJzpjINSrooqbC0IGdBktX_v0EEpWgCcLtbPGPokIU-q-E-hGZQH4jsbR6QIxRG8)
 
-[Taller 4](/TALLERES/Taller_Tratamiento.pdf) Clasificación de imágenes satelitales
+[Taller 4](TALLERES/Taller_Tratamiento.pdf) Clasificación de imágenes satelitales
 
 6. Sensores de antena
 - RADAR
@@ -106,7 +111,7 @@ Lectura recomendada: [A comparison of resampling methods for remote sensing clas
 Lectura recomendada: [A tutorial on Synthetic Aperture Radar](https://elib.dlr.de/82313/1/SAR-Tutorial-March-2013.pdf)
 Online training: [ARSET - Introduction to Synthetic Aperture Radar](https://appliedsciences.nasa.gov/join-mission/training/english/arset-introduction-synthetic-aperture-radar)
 
-[Taller 5](/TALLERES/Taller_Radar.pdf) Imágenes de radar
+[Taller 5](TALLERES/Taller_Radar.pdf) Imágenes de radar
 
 ## Evaluación del curso
 
@@ -131,7 +136,7 @@ El 25% restante de la nota del curso corresponde al trabajo de campo que se encu
 
 El documento que encuentra en el siguiente link corresponde a la Guía para la preparación, y ejecución a la salida de campo, por lo tanto es indispensable que cada equipo revise con detalle los objetivos y alcances planteados, los materiales necesarios, y los pasos a  desarrollar.
 
-[Guía Trabajo Final](/TALLERES/Taller_TrabajoFinal.pdf) Preparación y guía de campo
+[Guía Trabajo Final](TALLERES/Taller_TrabajoFinal.pdf) Preparación y guía de campo
 
 El trabajo de campo comprende diferentes alcances, la mayoría de ellos previos a la salida de campo:
 
