@@ -131,6 +131,7 @@ Hay dos presentaciones Reveal.js en `html/`: `01_SensoresRemoto.html` (sensores 
 
 Cada cambio al repositorio se anota aquí, el más reciente primero, con el formato `- **AAAA-MM-DD**: qué se cambió y por qué (archivos principales).` Esta sección es la memoria del curso entre sesiones: leerla antes de empezar a trabajar.
 
+- **2026-10-25**: `README.md` con la sección "Enlaces del curso" (página, presentación y libro publicados) y el enlace a la página personal https://edieraristizabal.github.io/.
 - **2026-10-24**: Commit de respaldo de los cambios locales pendientes antes de unificar.
 - **2026-10-24**: Interfaz en español: `_layouts/default.html` traducido, reemplaza el texto en inglés del tema minimal de Jekyll.
 - **2026-10-24**: Revisión de idioma: traducidos al español los bloques en inglés de `html/01_SensoresRemoto.html` y `html/02_Fotointerpretacion.html` (patrones de drenaje, lectura de curvas de nivel, correcciones radiométricas, pies de figura) y unos 60 títulos de diapositivas en inglés; en `NOTEBOOKS/` se tradujeron las celdas de texto de `Mapping.ipynb` y `TutorialGEE.ipynb`, los encabezados de `CNN.ipynb` y los comentarios del código de ANN, CNN, DataPreparationMapping, DownloadImage, LandslideMapping, Mapping y TutorialGEE. Quedan en inglés los títulos de lecturas, el nombre LiDAR y los enlaces.
